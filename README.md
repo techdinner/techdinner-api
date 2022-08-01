@@ -5,8 +5,6 @@
 ## Requirements
 
 - yarn
-- docker
-- docker-compose
 
 ## Installation
 
