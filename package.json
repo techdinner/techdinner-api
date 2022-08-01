@@ -1,0 +1,18 @@
+{
+  "name": "techdinner-backend",
+  "version": "1.0.0",
+  "description": "Back-end da aplicação do Tech Dinner.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
