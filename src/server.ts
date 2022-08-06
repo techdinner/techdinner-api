@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import express from "express";
-import { AppDataSource } from "./data-source";
+import { AppDataSource } from "./database/data-source";
 import { routes } from "./routes";
 
 dotenv.config();
@@ -14,9 +14,8 @@ AppDataSource.initialize()
 	});
 
 const app = express();
-app.use(express.json());
 
+app.use(express.json());
 app.use(routes);
 
-const PORT = process.env.APP_PORT || 3000;
-app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
+app.listen(5000, () => console.log("Server running on port 5000"));

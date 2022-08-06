@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+    app:
+        build: .docker
+        image: techdinner-nodejs
+        container_name: techdinner-api
+        restart: always
+        volumes:
+            - './:/app'
+
+    nginx:
+        image: 'nginx:alpine'
+        container_name: techdinner-nginx
+        restart: always
+        volumes:
+            - './.docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+        ports:
+            - '8083:80'
+        depends_on:
+            - app
+
+    mysql:
+      image: 'mysql:5.7'
+      container_name: db
+      restart: always
+      tty: true
+      volumes:
+        - './mysql:/app/mysql'
+      env_file:
+          - .env
+      environment:
+        - MYSQL_DATABASE=${DB_DATABASE}
+        - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+        - MYSQL_USER=${DB_USER}
