@@ -6,22 +6,23 @@ run: check-environment
 	- docker-compose up -d --build
 
 start:
-	- docker start techdinner-nginx techdinner-api
+	- docker start techdinner-api techdinner-db techdinner-nginx
 
 stop:
-	- docker stop techdinner-nginx techdinner-api
+	- docker stop techdinner-api techdinner-db techdinner-nginx
 
 restart:
-	- docker restart techdinner-nginx techdinner-api
+	- docker restart techdinner-api techdinner-db techdinner-nginx
 
 status:
 	- docker ps -f name=techdinner-api
 	- docker ps -f name=techdinner-nginx
+	- docker ps -f name=techdinner-db
 
 clean:
-	- docker stop techdinner-nginx techdinner-api
-	- docker rm techdinner-nginx techdinner-api
-	- docker rmi techdinner-nodejs
+	- docker stop techdinner-api techdinner-db techdinner-nginx
+	- docker rm techdinner-api techdinner-db techdinner-nginx
+	- docker rmi techdinner-node
 
 check-environment:
 	- @echo Copiando arquivo ".env.example";
