@@ -5,36 +5,41 @@
 ## Requirements
 
 - yarn
+- docker and docker-compose
 
 ## Installation
 
-**1. Clone this repository**
+**- Clone this repository**
 
 ```sh
 git clone https://github.com/thonnystudios/techdinner-backend.git
 ```
 
-**2. Change directory**
+**- Change directory**
 
 ```sh
 cd techdinner-backend
 ```
 
-**3. Copy .env.example to .env**
+**- Run project with Docker**
 
 ```sh
-cp .env.example .env
+make or make run
 ```
 
-**4. Configure your preferred .env file**
+**- Configure your preferred .env file**
 
-**5. Install dependencies**
+**- For more options open the Makefile**
+
+<hr>
+
+**- Run project without Docker (dev environment)**
 
 ```sh
 yarn
 ```
 
-**6. Start the project in development**
+**- Start the project in development**
 
 ```sh
 yarn dev
