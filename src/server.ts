@@ -1,17 +1,6 @@
-import dotenv from "dotenv";
 import express from "express";
-import { AppDataSource } from "./database/data-source";
-import { routes } from "./routes";
-
-dotenv.config();
-
-AppDataSource.initialize()
-	.then(() => {
-		console.log("Data Source has been initialized!");
-	})
-	.catch(err => {
-		console.error("Error during Data Source initialization: ", err);
-	});
+import "./database/data-source";
+import routes from "./routes";
 
 const app = express();
 
