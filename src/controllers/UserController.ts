@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 export class UserController {
-	async getAll(req: Request, res: Response) {
+	async getAllUsers(req: Request, res: Response) {
 		try {
 			const data = [
 				{
@@ -11,6 +11,7 @@ export class UserController {
 					name: "Thony",
 				},
 			];
+
 			return res.status(200).json(data);
 		} catch (error) {
 			console.log(error);
