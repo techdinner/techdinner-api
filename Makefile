@@ -3,6 +3,7 @@ ENVIRONMENT_FILE=.env
 default: run
 
 run: check-environment
+	- yarn build
 	- docker-compose up -d --build
 
 start:
@@ -23,6 +24,15 @@ clean:
 	- docker stop techdinner-api techdinner-db techdinner-nginx
 	- docker rm techdinner-api techdinner-db techdinner-nginx
 	- docker rmi techdinner-node
+
+bash:
+	- docker exec -it techdinner-api bash
+
+deploy: check-environment
+	- docker stop techdinner-api techdinner-db techdinner-nginx
+	- docker rm techdinner-api techdinner-db techdinner-nginx
+	- yarn build
+	- docker-compose up -d
 
 check-environment:
 	- @echo Copiando arquivo ".env.example";

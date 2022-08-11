@@ -5,9 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 COPY yarn* ./
 
-RUN npm install yarn
-
-RUN yarn install --frozen-lockfile
+RUN yarn
 
 COPY . .
 
