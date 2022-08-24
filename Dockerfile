@@ -5,8 +5,10 @@ WORKDIR /app
 COPY package*.json ./
 COPY yarn* ./
 
-RUN yarn
+RUN yarn install
 
 COPY . .
 
 CMD [ "yarn", "start" ]
+
+EXPOSE 5000
