@@ -12,8 +12,10 @@ services:
         working_dir: /app
         volumes:
             - ./.nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        env_file:
+            - .env
         ports:
-            - 8585:80
+            - ${APP_PORT}:80
         depends_on:
             - node
 
@@ -21,10 +23,12 @@ services:
         image: mysql:5.7
         container_name: techdinner-db
         restart: always
+        env_file:
+            - .env
         environment:
             MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: techdinner_db
-            MYSQL_USER: techdinnerdb
-            MYSQL_PASSWORD: techdinnerdb
-        ports: 
-            - 3407:3306
+            MYSQL_DATABASE: ${DB_NAME}
+            MYSQL_USER: ${DB_USER}
+            MYSQL_PASSWORD: ${DB_PASS}
+        ports:
+            - ${DB_PORT}:3306
