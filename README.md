@@ -1,11 +1,11 @@
 ## Back-end da aplicação do Tech Dinner.
 
-## Requirements
+### Requirements
 
 - yarn
 - docker and docker-compose
 
-## Installation
+### Installation
 
 **- Clone this repository**
 
