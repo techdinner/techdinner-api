@@ -1,8 +1,8 @@
 import { Router } from "express";
 const UsersRoutes = Router();
 
-import { GetAllUsersController } from "../../controllers/users/GetAllUsersController";
+import { GetAllUserController } from "../../controllers/users/GetAllUserController";
 
-UsersRoutes.get("/", new GetAllUsersController().handle);
+UsersRoutes.get("/", new GetAllUserController().handle);
 
 export default UsersRoutes;
