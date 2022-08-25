@@ -1,13 +1,11 @@
 ## Back-end da aplicação do Tech Dinner.
 
-<hr>
-
-## Requirements
+### Requirements
 
 - yarn
 - docker and docker-compose
 
-## Installation
+### Installation
 
 **- Clone this repository**
 
@@ -21,18 +19,6 @@ git clone https://github.com/thonnystudios/techdinner-backend.git
 cd techdinner-backend
 ```
 
-**- Run project with Docker**
-
-```sh
-make or make run
-```
-
-**- Configure your preferred .env file**
-
-**- For more options open the Makefile**
-
-<hr>
-
 **- Run project without Docker (dev environment)**
 
 ```sh
@@ -43,4 +29,12 @@ yarn
 
 ```sh
 yarn dev
+```
+
+<hr>
+
+**- Run project with Docker**
+
+```sh
+make or make run
 ```
