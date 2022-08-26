@@ -1,7 +1,8 @@
 import AppDataSource from "../../database/data-source";
 import { Repository } from "typeorm";
 import { UserEntity } from "../../entities/UserEntity";
-import { IUserRepository, UserTypes } from "../IUserRepository";
+import { IUserRepository } from "../IUserRepository";
+import { CreateUserDTO } from "../../dtos/users/CreateUserDTO";
 
 export class UserRepository implements IUserRepository {
 	private repository: Repository<UserEntity>;
@@ -10,21 +11,15 @@ export class UserRepository implements IUserRepository {
 		this.repository = AppDataSource.getRepository(UserEntity);
 	}
 
-	public async getAllUsers(): Promise<UserEntity> {
-		// const users = await repository.find();
-		const users = [
-			{
-				name: "Matheus",
-			},
-			{
-				name: "Thony",
-			},
-		];
+	getAllUsers = async () => {
+		const users = await this.repository.find();
 
 		return users;
-	}
+	};
 
-	public async save({ name, email, password }: UserTypes): Promise<void> {}
+	save = async (CreateUserDTO: CreateUserDTO) => {
+		return this.repository.save(CreateUserDTO);
+	};
 
 	// public async getById(id: UserEntity) {}
 

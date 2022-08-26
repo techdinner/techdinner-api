@@ -1,12 +1,7 @@
 import { UserEntity } from "../entities/UserEntity";
-
-export type UserTypes = {
-	name: string;
-	email: string;
-	password: string;
-};
+import { CreateUserDTO } from "../dtos/users/CreateUserDTO";
 
 export interface IUserRepository {
-	getAllUsers(): Promise<UserEntity>;
-	save({ name, email, password }: UserTypes): Promise<void>;
+	getAllUsers: () => Promise<UserEntity[]>;
+	save: (CreateUserDTO: CreateUserDTO) => Promise<CreateUserDTO>;
 }

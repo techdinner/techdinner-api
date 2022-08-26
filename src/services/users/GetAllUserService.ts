@@ -1,11 +1,15 @@
-import { UserRepository } from "../../repositories/UserRepository";
+import { IUserRepository } from "../../repositories/IUserRepository";
 
 export class GetAllUserService {
-	async execute() {
-		const repository = new UserRepository();
+	private repository: IUserRepository;
 
-		const data = repository.getAllUsers();
+	constructor(repository: IUserRepository) {
+		this.repository = repository;
+	}
+
+	execute = async () => {
+		const data = await this.repository.getAllUsers();
 
 		return data;
-	}
+	};
 }

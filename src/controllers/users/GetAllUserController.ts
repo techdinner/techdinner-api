@@ -2,11 +2,19 @@ import { Request, Response } from "express";
 import { GetAllUserService } from "../../services/users/GetAllUserService";
 
 export class GetAllUserController {
-	async handle(req: Request, res: Response) {
-		const service = new GetAllUserService();
+	private service: GetAllUserService;
 
-		const users = await service.execute();
-
-		return res.status(200).json(users);
+	constructor(service: GetAllUserService) {
+		this.service = service;
 	}
+
+	handle = async (req: Request, res: Response) => {
+		try {
+			const response = await this.service.execute();
+
+			return res.status(200).json(response);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 }
