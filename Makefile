@@ -3,7 +3,6 @@ ENVIRONMENT_FILE=.env
 default: run
 
 run: check-environment
-	- yarn build
 	- docker-compose up -d --build
 
 start:

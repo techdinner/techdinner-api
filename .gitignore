@@ -1,7 +1,11 @@
+# FOLDERS
 .idea/
 .vscode/
 node_modules/
 build/
 tmp/
 temp/
+
+# FILES
 .env
+yarn-error.log

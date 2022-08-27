@@ -1,14 +1,26 @@
 import { Request, Response } from "express";
+import { UserRepository } from "../../repositories/implementations/UserRepository";
 import { CreateUserService } from "../../services/users/CreateUserService";
 
 export class CreatUserController {
-	async handle(req: Request, res: Response) {
-		const { name, email, password } = req.body;
+	handle = async (req: Request, res: Response) => {
+		try {
+			const { name, email, password } = req.body;
 
-		const service = new CreateUserService();
+			const repository = new UserRepository();
+			const service = new CreateUserService(repository);
 
-		const user = await service.execute({ name, email, password });
+			const user = await service.execute({
+				name,
+				email,
+				password,
+			});
 
-		return res.status(200).json(user);
-	}
+			delete user.password;
+
+			return res.status(201).json(user);
+		} catch (error) {
+			return res.status(500).json(error);
+		}
+	};
 }

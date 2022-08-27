@@ -1,20 +1,18 @@
 import { Request, Response } from "express";
+import { UserRepository } from "../../repositories/implementations/UserRepository";
 import { GetAllUserService } from "../../services/users/GetAllUserService";
 
 export class GetAllUserController {
-	private service: GetAllUserService;
-
-	constructor(service: GetAllUserService) {
-		this.service = service;
-	}
-
 	handle = async (req: Request, res: Response) => {
 		try {
-			const response = await this.service.execute();
+			const repository = new UserRepository();
+			const service = new GetAllUserService(repository);
 
-			return res.status(200).json(response);
+			const users = await service.execute();
+
+			return res.status(200).json(users);
 		} catch (error) {
-			console.log(error);
+			return res.status(500).json(error);
 		}
 	};
 }

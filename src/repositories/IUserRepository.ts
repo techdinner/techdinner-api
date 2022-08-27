@@ -3,5 +3,6 @@ import { CreateUserDTO } from "../dtos/users/CreateUserDTO";
 
 export interface IUserRepository {
 	getAllUsers: () => Promise<UserEntity[]>;
-	save: (CreateUserDTO: CreateUserDTO) => Promise<CreateUserDTO>;
+	create: (CreateUserDTO: CreateUserDTO) => Promise<UserEntity>;
+	getById: (id: number) => Promise<UserEntity | null>;
 }

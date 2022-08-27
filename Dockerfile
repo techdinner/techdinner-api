@@ -9,6 +9,6 @@ RUN yarn install
 
 COPY . .
 
-CMD [ "yarn", "start" ]
+CMD [ "yarn", "dev" ]
 
 EXPOSE 5000

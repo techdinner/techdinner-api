@@ -5,25 +5,37 @@ import { IUserRepository } from "../IUserRepository";
 import { CreateUserDTO } from "../../dtos/users/CreateUserDTO";
 
 export class UserRepository implements IUserRepository {
-	private repository: Repository<UserEntity>;
+	private entity: Repository<UserEntity>;
 
 	constructor() {
-		this.repository = AppDataSource.getRepository(UserEntity);
+		this.entity = AppDataSource.getRepository(UserEntity);
 	}
 
-	getAllUsers = async () => {
-		const users = await this.repository.find();
+	getAllUsers = async (): Promise<UserEntity[]> => {
+		const users = await this.entity.find();
 
 		return users;
 	};
 
-	save = async (CreateUserDTO: CreateUserDTO) => {
-		return this.repository.save(CreateUserDTO);
+	create = async ({
+		name,
+		email,
+		password,
+	}: CreateUserDTO): Promise<UserEntity> => {
+		const user = this.entity.create({
+			name,
+			email,
+			password,
+		});
+
+		await this.entity.save(user);
+
+		return user;
 	};
 
-	// public async getById(id: UserEntity) {}
+	getById = async (id: number): Promise<UserEntity | null> => {
+		const user = await this.entity.findOneByOrFail({ id });
 
-	// public async update({ name, email, password }: UserRequest): Promise<UserEntity> {}
-
-	// public async delete(id: UserEntity) {}
+		return user;
+	};
 }
