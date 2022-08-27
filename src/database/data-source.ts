@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "../config/env";
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 

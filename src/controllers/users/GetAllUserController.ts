@@ -3,7 +3,7 @@ import { UserRepository } from "../../repositories/implementations/UserRepositor
 import { GetAllUserService } from "../../services/users/GetAllUserService";
 
 export class GetAllUserController {
-	handle = async (req: Request, res: Response) => {
+	handle = async (req: Request, res: Response): Promise<Response> => {
 		try {
 			const repository = new UserRepository();
 			const service = new GetAllUserService(repository);

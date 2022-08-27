@@ -11,6 +11,12 @@ export class UserRepository implements IUserRepository {
 		this.entity = AppDataSource.getRepository(UserEntity);
 	}
 
+	findByEmail = async (email: string): Promise<UserEntity | null> => {
+		const user = await this.entity.findOneOrFail({ where: { email } });
+
+		return user;
+	};
+
 	getAllUsers = async (): Promise<UserEntity[]> => {
 		const users = await this.entity.find();
 
@@ -29,12 +35,6 @@ export class UserRepository implements IUserRepository {
 		});
 
 		await this.entity.save(user);
-
-		return user;
-	};
-
-	getById = async (id: number): Promise<UserEntity | null> => {
-		const user = await this.entity.findOneByOrFail({ id });
 
 		return user;
 	};
