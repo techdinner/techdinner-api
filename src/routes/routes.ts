@@ -9,7 +9,7 @@ routes.use("/login", AuthRoutes);
 routes.use("/users", UsersRoutes);
 
 routes.use("/", (req, res) => {
-	res.json("Hello World");
+	res.json("Techdinner API");
 });
 
 export default routes;

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
-import { AppError } from "../errors/AppError";
+import { Exception } from "../errors/Exception";
 
 export const authenticate = (
 	req: Request,
@@ -9,7 +9,7 @@ export const authenticate = (
 ): Promise<any> | void => {
 	const header = req.headers.authorization;
 
-	if (!header) throw new AppError("JWT token is missing!", 401);
+	if (!header) throw new Exception("JWT token is missing!", 401);
 
 	const [, token] = header.split(" ");
 
@@ -17,6 +17,6 @@ export const authenticate = (
 		verify(token, String(process.env.APP_SECRET));
 		next();
 	} catch {
-		throw new AppError("JWT token is invalid!", 401);
+		throw new Exception("JWT token is invalid!", 401);
 	}
 };

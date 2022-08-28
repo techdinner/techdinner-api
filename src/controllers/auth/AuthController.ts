@@ -4,16 +4,20 @@ import { TypeORMUserRepository } from "../../repositories/implementations/typeor
 
 export class AuthController {
 	handle = async (req: Request, res: Response): Promise<Response> => {
-		const { email, password } = req.body;
+		try {
+			const { email, password } = req.body;
 
-		const repository = new TypeORMUserRepository();
-		const service = new AuthService(repository);
+			const repository = new TypeORMUserRepository();
+			const service = new AuthService(repository);
 
-		const auth = await service.execute({
-			email,
-			password,
-		});
+			const response = await service.execute({
+				email,
+				password,
+			});
 
-		return res.json(auth);
+			return res.status(200).json(response);
+		} catch (error) {
+			return res.status(500).json(error);
+		}
 	};
 }

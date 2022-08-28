@@ -11,7 +11,7 @@ export class TypeORMUserRepository implements IUserRepository {
 		this.entity = AppDataSource.getRepository(UserEntity);
 	}
 
-	findByEmail = async (email: string): Promise<UserEntity | null> => {
+	findByEmail = async (email: string): Promise<UserEntity> => {
 		const user = await this.entity.findOneOrFail({ where: { email } });
 
 		return user;

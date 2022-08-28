@@ -16,9 +16,9 @@ export class CreatUserController {
 				password,
 			});
 
-			const data = { name, email };
+			const response = { name, email };
 
-			return res.status(201).json(data);
+			return res.status(201).json(response);
 		} catch (error) {
 			return res.status(500).json(error);
 		}
