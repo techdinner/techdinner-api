@@ -1,10 +1,10 @@
-import AppDataSource from "../../database/data-source";
+import AppDataSource from "../../../database/data-source";
 import { Repository } from "typeorm";
-import { UserEntity } from "../../entities/UserEntity";
-import { IUserRepository } from "../IUserRepository";
-import { CreateUserDTO } from "../../dtos/users/CreateUserDTO";
+import { UserEntity } from "../../../entities/UserEntity";
+import { IUserRepository } from "../../IUserRepository";
+import { CreateUserDTO } from "../../../dtos/users/CreateUserDTO";
 
-export class UserRepository implements IUserRepository {
+export class TypeORMUserRepository implements IUserRepository {
 	private entity: Repository<UserEntity>;
 
 	constructor() {

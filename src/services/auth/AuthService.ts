@@ -2,7 +2,7 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { UserEntity } from "../../entities/UserEntity";
 import { AppError } from "../../errors/AppError";
-import { UserRepository } from "../../repositories/implementations/UserRepository";
+import { TypeORMUserRepository } from "../../repositories/implementations/typeorm/TypeORMUserRepository";
 import { IUserRepository } from "../../repositories/IUserRepository";
 
 interface Request {
@@ -18,7 +18,7 @@ interface Response {
 export class AuthService {
 	private repository: IUserRepository;
 
-	constructor(repository: UserRepository) {
+	constructor(repository: TypeORMUserRepository) {
 		this.repository = repository;
 	}
 

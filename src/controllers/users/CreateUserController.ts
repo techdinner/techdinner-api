@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UserRepository } from "../../repositories/implementations/UserRepository";
+import { TypeORMUserRepository } from "../../repositories/implementations/typeorm/TypeORMUserRepository";
 import { CreateUserService } from "../../services/users/CreateUserService";
 
 export class CreatUserController {
@@ -7,7 +7,7 @@ export class CreatUserController {
 		try {
 			const { name, email, password } = req.body;
 
-			const repository = new UserRepository();
+			const repository = new TypeORMUserRepository();
 			const service = new CreateUserService(repository);
 
 			const user = await service.execute({

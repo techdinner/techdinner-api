@@ -1,4 +1,4 @@
-import { UserRepository } from "../../repositories/implementations/UserRepository";
+import { TypeORMUserRepository } from "../../repositories/implementations/typeorm/TypeORMUserRepository";
 import { IUserRepository } from "../../repositories/IUserRepository";
 import { CreateUserDTO } from "../../dtos/users/CreateUserDTO";
 import { hash } from "bcryptjs";
@@ -6,7 +6,7 @@ import { hash } from "bcryptjs";
 export class CreateUserService {
 	private repository: IUserRepository;
 
-	constructor(repository: UserRepository) {
+	constructor(repository: TypeORMUserRepository) {
 		this.repository = repository;
 	}
 

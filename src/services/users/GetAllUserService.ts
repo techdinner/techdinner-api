@@ -1,10 +1,10 @@
-import { UserRepository } from "../../repositories/implementations/UserRepository";
+import { TypeORMUserRepository } from "../../repositories/implementations/typeorm/TypeORMUserRepository";
 import { IUserRepository } from "../../repositories/IUserRepository";
 
 export class GetAllUserService {
 	private repository: IUserRepository;
 
-	constructor(repository: UserRepository) {
+	constructor(repository: TypeORMUserRepository) {
 		this.repository = repository;
 	}
 

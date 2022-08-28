@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { AuthService } from "../../services/auth/AuthService";
-import { UserRepository } from "../../repositories/implementations/UserRepository";
+import { TypeORMUserRepository } from "../../repositories/implementations/typeorm/TypeORMUserRepository";
 
 export class AuthController {
 	handle = async (req: Request, res: Response): Promise<Response> => {
 		const { email, password } = req.body;
 
-		const repository = new UserRepository();
+		const repository = new TypeORMUserRepository();
 		const service = new AuthService(repository);
 
 		const auth = await service.execute({
