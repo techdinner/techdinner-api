@@ -16,9 +16,9 @@ export class CreatUserController {
 				password,
 			});
 
-			delete user.password;
+			const responseObject = { name, email };
 
-			return res.status(201).json(user);
+			return res.status(201).json(responseObject);
 		} catch (error) {
 			return res.status(500).json(error);
 		}
