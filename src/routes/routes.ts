@@ -4,11 +4,12 @@ const routes = express();
 import AuthRoutes from "./api/AuthRoutes";
 import UsersRoutes from "./api/UsersRoutes";
 
-routes.use("/", (req, res) => {
-	res.json("Hello World");
-});
 routes.use("/login", AuthRoutes);
 
 routes.use("/users", UsersRoutes);
+
+routes.use("/", (req, res) => {
+	res.json("Hello World");
+});
 
 export default routes;

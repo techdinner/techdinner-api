@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
-import "./database/data-source";
+import "./database/TypeORM/data-source";
 import "express-async-errors";
 import { AppError } from "./errors/AppError";
 import routes from "./routes/routes";

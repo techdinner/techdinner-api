@@ -20,7 +20,7 @@ export class UserEntity {
 	@Column()
 	password!: string;
 
-	@Column()
+	@Column({ type: "boolean", default: true })
 	active?: boolean;
 
 	@CreateDateColumn()
