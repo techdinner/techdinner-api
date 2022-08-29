@@ -1,14 +1,12 @@
 import { Request, Response } from "express";
-import { TypeORMUserRepository } from "../../repositories/implementations/typeorm/TypeORMUserRepository";
 import { GetAllUserService } from "../../services/users/GetAllUserService";
 
 export class GetAllUserController {
-	handle = async (req: Request, res: Response): Promise<Response> => {
-		try {
-			const repository = new TypeORMUserRepository();
-			const service = new GetAllUserService(repository);
+	constructor(private service: GetAllUserService) {}
 
-			const response = await service.execute();
+	handle = async (req: Request, res: Response) => {
+		try {
+			const response = await this.service.execute();
 
 			return res.status(200).json(response);
 		} catch (error) {

@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import "./database/TypeORM/data-source";
+import "./database/typeorm/data-source";
 import "express-async-errors";
 import { CatchErrors } from "./errors/CatchErrors";
 import routes from "./routes/routes";
@@ -13,4 +13,4 @@ app.use("/api", routes);
 
 app.use(CatchErrors);
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.listen(3000, () => console.log("Server running on port 3000"));

@@ -1,24 +1,20 @@
-import { TypeORMUserRepository } from "../../repositories/implementations/typeorm/TypeORMUserRepository";
 import { IUserRepository } from "../../repositories/IUserRepository";
 import { CreateUserDTO } from "../../dtos/users/CreateUserDTO";
 import { hash } from "bcryptjs";
+import { Exception } from "../../errors/Exception";
 
 export class CreateUserService {
-	private repository: IUserRepository;
+	constructor(private repository: IUserRepository) {}
 
-	constructor(repository: TypeORMUserRepository) {
-		this.repository = repository;
-	}
+	execute = async (data: CreateUserDTO) => {
+		const userExists = await this.repository.findByEmail(data.email);
 
-	execute = async ({ name, email, password }: CreateUserDTO) => {
-		const passwordHash = await hash(password, 8);
+		if (userExists) throw new Exception("User already exists.", 401);
 
-		const user = await this.repository.create({
-			name,
-			email,
-			password: passwordHash,
-		});
+		const passwordHash = await hash(data.password, 8);
 
-		return user;
+		data.password = passwordHash;
+
+		await this.repository.create(data);
 	};
 }

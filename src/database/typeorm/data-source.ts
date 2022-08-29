@@ -13,7 +13,7 @@ const AppDataSource = new DataSource({
 	database: process.env.DB_NAME,
 	synchronize: true,
 	logging: false,
-	entities: [`${__dirname}/../../**/entities/*.{ts,js}`],
+	entities: [`${__dirname}/../../**/entities/typeorm/*.{ts,js}`],
 	migrations: [`${__dirname}/**/migrations/*.{ts,js}`],
 	subscribers: [],
 });

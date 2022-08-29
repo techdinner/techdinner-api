@@ -4,7 +4,7 @@
    "description": "Back-end da aplicação do Tech Dinner.",
    "main": "server.ts",
    "scripts": {
-      "dev": "ts-node-dev --transpile-only ./src/server.ts",
+      "dev": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules ./src/server.ts",
       "build": "rimraf ./build && yarn tsc",
       "start": "node ./build/server.js",
       "lint": "eslint . --ext .ts,.js,.json --fix",

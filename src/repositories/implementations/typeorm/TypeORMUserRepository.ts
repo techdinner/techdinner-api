@@ -1,41 +1,28 @@
-import AppDataSource from "../../../database/TypeORM/data-source";
+import AppDataSource from "../../../database/typeorm/data-source";
 import { Repository } from "typeorm";
-import { UserEntity } from "../../../entities/UserEntity";
+import { TypeORMUserEntity } from "../../../entities/typeorm/TypeORMUserEntity";
 import { IUserRepository } from "../../IUserRepository";
-import { CreateUserDTO } from "../../../dtos/users/CreateUserDTO";
 
 export class TypeORMUserRepository implements IUserRepository {
-	private entity: Repository<UserEntity>;
-
-	constructor() {
-		this.entity = AppDataSource.getRepository(UserEntity);
+	constructor(private entity: Repository<TypeORMUserEntity>) {
+		this.entity = AppDataSource.getRepository(TypeORMUserEntity);
 	}
 
-	findByEmail = async (email: string): Promise<UserEntity> => {
-		const user = await this.entity.findOneOrFail({ where: { email } });
-
-		return user;
+	findByEmail = async (email: string): Promise<TypeORMUserEntity> => {
+		return await this.entity.findOneOrFail({ where: { email } });
 	};
 
-	getAllUsers = async (): Promise<UserEntity[]> => {
-		const users = await this.entity.find();
-
-		return users;
+	getAllUsers = async (): Promise<TypeORMUserEntity[]> => {
+		return await this.entity.find();
 	};
 
-	create = async ({
-		name,
-		email,
-		password,
-	}: CreateUserDTO): Promise<UserEntity> => {
-		const user = this.entity.create({
-			name,
-			email,
-			password,
-		});
+	create = async (user: TypeORMUserEntity): Promise<void> => {
+		await this.entity.create(user);
 
-		await this.entity.save(user);
+		return;
+	};
 
-		return user;
+	getById = async (id: number): Promise<TypeORMUserEntity> => {
+		return await this.entity.findOneByOrFail({ id });
 	};
 }

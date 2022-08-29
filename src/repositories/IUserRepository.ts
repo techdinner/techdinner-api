@@ -1,8 +1,8 @@
-import { UserEntity } from "../entities/UserEntity";
-import { CreateUserDTO } from "../dtos/users/CreateUserDTO";
+import { TypeORMUserEntity } from "../entities/typeorm/TypeORMUserEntity";
 
 export interface IUserRepository {
-	findByEmail: (email: string) => Promise<UserEntity>;
-	getAllUsers: () => Promise<UserEntity[]>;
-	create: (CreateUserDTO: CreateUserDTO) => Promise<UserEntity>;
+	findByEmail: (email: string) => Promise<TypeORMUserEntity>;
+	getAllUsers: () => Promise<TypeORMUserEntity[]>;
+	create: (user: TypeORMUserEntity) => Promise<void>;
+	getById: (id: number) => Promise<TypeORMUserEntity>;
 }

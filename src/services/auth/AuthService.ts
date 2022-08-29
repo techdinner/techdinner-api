@@ -1,8 +1,6 @@
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
-import { UserEntity } from "../../entities/UserEntity";
 import { Exception } from "../../errors/Exception";
-import { TypeORMUserRepository } from "../../repositories/implementations/typeorm/TypeORMUserRepository";
 import { IUserRepository } from "../../repositories/IUserRepository";
 
 interface Request {
@@ -10,19 +8,10 @@ interface Request {
 	password: string;
 }
 
-interface Response {
-	token: string;
-	user: UserEntity;
-}
-
 export class AuthService {
-	private repository: IUserRepository;
+	constructor(private repository: IUserRepository) {}
 
-	constructor(repository: TypeORMUserRepository) {
-		this.repository = repository;
-	}
-
-	execute = async ({ email, password }: Request): Promise<Response> => {
+	execute = async ({ email, password }: Request) => {
 		const user = await this.repository.findByEmail(email);
 
 		if (!user) throw new Exception("Credenciais inválidas", 401);
