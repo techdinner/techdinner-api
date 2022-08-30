@@ -1,8 +1,7 @@
 import express from "express";
 import cors from "cors";
+import { CatchErrors } from "./app/errors/CatchErrors";
 import "./database/typeorm/data-source";
-import "express-async-errors";
-import { CatchErrors } from "./errors/CatchErrors";
 import routes from "./routes/routes";
 
 const app = express();

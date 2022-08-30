@@ -4,7 +4,7 @@ import { GetAllUserService } from "../../services/users/GetAllUserService";
 export class GetAllUserController {
 	constructor(private service: GetAllUserService) {}
 
-	handle = async (req: Request, res: Response) => {
+	async handle(req: Request, res: Response) {
 		try {
 			const response = await this.service.execute();
 
@@ -12,5 +12,5 @@ export class GetAllUserController {
 		} catch (error) {
 			return res.status(500).json(error);
 		}
-	};
+	}
 }

@@ -4,7 +4,7 @@ import { CreateUserService } from "../../services/users/CreateUserService";
 export class CreateUserController {
 	constructor(private service: CreateUserService) {}
 
-	handle = async (req: Request, res: Response): Promise<Response> => {
+	async handle(req: Request, res: Response) {
 		const { name, email, password } = req.body;
 
 		try {
@@ -20,5 +20,5 @@ export class CreateUserController {
 		} catch (error) {
 			return res.status(500).json(error);
 		}
-	};
+	}
 }

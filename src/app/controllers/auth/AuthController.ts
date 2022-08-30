@@ -4,7 +4,7 @@ import { AuthService } from "../../services/auth/AuthService";
 export class AuthController {
 	constructor(private service: AuthService) {}
 
-	handle = async (req: Request, res: Response) => {
+	async handle(req: Request, res: Response) {
 		const { email, password } = req.body;
 
 		try {
@@ -17,5 +17,5 @@ export class AuthController {
 		} catch (error) {
 			return res.status(500).json(error);
 		}
-	};
+	}
 }
