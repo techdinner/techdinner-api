@@ -7,11 +7,15 @@
       "dev": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules ./src/server.ts",
       "build": "rimraf ./build && yarn tsc",
       "start": "node ./build/server.js",
-      "lint": "eslint . --ext .ts,.js,.json --fix",
+      "postinstall": "nvmrc-check --node $(cat .nvmrc)",
+      "lint": "tsc --noEmit && eslint . --ext .ts,.js,.json",
+      "lint-and-fix": "eslint . --ext .ts,.js,.json --fix",
       "prettier-format": "prettier --config .prettierrc '**/*.{json,js,ts}' --write",
       "typeorm": "typeorm-ts-node-commonjs",
-      "migration:run": "yarn typeorm migration:run -d ./src/database/TypeORM/data-source.ts"
-   },
+      "migration:run": "yarn typeorm migration:run -d ./src/database/TypeORM/data-source.ts",
+      "tscheck": "tsc",
+      "prepare": "husky install"
+    },
    "license": "MIT",
    "dependencies": {
       "bcryptjs": "^2.4.3",
@@ -42,8 +46,10 @@
       "eslint-plugin-n": "^15.0.0",
       "eslint-plugin-prettier": "^4.2.1",
       "eslint-plugin-promise": "^6.0.0",
+      "husky": "^8.0.1",
       "prettier": "^2.7.1",
       "ts-node-dev": "^2.0.0",
       "typescript": "*"
-   }
+   },
+   "private": true
 }
