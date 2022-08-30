@@ -14,7 +14,5 @@ export class UserEntity extends BaseEntity {
 		super(id);
 		this.active = active ?? true;
 		this.role = role ?? 3;
-		this.created_at = created_at ?? new Date();
-		this.updated_at = updated_at ?? new Date();
 	}
 }

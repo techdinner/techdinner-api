@@ -8,7 +8,7 @@ export class CreateUsers1659750766603 implements MigrationInterface {
 				columns: [
 					{
 						name: "id",
-						type: "int",
+						type: "string",
 						isPrimary: true,
 						isGenerated: true,
 						generationStrategy: "increment",
@@ -30,6 +30,11 @@ export class CreateUsers1659750766603 implements MigrationInterface {
 						name: "active",
 						type: "boolean",
 						default: true,
+					},
+					{
+						name: "role",
+						type: "int",
+						default: 3,
 					},
 					{
 						name: "created_at",
