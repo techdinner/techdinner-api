@@ -1,4 +1,4 @@
-import AppDataSource from "../../../../database/typeorm/data-source";
+import AppDataSource from "../../../../database/data-source";
 import { Repository } from "typeorm";
 import { UserEntity } from "../../../entities/UserEntity";
 import { IUserRepository } from "../../IUserRepository";

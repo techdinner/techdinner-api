@@ -1,19 +1,19 @@
-import "../../config/env";
+import { environments } from "../config/env";
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 
-const PORT = process.env.DB_PORT as number | undefined;
+const { DBHost, DBPort, DBUser, DBPass, DBName } = environments;
 
 const AppDataSource = new DataSource({
 	type: "mysql",
-	host: process.env.DB_HOST,
-	port: PORT,
-	username: process.env.DB_USER,
-	password: process.env.DB_PASS,
-	database: process.env.DB_NAME,
+	host: DBHost,
+	port: DBPort,
+	username: DBUser,
+	password: DBPass,
+	database: DBName,
 	synchronize: true,
 	logging: false,
-	entities: [`${__dirname}/../../app/**/models/*.{ts,js}`],
+	entities: [`${__dirname}/../app/**/models/*.{ts,js}`],
 	migrations: [`${__dirname}/**/migrations/*.{ts,js}`],
 	subscribers: [],
 });

@@ -12,7 +12,7 @@
       "lint-and-fix": "eslint . --ext .ts,.js,.json --fix",
       "prettier-format": "prettier --config .prettierrc '**/*.{json,js,ts}' --write",
       "typeorm": "typeorm-ts-node-commonjs",
-      "migration:run": "yarn typeorm migration:run -d ./src/database/TypeORM/data-source.ts",
+      "migration:run": "yarn typeorm migration:run -d ./src/database/data-source.ts",
       "tscheck": "tsc",
       "prepare": "husky install"
     },

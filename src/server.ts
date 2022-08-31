@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { CatchErrors } from "./app/errors/CatchErrors";
-import "./database/typeorm/data-source";
+import "./database/data-source";
 import routes from "./routes/routes";
 
 const app = express();
