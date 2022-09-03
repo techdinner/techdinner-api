@@ -1,28 +1,29 @@
 import AppDataSource from "../../../../database/data-source";
 import { Repository } from "typeorm";
+import { User } from "../../../models/User";
 import { UserEntity } from "../../../entities/UserEntity";
-import { IUserRepository } from "../../IUserRepository";
+import { UserRepository } from "../../UserRepository";
 
-export class TypeORMUserRepository implements IUserRepository {
-	constructor(private entity: Repository<UserEntity>) {
-		this.entity = AppDataSource.getRepository(UserEntity);
+export class TypeORMUserRepository implements UserRepository {
+	constructor(protected model: Repository<User>) {
+		this.model = AppDataSource.getRepository(User);
 	}
 
-	async findByEmail(email: string): Promise<UserEntity> {
-		return await this.entity.findOneOrFail({ where: { email } });
+	async findByEmail(email: string): Promise<UserEntity | null> {
+		return await this.model.findOne({ where: { email } });
 	}
 
 	async getAllUsers(): Promise<UserEntity[]> {
-		return await this.entity.find();
+		return await this.model.find();
 	}
 
 	async create(user: UserEntity): Promise<void> {
-		await this.entity.create(user);
+		await this.model.create(user);
 
 		return;
 	}
 
-	async getById(id: string): Promise<UserEntity> {
-		return await this.entity.findOneByOrFail({ id });
+	async getById(id: string): Promise<UserEntity | null> {
+		return await this.model.findOneBy({ id });
 	}
 }

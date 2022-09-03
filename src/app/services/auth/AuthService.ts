@@ -1,7 +1,7 @@
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { Exception } from "../../errors/Exception";
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { UserRepository } from "../../repositories/UserRepository";
 
 interface Request {
 	email: string;
@@ -9,7 +9,7 @@ interface Request {
 }
 
 export class AuthService {
-	constructor(private repository: IUserRepository) {}
+	constructor(private repository: UserRepository) {}
 
 	async execute({ email, password }: Request) {
 		try {
@@ -27,7 +27,7 @@ export class AuthService {
 				expiresIn: "1d",
 			});
 
-			delete user.password;
+			// delete user.password;
 
 			return { token, user };
 		} catch {

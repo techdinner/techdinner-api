@@ -14,9 +14,7 @@ export class CreateUserController {
 				password,
 			});
 
-			const response = { name, email };
-
-			return res.status(201).json(response);
+			return res.status(201).json({ message: "User created success" });
 		} catch (error) {
 			return res.status(500).json(error);
 		}

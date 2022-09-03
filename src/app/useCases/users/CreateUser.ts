@@ -1,6 +1,6 @@
+import { TypeORMUserRepository } from "../../repositories/implementations/typeorm/TypeORMUserRepository";
 import { CreateUserService } from "../../services/users/CreateUserService";
 import { CreateUserController } from "../../controllers/users/CreateUserController";
-import { TypeORMUserRepository } from "../../repositories/implementations/typeorm/TypeORMUserRepository";
 
 const repository = new TypeORMUserRepository();
 
