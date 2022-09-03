@@ -22,7 +22,6 @@ services:
     mysql:
         image: mysql:5.7
         container_name: techdinner-db
-        restart: always
         env_file:
             - .env
         environment:
