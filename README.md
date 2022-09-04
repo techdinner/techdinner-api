@@ -19,6 +19,12 @@ git clone https://github.com/thonnystudios/techdinner-backend.git
 cd techdinner-backend
 ```
 
+**- Run database with Docker**
+
+```sh
+make || make run
+```
+
 **- Run project without Docker (dev environment)**
 
 ```sh
@@ -29,12 +35,4 @@ yarn
 
 ```sh
 yarn dev
-```
-
-<hr>
-
-**- Run project with Docker**
-
-```sh
-make or make run
 ```

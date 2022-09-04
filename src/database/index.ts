@@ -1,5 +1,5 @@
-import { createPool, PoolConfig } from "mysql";
 import { environments } from "../config/dotenv";
+import { createPool, PoolConfig } from "mysql";
 
 const dbParams: PoolConfig = {
 	host: environments.DBHost,
@@ -9,12 +9,4 @@ const dbParams: PoolConfig = {
 	password: environments.DBPass,
 };
 
-const mysqlPool = createPool(dbParams);
-
-export const mysqlConnection = mysqlPool.getConnection((err, connection) => {
-	if (err) {
-		console.error("Failed to connect to database.");
-	} else {
-		console.log(connection);
-	}
-});
+export const getPool = () => createPool(dbParams);

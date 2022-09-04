@@ -2,7 +2,7 @@ import { config } from "dotenv";
 import path from "path";
 
 config({
-	path: path.join(__dirname, ".."),
+	path: path.join(__dirname, "..", "..", ".env"),
 });
 
 const PORT = process.env.DB_PORT as number | undefined;
