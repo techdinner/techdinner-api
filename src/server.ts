@@ -1,15 +1,10 @@
 import express from "express";
-import cors from "cors";
-import { CatchErrors } from "./app/errors/CatchErrors";
-import "./database/data-source";
-import routes from "./routes/routes";
+import {mysqlConnection} from '../src/database'
 
-const app = express();
+const app = express()
 
-app.use(express.json());
-app.use(cors());
-app.use("/api", routes);
+console.log('--')
 
-app.use(CatchErrors);
-
-app.listen(3000, () => console.log("Server running on port 3000"));
+app.listen(3000, () => {
+    console.log(`Server is running on port ${}`)
+})

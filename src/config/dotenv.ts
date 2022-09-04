@@ -1,7 +1,9 @@
-import { resolve } from "path";
 import { config } from "dotenv";
+import path from "path";
 
-config({ path: resolve(__dirname, "../../.env") });
+config({
+	path: path.join(__dirname, ".."),
+});
 
 const PORT = process.env.DB_PORT as number | undefined;
 
