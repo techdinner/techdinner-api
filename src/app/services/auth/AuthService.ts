@@ -15,7 +15,7 @@ export class AuthService {
 
 		if (!user) throw new Error("Credenciais inválidas");
 
-		const passwordCompare = await compare(password, user.password);
+		const passwordCompare = await compare(password, user.password as string);
 
 		if (!passwordCompare) throw new Error("Credenciais inválidas");
 

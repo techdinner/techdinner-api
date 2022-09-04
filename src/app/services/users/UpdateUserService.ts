@@ -7,16 +7,18 @@ export class UpdateUserService {
 	constructor(private repository: IUserRepository) {}
 
 	async execute(id: string, data: UpdateUserDTO) {
-		const passwordHash = await hash(data.password, 8);
+		const passwordHash = await hash(data.password as string, 8);
 
-		const user = new User(
-			data.name,
-			data.email,
-			passwordHash,
-			data?.active,
-			data?.role,
-		);
+		if ([data.name, data.email, data.password].join("") !== "") {
+			const user = new User(
+				data.name as string,
+				data.email as string,
+				data.role as number,
+				passwordHash,
+				data?.active,
+			);
 
-		await this.repository.update(id, user);
+			await this.repository.update(id, user);
+		}
 	}
 }
