@@ -7,13 +7,13 @@ export class CreateUserController {
 		const repository = new UserRepository();
 		const service = new CreateUserService(repository);
 
-		const { name, email, password } = req.body;
+		const { name, email, role } = req.body;
 
 		try {
 			await service.execute({
 				name,
 				email,
-				password,
+				role,
 			});
 
 			return res.status(201).json({ message: "User created success" });

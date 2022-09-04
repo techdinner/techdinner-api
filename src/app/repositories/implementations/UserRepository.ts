@@ -45,8 +45,8 @@ export class UserRepository implements IUserRepository {
 		const pool = getPool();
 
 		const options: QueryOptions = {
-			sql: "INSERT INTO users SET id = ?, name = ?, email = ?, password = ?",
-			values: [user.id, user.name, user.email, user.password],
+			sql: "INSERT INTO users SET id = ?, name = ?, email = ?, role = ?, active = ?",
+			values: [user.id, user.name, user.email, user.role, user.active],
 		};
 
 		await pool.query(options, error => {
@@ -79,13 +79,18 @@ export class UserRepository implements IUserRepository {
 		const pool = getPool();
 
 		const options: QueryOptions = {
-			sql: "UPDATE users SET name = ?, email = ?, password = ?, active = ?, role = ? WHERE id = ?",
+			sql: `UPDATE users SET 
+			${user?.name && "name = ?"}
+			${user?.email && ", email = ?"}
+			${user?.password && ", password = ?"}
+			${user?.active && ", active = ?"}
+			${user?.role && ", role = ?"} WHERE id = ?`,
 			values: [
-				user?.name,
-				user?.email,
-				user?.password,
-				user?.active,
-				user?.role,
+				user?.name && user.name,
+				user?.email && user.email,
+				user?.password && user.password,
+				user?.active && user.active,
+				user?.role && user.role,
 				id,
 			],
 		};

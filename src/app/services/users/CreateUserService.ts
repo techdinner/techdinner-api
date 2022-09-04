@@ -11,9 +11,9 @@ export class CreateUserService {
 
 		// if (userExists) throw new Error("User already exists.");
 
-		const passwordHash = await hash(data.password, 8);
+		//const passwordHash = await hash(data.password, 8);
 
-		const user = new User(data.name, data.email, passwordHash);
+		const user = new User(data.name, data.email, data.role); //passwordHash);
 
 		await this.repository.create(user);
 	}
