@@ -1,16 +1,14 @@
 import { Request, Response } from "express";
-import { UserRepository } from "../../repositories/implementations/UserRepository";
 import { FindUserByIdService } from "../../services/users/FindUserByIdService";
 
 export class FindUserByIdController {
+	constructor(private service: FindUserByIdService) {}
+
 	async handle(req: Request, res: Response): Promise<Response> {
 		try {
-			const repository = new UserRepository();
-			const service = new FindUserByIdService(repository);
-
 			const { id } = req.params;
 
-			const response = await service.execute(id);
+			const response = await this.service.execute(id);
 
 			return res.status(200).json(response);
 		} catch (error) {

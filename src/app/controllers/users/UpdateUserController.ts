@@ -1,17 +1,15 @@
 import { Request, Response } from "express";
-import { UserRepository } from "../../repositories/implementations/UserRepository";
 import { UpdateUserService } from "../../services/users/UpdateUserService";
 
 export class UpdateUserController {
-	async handle(req: Request, res: Response): Promise<Response> {
-		const repository = new UserRepository();
-		const service = new UpdateUserService(repository);
+	constructor(private service: UpdateUserService) {}
 
+	async handle(req: Request, res: Response): Promise<Response> {
 		const data = req.body;
 		const { id } = req.params;
 
 		try {
-			await service.execute(id, data);
+			await this.service.execute(id, data);
 
 			return res.status(201).json({ message: "User updated success" });
 		} catch (error) {

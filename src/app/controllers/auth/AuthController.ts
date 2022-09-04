@@ -1,16 +1,14 @@
 import { Request, Response } from "express";
-import { UserRepository } from "../../repositories/implementations/UserRepository";
 import { AuthService } from "../../services/auth/AuthService";
 
 export class AuthController {
-	async handle(req: Request, res: Response): Promise<Response> {
-		const repository = new UserRepository();
-		const service = new AuthService(repository);
+	constructor(private service: AuthService) {}
 
+	async handle(req: Request, res: Response): Promise<Response> {
 		const { email, password } = req.body;
 
 		try {
-			const response = await service.execute({
+			const response = await this.service.execute({
 				email,
 				password,
 			});
