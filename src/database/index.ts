@@ -7,6 +7,7 @@ const dbParams: PoolConfig = {
 	database: environments.DBName,
 	user: environments.DBUser,
 	password: environments.DBPass,
+	multipleStatements: true,
 };
 
 export const getPool = () => createPool(dbParams);

@@ -1,17 +1,29 @@
 import { readFileSync } from "fs";
 import { getPool } from "../..";
 
-export default async function run() {
-	const sql = readFileSync(__dirname + "/commands.sql").toString("ascii");
+export default async function run(): Promise<string> {
+	const p = new Promise<string>((resolve, reject) => {
+		try {
+			const sql: string[] = [];
 
-	const pool = getPool();
-	let data;
-	await new Promise(async resolve => {
-		await pool.query(sql, (error, results) => {
-			if (error) throw error;
-			data = results;
-			resolve(data);
-		});
+			const getDirectory = (filename: string) =>
+				readFileSync(__dirname + "/" + filename + ".sql").toString("ascii");
+
+			sql.push(getDirectory("1-structure"));
+			sql.push(getDirectory("2-data"));
+			sql.push(getDirectory("3-keys"));
+
+			const pool = getPool();
+
+			pool.query({ sql: sql.join(" ") }, error => {
+				if (error) throw error;
+				resolve("Migrations Done ✅");
+			});
+		} catch (err) {
+			console.error(err);
+			resolve("Migrations Failed ❌");
+		}
 	});
-	return data;
+
+	return p;
 }

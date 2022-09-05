@@ -1,5 +1,8 @@
+SET time_zone = "America/Sao_Paulo"; -- "-03:00"; --Horario de Brasilia
 START TRANSACTION;
 
+
+DROP TABLE IF EXISTS `migrations`;
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (

@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"dev": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules ./src/server.ts",
-		"migrate:sql": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules ./src/migrations.ts",
+		"migrate:sql": "ts-node-dev --transpile-only --ignore-watch node_modules ./src/migrations.ts",
 		"build": "rimraf ./build && yarn tsc",
 		"start": "node ./build/server.js",
 		"postinstall": "nvmrc-check --node $(cat .nvmrc)",
