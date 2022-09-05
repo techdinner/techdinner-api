@@ -9,6 +9,7 @@
 	},
 	"scripts": {
 		"dev": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules ./src/server.ts",
+		"migrate:sql": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules ./src/migrations.ts",
 		"build": "rimraf ./build && yarn tsc",
 		"start": "node ./build/server.js",
 		"postinstall": "nvmrc-check --node $(cat .nvmrc)",
@@ -28,6 +29,7 @@
 		"jsonwebtoken": "^8.5.1",
 		"mysql": "^2.14.1",
 		"rimraf": "^3.0.2",
+		"typeorm": "^0.3.9",
 		"uuid": "^8.3.2"
 	},
 	"devDependencies": {

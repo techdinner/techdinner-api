@@ -1,9 +1,6 @@
 import express from "express";
-import { getPool } from "../src/database";
 import cors from "cors";
 import routes from "./routes";
-
-getPool();
 
 const app = express();
 
