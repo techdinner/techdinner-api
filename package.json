@@ -28,7 +28,6 @@
 		"jsonwebtoken": "^8.5.1",
 		"mysql": "^2.14.1",
 		"rimraf": "^3.0.2",
-		"typeorm": "^0.3.9",
 		"uuid": "^8.3.2"
 	},
 	"devDependencies": {
