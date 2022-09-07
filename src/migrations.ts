@@ -4,9 +4,11 @@ import migrate from "./database/migrations/sql";
 const app = express();
 
 const server = app.listen(3000, async () => {
-	const result = await migrate();
-	console.log(result);
-
-	server.close();
-	process.exit();
+	try {
+		const result = await migrate();
+		console.log(result);
+	} finally {
+		server.close();
+		process.exit();
+	}
 });

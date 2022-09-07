@@ -12,6 +12,7 @@ CREATE TABLE `users` (
     `password` varchar(255) DEFAULT NULL,
     `active` tinyint(1) NOT NULL DEFAULT 0,
     `role` int(11) NOT NULL,
+    `image_url` varchar(255) DEFAULT NULL,
     `created_at` datetime NOT NULL DEFAULT current_timestamp(),
     `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 
