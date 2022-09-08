@@ -1,5 +1,5 @@
-import { User } from '../../entities/User'
+import { User } from "../../entities/User";
 
 export interface GetAllUserRepository {
-  getAllUsers: () => Promise<User[] | undefined>
+	getAllUsers: () => Promise<User[] | undefined>;
 }

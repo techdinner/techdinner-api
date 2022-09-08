@@ -1,15 +1,15 @@
-import { Request, Response } from 'express'
-import { GetAllUserService } from '../../services/users/GetAllUserService'
+import { Request, Response } from "express";
+import { GetAllUserService } from "../../services/users/GetAllUserService";
 
 export class GetAllUserController {
-  constructor (private readonly service: GetAllUserService) {}
+	constructor(private readonly service: GetAllUserService) {}
 
-  async handle (req: Request, res: Response): Promise<Response> {
-    try {
-      const response = await this.service.execute()
-      return res.status(200).json(response)
-    } catch (error) {
-      return res.status(500).json(error)
-    }
-  }
+	async handle(req: Request, res: Response): Promise<Response> {
+		try {
+			const response = await this.service.execute();
+			return res.status(200).json(response);
+		} catch (error) {
+			return res.status(500).json(error);
+		}
+	}
 }

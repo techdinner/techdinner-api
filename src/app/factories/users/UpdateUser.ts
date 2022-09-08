@@ -1,11 +1,11 @@
-import { MysqlUpdateUserRepository } from '../../../infra/mysql/users/MysqlUpdateUserRepository'
-import { UpdateUserService } from '../../services/users/UpdateUserService'
-import { UpdateUserController } from '../../controllers/users/UpdateUserController'
+import { MysqlUpdateUserRepository } from "../../../infra/mysql/users/MysqlUpdateUserRepository";
+import { UpdateUserService } from "../../services/users/UpdateUserService";
+import { UpdateUserController } from "../../controllers/users/UpdateUserController";
 
-const repository = new MysqlUpdateUserRepository()
+const repository = new MysqlUpdateUserRepository();
 
-const service = new UpdateUserService(repository)
+const service = new UpdateUserService(repository);
 
-const updateUserController = new UpdateUserController(service)
+const updateUserController = new UpdateUserController(service);
 
-export { updateUserController }
+export { updateUserController };

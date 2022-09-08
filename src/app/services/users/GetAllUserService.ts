@@ -1,9 +1,9 @@
-import { GetAllUserRepository } from '../../repositories/users/GetAllUserRepository'
+import { GetAllUserRepository } from "../../repositories/users/GetAllUserRepository";
 
 export class GetAllUserService {
-  constructor (private readonly repository: GetAllUserRepository) {}
+	constructor(private readonly repository: GetAllUserRepository) {}
 
-  async execute () {
-    return await this.repository.getAllUsers()
-  }
+	async execute() {
+		return await this.repository.getAllUsers();
+	}
 }
