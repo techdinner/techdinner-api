@@ -1,9 +1,9 @@
-import { Router } from "express";
+import { Router } from 'express'
 
-const AuthRoutes = Router();
+import { authController } from '../../app/factories/auth/Auth'
 
-import { authController } from "../../app/usecases/auth/Auth";
+const AuthRoutes = Router()
 
-AuthRoutes.post("/", (req, res) => authController.handle(req, res));
+AuthRoutes.post('/', async (req, res) => await authController.handle(req, res))
 
-export default AuthRoutes;
+export default AuthRoutes

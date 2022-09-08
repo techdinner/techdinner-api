@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { getPool } from "../..";
 
 export default async function run(): Promise<string> {
-	const p = new Promise<string>((resolve, reject) => {
+	const p = new Promise<string>(resolve => {
 		try {
 			const sql: string[] = [];
 
@@ -16,7 +16,7 @@ export default async function run(): Promise<string> {
 			const pool = getPool();
 
 			pool.query({ sql: sql.join(" ") }, error => {
-				if (error) throw error;
+				if (error != null) throw error;
 				resolve("Migrations Done ✅");
 			});
 		} catch (err) {
@@ -25,5 +25,5 @@ export default async function run(): Promise<string> {
 		}
 	});
 
-	return p;
+	return await p;
 }

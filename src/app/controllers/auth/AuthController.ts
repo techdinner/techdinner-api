@@ -1,21 +1,21 @@
-import { Request, Response } from "express";
-import { AuthService } from "../../services/auth/AuthService";
+import { Request, Response } from 'express'
+import { AuthService } from '../../services/auth/AuthService'
 
 export class AuthController {
-	constructor(private service: AuthService) {}
+  constructor (private readonly service: AuthService) {}
 
-	async handle(req: Request, res: Response): Promise<Response> {
-		const { email, password } = req.body;
+  async handle (req: Request, res: Response): Promise<Response> {
+    const { email, password } = req.body
 
-		try {
-			const response = await this.service.execute({
-				email,
-				password,
-			});
+    try {
+      const response = await this.service.execute({
+        email,
+        password
+      })
 
-			return res.status(200).json(response);
-		} catch (error) {
-			return res.status(500).json(error);
-		}
-	}
+      return res.status(200).json(response)
+    } catch (error) {
+      return res.status(500).json(error)
+    }
+  }
 }

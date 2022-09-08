@@ -1,20 +1,17 @@
-import { User } from "../../entities/User";
-import { IUserRepository } from "../../repositories/IUserRepository";
-import { CreateUserDTO } from "../../dtos/users/CreateUserDTO";
-import { hash } from "bcryptjs";
+import { User } from '../../entities/User'
+import { CreateUserRepository } from '../../repositories/users/CreateUserRepository'
+import { CreateUserDTO } from '../../dtos/users/CreateUserDTO'
 
 export class CreateUserService {
-	constructor(private repository: IUserRepository) {}
+  constructor (private readonly repository: CreateUserRepository) {}
 
-	async execute(data: CreateUserDTO) {
-		// const userExists = await this.repository.findByEmail(data.email);
+  async execute (data: CreateUserDTO) {
+    // const userExists = await this.repository.findByEmail(data.email);
 
-		// if (userExists) throw new Error("User already exists.");
+    // if (userExists) throw new Error("User already exists.");
 
-		//const passwordHash = await hash(data.password, 8);
+    const user = new User(data.name, data.email, data.role)
 
-		const user = new User(data.name, data.email, data.role); //passwordHash);
-
-		await this.repository.create(user);
-	}
+    await this.repository.create(user)
+  }
 }
