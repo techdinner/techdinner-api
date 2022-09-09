@@ -1,12 +1,12 @@
 import { User } from "../../entities/User";
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { UpdateUserRepository } from "../../repositories/users/UpdateUserRepository";
 import { UpdateUserDTO } from "../../dtos/users/UpdateUserDTO";
 import { hash } from "bcryptjs";
 
 export class UpdateUserService {
-	constructor(private repository: IUserRepository) {}
+	constructor(private readonly updateUserRepository: UpdateUserRepository) {}
 
-	async execute(id: string, data: UpdateUserDTO) {
+	async execute(id: string, data: UpdateUserDTO): Promise<void> {
 		const passwordHash = await hash(data.password as string, 8);
 
 		if ([data.name, data.email, data.password].join("") !== "") {
@@ -18,7 +18,7 @@ export class UpdateUserService {
 				data?.active,
 			);
 
-			await this.repository.update(id, user);
+			await this.updateUserRepository.update(id, user);
 		}
 	}
 }

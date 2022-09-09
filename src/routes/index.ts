@@ -1,9 +1,9 @@
 import express from "express";
 
-const routes = express();
-
 import AuthRoutes from "./api/AuthRoutes";
 import UsersRoutes from "./api/UsersRoutes";
+
+const routes = express();
 
 routes.use("/login", AuthRoutes);
 

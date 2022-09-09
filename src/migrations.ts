@@ -3,7 +3,7 @@ import migrate from "./database/migrations/sql";
 
 const app = express();
 
-const server = app.listen(3000, async () => {
+const server = app.listen(5000, async () => {
 	try {
 		const result = await migrate();
 		console.log(result);

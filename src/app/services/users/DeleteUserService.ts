@@ -1,9 +1,9 @@
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { DeleteUserRepository } from "../../repositories/users/DeleteUserRepository";
 
 export class DeleteUserService {
-	constructor(private repository: IUserRepository) {}
+	constructor(private readonly deleteUserRepository: DeleteUserRepository) {}
 
-	async execute(id: string) {
-		return await this.repository.delete(id);
+	async execute(id: string): Promise<void> {
+		return await this.deleteUserRepository.delete(id);
 	}
 }
