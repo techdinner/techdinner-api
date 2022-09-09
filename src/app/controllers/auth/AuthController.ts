@@ -1,14 +1,15 @@
 import { Request, Response } from "express";
+import { Controller } from "../../interfaces/controller";
 import { AuthService } from "../../services/auth/AuthService";
 
-export class AuthController {
-	constructor(private readonly service: AuthService) {}
+export class AuthController implements Controller {
+	constructor(private readonly authService: AuthService) {}
 
 	async handle(req: Request, res: Response): Promise<Response> {
 		const { email, password } = req.body;
 
 		try {
-			const response = await this.service.execute({
+			const response = await this.authService.execute({
 				email,
 				password,
 			});
