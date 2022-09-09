@@ -1,9 +1,10 @@
+import { User } from "../../entities/User";
 import { GetAllUserRepository } from "../../repositories/users/GetAllUserRepository";
 
 export class GetAllUserService {
-	constructor(private readonly repository: GetAllUserRepository) {}
+	constructor(private readonly getAllUserRepository: GetAllUserRepository) {}
 
-	async execute() {
-		return await this.repository.getAllUsers();
+	async execute(): Promise<User[] | undefined> {
+		return await this.getAllUserRepository.getAllUsers();
 	}
 }

@@ -1,9 +1,9 @@
 import { DeleteUserRepository } from "../../repositories/users/DeleteUserRepository";
 
 export class DeleteUserService {
-	constructor(private readonly repository: DeleteUserRepository) {}
+	constructor(private readonly deleteUserRepository: DeleteUserRepository) {}
 
-	async execute(id: string) {
-		return await this.repository.delete(id);
+	async execute(id: string): Promise<void> {
+		return await this.deleteUserRepository.delete(id);
 	}
 }

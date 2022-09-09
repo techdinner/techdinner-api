@@ -3,15 +3,15 @@ import { CreateUserRepository } from "../../repositories/users/CreateUserReposit
 import { CreateUserDTO } from "../../dtos/users/CreateUserDTO";
 
 export class CreateUserService {
-	constructor(private readonly repository: CreateUserRepository) {}
+	constructor(private readonly createUserRepository: CreateUserRepository) {}
 
-	async execute(data: CreateUserDTO) {
+	async execute(data: CreateUserDTO): Promise<void> {
 		// const userExists = await this.repository.findByEmail(data.email);
 
 		// if (userExists) throw new Error("User already exists.");
 
 		const user = new User(data.name, data.email, data.role);
 
-		await this.repository.create(user);
+		await this.createUserRepository.create(user);
 	}
 }
