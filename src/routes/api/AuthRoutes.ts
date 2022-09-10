@@ -1,8 +1,10 @@
 import { Router } from "express";
 
-import { authController } from "../../app/factories/auth/Auth";
+import { makeAuthController } from "../../app/factories/auth/AuthFactory";
 
 const AuthRoutes = Router();
+
+const authController = makeAuthController();
 
 AuthRoutes.post("/", async (req, res) => await authController.handle(req, res));
 
