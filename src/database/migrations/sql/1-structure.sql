@@ -34,7 +34,7 @@ CREATE TABLE `enterprise_settings` (
 );
 
 CREATE TABLE `user_settings` (
-    `user_id` varchar(255) NOT NULL
+    `orders_list_style` varchar(255) NOT NULL -- full, group, tabbed
 
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE `delivery_points`(
     `id` varchar(255) NOT NULL,
     `zip_code` varchar(255) NOT NULL,
     `point_name` varchar(255) NOT NULL,
-    `point_type` varchar(255) NOT NULL,
+    `point_type` varchar(255) NOT NULL, -- Bar, Hotel, Condominium, School, Hospital, Edifice, Church
     `reference_point` varchar(255) NOT NULL,
     `created_at` datetime NOT NULL DEFAULT current_timestamp(),
     `updated_at` datetime NOT NULL DEFAULT current_timestamp()

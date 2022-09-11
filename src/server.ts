@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import routes from "./routes";
+import { environments } from "./config/dotenv";
 
 const app = express();
 
@@ -9,4 +10,6 @@ app.use(cors());
 
 app.use("/api", routes);
 
-app.listen(5000, () => console.log("Server is running on port 5000"));
+app.listen(environments.Port, () =>
+	console.log(`✅ Server is running on port ${environments.Port}`),
+);
