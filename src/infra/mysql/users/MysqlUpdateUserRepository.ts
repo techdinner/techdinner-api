@@ -15,7 +15,7 @@ export class MysqlUpdateUserRepository implements UpdateUserRepository {
 			user?.role && "role = ?",
 			"updated_at = NOW()",
 		]
-			.filter(x => x)
+			.filter(Boolean)
 			.join(", ");
 
 		const values = [
@@ -25,7 +25,7 @@ export class MysqlUpdateUserRepository implements UpdateUserRepository {
 			user?.active && user.active,
 			user?.role && user.role,
 			id,
-		].filter(x => x);
+		].filter(Boolean);
 
 		const options: QueryOptions = {
 			sql: `UPDATE users SET ${fields} WHERE id = ?`,
