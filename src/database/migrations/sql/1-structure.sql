@@ -1,4 +1,7 @@
-SET time_zone = "America/Sao_Paulo"; -- "-03:00"; --Horario de Brasilia
+SET time_zone = "America/Sao_Paulo"; -- "-03:00"; -- Horario de Brasilia
+
+-- USE DB_NAME;
+
 START TRANSACTION;
 
 
@@ -13,7 +16,7 @@ CREATE TABLE `users` (
     `active` tinyint(1) NOT NULL DEFAULT 0,
     `role` int(11) NOT NULL,
     `image_url` varchar(255) DEFAULT NULL,
-    `created_at` datetime NOT NULL DEFAULT current_timestamp()
+    `created_at` datetime NOT NULL DEFAULT current_timestamp(),
     `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 
 );
@@ -21,17 +24,17 @@ CREATE TABLE `users` (
 CREATE TABLE `enterprise` (
     `id` varchar(255) NOT NULL,
     `name` varchar(255) NOT NULL,
-    `email` varchar(255) NOT NULL,
+    `email` varchar(255) NOT NULL
     
 );
 
 CREATE TABLE `enterprise_settings` (
-    `round_taxes` tinyint(1) NOT NULL,
+    `round_taxes` tinyint(1) NOT NULL
     
 );
 
 CREATE TABLE `user_settings` (
-    `user_id` varchar(255) NOT NULL,
+    `user_id` varchar(255) NOT NULL
 
 );
 
@@ -39,7 +42,7 @@ CREATE TABLE `customers` (
     `id` varchar(255) NOT NULL,
     `name` varchar(255) NOT NULL,
     `image_url` varchar(255) DEFAULT NULL,
-    `created_at` datetime NOT NULL DEFAULT current_timestamp()
+    `created_at` datetime NOT NULL DEFAULT current_timestamp(),
     `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 );
 
@@ -49,7 +52,7 @@ CREATE TABLE `delivery_points`(
     `point_name` varchar(255) NOT NULL,
     `point_type` varchar(255) NOT NULL,
     `reference_point` varchar(255) NOT NULL,
-    `created_at` datetime NOT NULL DEFAULT current_timestamp()
+    `created_at` datetime NOT NULL DEFAULT current_timestamp(),
     `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 );
 
@@ -62,7 +65,7 @@ CREATE TABLE `addresses` (
     `reference_point` varchar(255) NOT NULL,
     `street_number` varchar(50) NOT NULL,
     `is_default` tinyint(1) NOT NULL,
-    `created_at` datetime NOT NULL DEFAULT current_timestamp()
+    `created_at` datetime NOT NULL DEFAULT current_timestamp(),
     `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 );
 
