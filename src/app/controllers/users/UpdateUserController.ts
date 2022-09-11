@@ -11,7 +11,6 @@ export class UpdateUserController implements Controller {
 
 		try {
 			await this.updateUserService.execute(id, data);
-
 			return res.status(201).json({ message: "User updated success" });
 		} catch (error) {
 			return res.status(500).json(error);
