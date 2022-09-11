@@ -10,7 +10,7 @@
 **- Clone this repository**
 
 ```sh
-git clone https://github.com/thonnystudios/techdinner-backend.git
+git clone https://github.com/techdinner/techdinner-backend.git
 ```
 
 **- Change directory**

@@ -5,7 +5,7 @@
 	"main": "server.ts",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/thonnystudios/techdinner-backend/"
+		"url": "https://github.com/techdinner/techdinner-backend/"
 	},
 	"scripts": {
 		"dev": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules ./src/server.ts",
