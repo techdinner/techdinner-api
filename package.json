@@ -2,7 +2,7 @@
 	"name": "techdinner-backend",
 	"version": "1.0.0",
 	"description": "Back-end da aplicação do TechDinner.",
-	"main": "server.ts",
+	"main": "./src/server.ts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/techdinner/techdinner-backend/"
