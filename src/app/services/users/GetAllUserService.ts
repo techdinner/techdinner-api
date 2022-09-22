@@ -1,4 +1,4 @@
-import { User } from "../../entities/User";
+import { User } from "../../../domain/entities/User";
 import { GetAllUserRepository } from "../../repositories/users/GetAllUserRepository";
 
 export class GetAllUserService {

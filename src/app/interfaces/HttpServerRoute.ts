@@ -1,15 +1,17 @@
 import { Controller } from "./Controller";
+import { Middleware } from "./Middleware";
 
-enum methods {
-	post,
-	get,
-	put,
-	delete,
+export enum Methods {
+	POST = "post",
+	GET = "get",
+	PUT = "put",
+  PATCH = "patch",
+	DELETE = "delete",
 }
 
 export interface HttpServerRoute {
 	endpoint: string;
 	controller: Controller;
-	httpMethod: methods;
-	middlewares: Middlewares[];
+	httpMethod: Methods;
+	middlewares?: Middleware[];
 }

@@ -1,4 +1,4 @@
-import { User } from "../../../app/entities/User";
+import { User } from "../../../domain/entities/User";
 import { FindUserByEmailRepository } from "../../../app/repositories/users/FindUserByEmailRepository";
 import { QueryOptions } from "mysql";
 import { getPool } from "../../../database";

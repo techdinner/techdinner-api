@@ -2,42 +2,40 @@ ENVIRONMENT_FILE=.env
 
 default: run
 
-run: check-environment
+run:
+ifeq ($(wildcard $(ENVIRONMENT_FILE)),)
+	- @echo O arquivo ".env" não existe;
+else
+	- yarn build
 	- docker-compose up -d --build
-
-start:
-	- docker start techdinner-api techdinner-db techdinner-nginx
-
-stop:
-	- docker stop techdinner-api techdinner-db techdinner-nginx
-
-restart:
-	- docker restart techdinner-api techdinner-db techdinner-nginx
-
-status:
-	- docker ps -f name=techdinner-api
-	- docker ps -f name=techdinner-nginx
-	- docker ps -f name=techdinner-db
+endif
 
 clean:
-	- docker stop techdinner-api techdinner-db techdinner-nginx
-	- docker rm techdinner-api techdinner-db techdinner-nginx
+	- rm -r ./build
+	- rm -r ./node_modules
+	- docker-compose down
 	- docker rmi techdinner-node
+
+start:
+	- docker-compose start
+
+stop:
+	- docker-compose stop
+
+restart:
+	- docker-compose restart
+
+status:
+	- docker-compose ps
 
 bash:
 	- docker exec -it techdinner-api bash
 
-deploy: check-environment
-	- docker stop techdinner-api techdinner-db techdinner-nginx
-	- docker rm techdinner-api techdinner-db techdinner-nginx
+deploy:
+ifeq ($(wildcard $(ENVIRONMENT_FILE)),)
+	- @echo O arquivo ".env" não existe;
+else
+	- docker-compose down
 	- yarn build
 	- docker-compose up -d
-
-check-environment:
-	- @echo Copiando arquivo ".env.example";
-ifeq ("$(wildcard $(ENVIRONMENT_FILE))","")
-	- cp .env.example .env
-	- @echo O arquivo ".env" foi gerado;
-else
-	- @echo Arquivo ".env" já existe;
 endif

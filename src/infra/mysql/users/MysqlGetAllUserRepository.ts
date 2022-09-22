@@ -1,4 +1,4 @@
-import { User } from "../../../app/entities/User";
+import { User } from "../../../domain/entities/User";
 import { GetAllUserRepository } from "../../../app/repositories/users/GetAllUserRepository";
 import { getPool } from "../../../database";
 

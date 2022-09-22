@@ -1,4 +1,4 @@
-import { User } from "../../entities/User";
+import { User } from "../../../domain/entities/User";
 import { FindUserByIdRepository } from "../../repositories/users/FindUserByIdRepository";
 
 export class FindUserByIdService {

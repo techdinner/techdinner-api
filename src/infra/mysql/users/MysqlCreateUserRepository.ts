@@ -1,4 +1,4 @@
-import { User } from "../../../app/entities/User";
+import { User } from "../../../domain/entities/User";
 import { CreateUserRepository } from "../../../app/repositories/users/CreateUserRepository";
 import { QueryOptions } from "mysql";
 import { getPool } from "../../../database";

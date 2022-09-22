@@ -1,12 +1,14 @@
 version: '3.8'
 
 services:
-    # node:
+    # techdinner-api:
     #     build: .
     #     image: techdinner-node
     #     container_name: techdinner-api
+    #     networks:
+    #         - techdinnernet
 
-    # webserver:
+    # techdinner-nginx:
     #     image: nginx:alpine
     #     container_name: techdinner-nginx
     #     working_dir: /app
@@ -15,11 +17,13 @@ services:
     #     env_file:
     #         - .env
     #     ports:
-    #         - ${APP_PORT}:80
+    #         - 8585:80
     #     depends_on:
-    #         - node
+    #         - techdinner-api
+    #     networks:
+    #         - techdinnernet
 
-    mysql:
+    techdinner-db:
         image: mysql:5.7
         container_name: techdinner-db
         env_file:
@@ -31,3 +35,9 @@ services:
             MYSQL_PASSWORD: ${DB_PASS}
         ports:
             - ${DB_PORT}:3306
+        networks:
+            - techdinnernet
+
+networks:
+  techdinnernet:
+      driver: bridge
