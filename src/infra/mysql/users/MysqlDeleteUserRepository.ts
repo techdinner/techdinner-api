@@ -1,6 +1,6 @@
-import { DeleteUserRepository } from "../../../app/repositories/users/DeleteUserRepository";
+import { DeleteUserRepository } from "@repositories/users/DeleteUserRepository";
 import { QueryOptions } from "mysql";
-import { getPool } from "../../../database";
+import { getPool } from "@database";
 
 export class MysqlDeleteUserRepository implements DeleteUserRepository {
 	async delete(id: string): Promise<void> {

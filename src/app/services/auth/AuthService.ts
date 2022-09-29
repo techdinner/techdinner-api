@@ -1,5 +1,5 @@
 import { FindUserByEmailRepository } from "../../repositories/users/FindUserByEmailRepository";
-import { User } from "../../entities/User";
+import { User } from "../../../domain/entities/User";
 import { sign } from "jsonwebtoken";
 import { compare } from "bcryptjs";
 

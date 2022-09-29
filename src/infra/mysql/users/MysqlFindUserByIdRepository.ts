@@ -1,7 +1,7 @@
-import { User } from "../../../app/entities/User";
-import { FindUserByIdRepository } from "../../../app/repositories/users/FindUserByIdRepository";
+import { User } from "@entities/User";
+import { FindUserByIdRepository } from "@repositories/users/FindUserByIdRepository";
 import { QueryOptions } from "mysql";
-import { getPool } from "../../../database";
+import { getPool } from "@database";
 
 export class MysqlFindUserByIdRepository implements FindUserByIdRepository {
 	async findById(id: string): Promise<User | undefined> {

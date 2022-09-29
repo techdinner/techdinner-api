@@ -1,4 +1,4 @@
-import { environments } from "../config/dotenv";
+import { environments } from "_config/dotenv";
 import { createPool, PoolConfig } from "mysql";
 
 const dbParams: PoolConfig = {

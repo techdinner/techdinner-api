@@ -24,7 +24,26 @@
 		"rootDir": "./src" /* Specify the root folder within your source files. */,
 		// "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
 		// "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
-		// "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
+        "paths": {
+			"@builders/*": ["./src/app/builders/*"],
+			"@config/*": ["./src/app/config/*"],
+			"@controllers/*": ["./src/app/controllers/*"],
+			"@decorators/*": ["./src/app/decorators/*"],
+			"@dtos/*": ["./src/app/dtos/*"],
+			"@factories/*": ["./src/app/factories/*"],
+			"@interfaces/*": ["./src/app/interfaces/*"],
+			"@middlewares/*": ["./src/app/middlewares/*"],
+			"@repositories/*": ["./src/app/repositories/*"],
+			"@server/*": ["./src/app/server/*"],
+			"@services/*": ["./src/app/services/*"],
+			"_config/*": ["./src/config/*"],
+			"@database": ["./src/database"],
+			"@database/*": ["./src/database/*"],
+			"@entities/*": ["./src/domain/entities/*"],
+			"@usecases/*": ["./src/domain/usecases/*"],
+			"@infra/*": ["./src/infra/*"],
+			"@routes/*": ["./src/routes/*"],
+		},                                     /* Specify a set of entries that re-map imports to additional lookup locations. */
 		// "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
 		// "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
 		// "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */

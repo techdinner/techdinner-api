@@ -1,6 +1,7 @@
-import { DeleteUserRepository } from "../../repositories/users/DeleteUserRepository";
+import { DeleteUser } from "@usecases/users/DeleteUser";
+import { DeleteUserRepository } from "@repositories/users/DeleteUserRepository";
 
-export class DeleteUserService {
+export class DeleteUserService implements DeleteUser {
 	constructor(private readonly deleteUserRepository: DeleteUserRepository) {}
 
 	async execute(id: string): Promise<void> {

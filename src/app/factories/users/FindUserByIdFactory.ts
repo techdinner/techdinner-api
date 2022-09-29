@@ -1,6 +1,7 @@
-import { MysqlFindUserByIdRepository } from "../../../infra/mysql/users/MysqlFindUserByIdRepository";
-import { FindUserByIdService } from "../../services/users/FindUserByIdService";
-import { FindUserByIdController } from "../../controllers/users/FindUserByIdController";
+import { MysqlFindUserByIdRepository } from "@infra/mysql/users/MysqlFindUserByIdRepository";
+import { FindUserByIdService } from "@services/users/FindUserByIdService";
+import { FindUserByIdController } from "@controllers/users/FindUserByIdController";
+import { ControllerServerErrorDecorator } from "@decorators/ControllerServerErrorDecorator";
 
 export const makeFindUserByIdController = () => {
 	const findUserByIdRepository = new MysqlFindUserByIdRepository();
@@ -8,5 +9,6 @@ export const makeFindUserByIdController = () => {
 	const findUserByIdController = new FindUserByIdController(
 		findUserByIdService,
 	);
-	return findUserByIdController;
+
+	return new ControllerServerErrorDecorator(findUserByIdController);
 };

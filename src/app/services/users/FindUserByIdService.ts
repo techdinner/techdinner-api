@@ -1,7 +1,8 @@
-import { User } from "../../entities/User";
-import { FindUserByIdRepository } from "../../repositories/users/FindUserByIdRepository";
+import { User } from "@entities/User";
+import { FindUserById } from "@usecases/users/FindUserById";
+import { FindUserByIdRepository } from "@repositories/users/FindUserByIdRepository";
 
-export class FindUserByIdService {
+export class FindUserByIdService implements FindUserById {
 	constructor(
 		private readonly findUserByIdRepository: FindUserByIdRepository,
 	) {}

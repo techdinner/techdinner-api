@@ -1,12 +1,14 @@
-import { ICoordinate } from "../../interfaces/coordinates";
+import { Coordinate } from "../../interfaces/Coordinates";
 
 export interface IDistanceRequest {
-	startPoint: ICoordinate;
-	endPoint: ICoordinate;
+	startPoint: Coordinate;
+	endPoint: Coordinate;
 }
+
 export interface IDistanceResponse {
 	distanceInMetters: number;
 }
+
 export interface IDistance {
 	execute(req: IDistanceRequest): Promise<IDistanceResponse>;
 }

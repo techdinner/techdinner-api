@@ -1,19 +1,18 @@
-import { Request, Response } from "express";
-import { Controller } from "../../interfaces/controller";
-import { UpdateUserService } from "../../services/users/UpdateUserService";
+import { Controller } from "@interfaces/Controller";
+import { HttpResponseBuilder } from "@builders/HttpResponseBuilder";
+import { UpdateUser } from "@usecases/users/UpdateUser";
 
 export class UpdateUserController implements Controller {
-	constructor(private readonly updateUserService: UpdateUserService) {}
+	constructor(private readonly updateUser: UpdateUser) {}
 
-	async handle(req: Request, res: Response): Promise<Response> {
-		const data = req.body;
-		const { id } = req.params;
+	async handle(request: any) {
+		const data = request.body;
+		const { id } = request.params;
 
-		try {
-			await this.updateUserService.execute(id, data);
-			return res.status(201).json({ message: "User updated success" });
-		} catch (error) {
-			return res.status(500).json(error);
-		}
+		await this.updateUser.execute(id, data);
+
+		return HttpResponseBuilder.statusCode(200)
+			.body({ message: "User updated" })
+			.build();
 	}
 }

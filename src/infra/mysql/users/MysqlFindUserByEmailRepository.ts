@@ -1,7 +1,7 @@
-import { User } from "../../../app/entities/User";
-import { FindUserByEmailRepository } from "../../../app/repositories/users/FindUserByEmailRepository";
+import { User } from "@entities/User";
+import { FindUserByEmailRepository } from "@repositories/users/FindUserByEmailRepository";
 import { QueryOptions } from "mysql";
-import { getPool } from "../../../database";
+import { getPool } from "@database";
 
 export class MysqlFindUserByEmailRepository
 	implements FindUserByEmailRepository
