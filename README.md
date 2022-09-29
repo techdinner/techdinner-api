@@ -1,4 +1,4 @@
-## Back-end da aplicação do Tech Dinner.
+## Tech Dinner Back-end.
 
 ### Requirements
 
@@ -29,12 +29,12 @@ make || make run
 > Run docker, and make sure your database container is active and running OK.
 
 - If you are NOT using an ORM, first, run:
-```sh	
+```sh
 yarn migration:sql
 ```
 - If you are using TypeORM:
 
-```sh	
+```sh
 yarn migration:run
 ```
 
@@ -62,7 +62,7 @@ yarn dev
 - Customers that already have at least 1 order registered in the database can't be deleted, `not even by admin`.
 - You can insert `tags` to make easy the search by keywords. (Tags won't appear in the order paper in the printer.)
 - Customers could have multiple addresses registered.
-  
+
 **- Products CRUD**
 - Any users can `create`, `read`, `update` or `delete` a product. But some `admin` need to approve it.
 - Products that appear at least in 1 order can't be deleted, `not even by admin`.
@@ -77,7 +77,7 @@ yarn dev
 **- Settings**
 - There´s a lot of configurations that can be used to set for example, the `printers`, `monitors`, `UI settings`, `office hour` and some other things.
 - Only admins can change global settings.
-  
+
 **- Order handling**
 - In orders management, you could set `customer`, `items`, `delivery address`, `deliveryman`, `payment methods`, `print`, `cancel`, `finish`, talk directly in web chat apps, and many other great features.
-- It was thought take orders in a very fast way. Using keyboard shortcuts, most used features easily to be reached, intelligent suggestions and a clean interface to turn the things the most simple as can be. 
+- It was thought take orders in a very fast way. Using keyboard shortcuts, most used features easily to be reached, intelligent suggestions and a clean interface to turn the things the most simple as can be.

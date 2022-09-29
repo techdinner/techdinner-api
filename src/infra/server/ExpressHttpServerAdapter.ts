@@ -6,6 +6,7 @@ import { HttpServerRoute } from "@interfaces/HttpServerRoute";
 
 export class ExpressHttpServerAdapter implements HttpServer {
 	private readonly app = express();
+	private prefix = "/api/v1";
 
 	private adapterController(controller: Controller) {
 		return async (req: Request, res: Response) => {
@@ -36,7 +37,7 @@ export class ExpressHttpServerAdapter implements HttpServer {
 
 	async addRoute(route: HttpServerRoute): Promise<void> {
 		this.app[route.httpMethod](
-			route.endpoint,
+			`${this.prefix}${route.endpoint}`,
 			this.adapterController(route.controller),
 		);
 	}

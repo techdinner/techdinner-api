@@ -9,6 +9,30 @@ import { makeDeleteUserController } from "@factories/users/DeleteUserFactory";
 
 AppServer.server.addRoute({
 	httpMethod: Methods.GET,
-	endpoint: "/api/v1/users",
+	endpoint: "/users",
 	controller: makeFindAllUserController(),
+});
+
+AppServer.server.addRoute({
+	httpMethod: Methods.POST,
+	endpoint: "/users",
+	controller: makeCreateUserController(),
+});
+
+AppServer.server.addRoute({
+	httpMethod: Methods.GET,
+	endpoint: "/users/:id",
+	controller: makeFindUserByIdController(),
+});
+
+AppServer.server.addRoute({
+	httpMethod: Methods.PUT,
+	endpoint: "/users/:id",
+	controller: makeUpdateUserController(),
+});
+
+AppServer.server.addRoute({
+	httpMethod: Methods.DELETE,
+	endpoint: "/users/:id",
+	controller: makeDeleteUserController(),
 });
