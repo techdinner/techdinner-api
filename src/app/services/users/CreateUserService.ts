@@ -1,7 +1,7 @@
-import { User } from "../../../domain/entities/User";
-import { CreateUser } from "../../../domain/usecases/users/CreateUser";
-import { CreateUserRepository } from "../../repositories/users/CreateUserRepository";
-import { CreateUserDTO } from "../../dtos/users/CreateUserDTO";
+import { User } from "@entities/User";
+import { CreateUser } from "@usecases/users/CreateUser";
+import { CreateUserRepository } from "@repositories/users/CreateUserRepository";
+import { CreateUserDTO } from "@dtos/users/CreateUserDTO";
 
 export class CreateUserService implements CreateUser {
 	constructor(private readonly createUserRepository: CreateUserRepository) {}

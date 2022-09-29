@@ -1,8 +1,9 @@
-import { UpdateUserRepository } from "../../repositories/users/UpdateUserRepository";
-import { UpdateUserDTO } from "../../dtos/users/UpdateUserDTO";
+import { UpdateUserRepository } from "@repositories/users/UpdateUserRepository";
+import { UpdateUserDTO } from "@dtos/users/UpdateUserDTO";
 import { hash } from "bcryptjs";
+import { UpdateUser } from "@usecases/users/UpdateUser";
 
-export class UpdateUserService {
+export class UpdateUserService implements UpdateUser {
 	constructor(private readonly updateUserRepository: UpdateUserRepository) {}
 
 	async execute(id: string, data: UpdateUserDTO): Promise<void> {

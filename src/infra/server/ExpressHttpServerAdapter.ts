@@ -1,8 +1,8 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
-import { Controller } from "../../app/interfaces/Controller";
-import { HttpServer } from "../../app/interfaces/HttpServer";
-import { HttpServerRoute } from "../../app/interfaces/HttpServerRoute";
+import { Controller } from "@interfaces/Controller";
+import { HttpServer } from "@interfaces/HttpServer";
+import { HttpServerRoute } from "@interfaces/HttpServerRoute";
 
 export class ExpressHttpServerAdapter implements HttpServer {
 	private readonly app = express();

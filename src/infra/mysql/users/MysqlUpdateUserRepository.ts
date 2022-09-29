@@ -1,7 +1,7 @@
-import { UpdateUserRepository } from "../../../app/repositories/users/UpdateUserRepository";
+import { UpdateUserRepository } from "@repositories/users/UpdateUserRepository";
 import { QueryOptions } from "mysql";
-import { getPool } from "../../../database";
-import { UpdateUserDTO } from "../../../app/dtos/users/UpdateUserDTO";
+import { getPool } from "@database";
+import { UpdateUserDTO } from "@dtos/users/UpdateUserDTO";
 
 export class MysqlUpdateUserRepository implements UpdateUserRepository {
 	async update(id: string, user: UpdateUserDTO): Promise<void> {

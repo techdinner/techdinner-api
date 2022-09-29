@@ -1,13 +1,18 @@
-import { Controller } from "../../interfaces/Controller";
-import { UpdateUserService } from "../../services/users/UpdateUserService";
+import { Controller } from "@interfaces/Controller";
+import { HttpResponseBuilder } from "@builders/HttpResponseBuilder";
+import { UpdateUser } from "@usecases/users/UpdateUser";
 
 export class UpdateUserController implements Controller {
-	constructor(private readonly updateUserService: UpdateUserService) {}
+	constructor(private readonly updateUser: UpdateUser) {}
 
-	async handle(req: any) {
-		const data = req.body;
-		const { id } = req.params;
+	async handle(request: any) {
+		const data = request.body;
+		const { id } = request.params;
 
-		await this.updateUserService.execute(id, data);
+		await this.updateUser.execute(id, data);
+
+		return HttpResponseBuilder.statusCode(200)
+			.body({ message: "User updated" })
+			.build();
 	}
 }

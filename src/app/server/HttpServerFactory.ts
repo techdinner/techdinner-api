@@ -1,4 +1,4 @@
-import { HttpServer } from "../interfaces/HttpServer";
+import { HttpServer } from "@interfaces/HttpServer";
 
 export class HttpServerFactory {
 	constructor(private readonly httpServer: HttpServer) {}

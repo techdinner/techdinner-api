@@ -1,14 +1,15 @@
-import { Controller } from "../../interfaces/Controller";
-import { FindUserByIdService } from "../../services/users/FindUserByIdService";
+import { Controller } from "@interfaces/Controller";
+import { HttpResponseBuilder } from "@builders/HttpResponseBuilder";
+import { FindUserById } from "@usecases/users/FindUserById";
 
 export class FindUserByIdController implements Controller {
-	constructor(private readonly findUserByIdService: FindUserByIdService) {}
+	constructor(private readonly findUserById: FindUserById) {}
 
-	async handle(req: any) {
-		const { id } = req.params;
+	async handle(request: any) {
+		const { id } = request.params;
 
-		const response = await this.findUserByIdService.execute(id);
+		const response = await this.findUserById.execute(id);
 
-		return response;
+		return HttpResponseBuilder.statusCode(200).body(response).build();
 	}
 }

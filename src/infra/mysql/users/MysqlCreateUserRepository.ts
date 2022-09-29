@@ -1,7 +1,7 @@
-import { User } from "../../../domain/entities/User";
-import { CreateUserRepository } from "../../../app/repositories/users/CreateUserRepository";
+import { User } from "@entities/User";
+import { CreateUserRepository } from "@repositories/users/CreateUserRepository";
 import { QueryOptions } from "mysql";
-import { getPool } from "../../../database";
+import { getPool } from "@database";
 
 export class MysqlCreateUserRepository implements CreateUserRepository {
 	async create(user: User): Promise<void> {
