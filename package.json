@@ -2,15 +2,15 @@
 	"name": "techdinner-backend",
 	"version": "1.0.0",
 	"description": "Back-end da aplicação do TechDinner.",
-	"main": "./src/server.ts",
+	"main": "dist/server.js",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/techdinner/techdinner-backend/"
 	},
 	"scripts": {
 		"dev": "tsnd --transpile-only --respawn --ignore-watch node_modules -r tsconfig-paths/register ./src/server.ts",
-		"build": "rimraf ./build && yarn tsc",
-		"start": "node ./build/server.js",
+		"build": "rimraf ./dist && yarn tsc",
+		"start": "node ./dist/server.js",
 		"postinstall": "nvmrc-check --node $(cat .nvmrc)",
 		"lint": "tsc --noEmit && eslint . --ext .ts,.js,.json",
 		"lint-and-fix": "eslint . --ext .ts,.js,.json --fix",
