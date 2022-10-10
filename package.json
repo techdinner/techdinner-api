@@ -1,7 +1,7 @@
 {
-	"name": "techdinner-backend",
+	"name": "techdinner-api",
 	"version": "1.0.0",
-	"description": "Back-end da aplicação do TechDinner.",
+	"description": "TechDinner API.",
 	"main": "dist/server.js",
 	"repository": {
 		"type": "git",
