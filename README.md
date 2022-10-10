@@ -1,4 +1,4 @@
-## Tech Dinner Back-end.
+## Tech Dinner API.
 
 ### Requirements
 
