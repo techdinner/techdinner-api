@@ -1,15 +1,8 @@
 import { compare } from "bcryptjs";
-import { Compare } from "@interfaces/Compare";
+import { CompareRepository } from "@repositories/crypt/CompareRepository";
 
-export class BcryptCompareAdapter implements Compare {
-	private readonly compare = compare;
-
-	async compareStringHashed(
-		string: string,
-		hashedString: string,
-	): Promise<boolean> {
-		const result = await this.compare(string, hashedString);
-
-		return result;
+export class BcryptCompareAdapter implements CompareRepository {
+	async compare(string: string, hashedString: string): Promise<boolean> {
+		return await compare(string, hashedString);
 	}
 }

@@ -16,7 +16,7 @@
 			"@interfaces/*": ["./src/app/interfaces/*"],
 			"@middlewares/*": ["./src/app/middlewares/*"],
 			"@repositories/*": ["./src/app/repositories/*"],
-			"@server/*": ["./src/app/server/*"],
+			"@server/*": ["src/app/factories/server/*"],
 			"@services/*": ["./src/app/services/*"],
 			"_config/*": ["./src/config/*"],
 			"@database": ["./src/database"],

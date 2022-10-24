@@ -6,15 +6,9 @@ export class CreateUserController implements Controller {
 	constructor(private readonly createUser: CreateUser) {}
 
 	async handle(request: any) {
-		const { name, email, role } = request.body;
+		await this.createUser.execute({ ...request });
 
-		await this.createUser.execute({
-			name,
-			email,
-			role,
-		});
-
-		return HttpResponseBuilder.statusCode(200)
+		return HttpResponseBuilder.statusCode(201)
 			.body({ message: "User created" })
 			.build();
 	}

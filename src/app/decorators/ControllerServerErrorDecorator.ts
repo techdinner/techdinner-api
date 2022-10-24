@@ -7,9 +7,7 @@ export class ControllerServerErrorDecorator implements Controller {
 
 	async handle(request: any): Promise<HttpResponse> {
 		try {
-			const response = await this.controller.handle(request);
-
-			return response;
+			return await this.controller.handle(request);
 		} catch (error) {
 			return HttpResponseBuilder.statusCode(500).body(error).build();
 		}
