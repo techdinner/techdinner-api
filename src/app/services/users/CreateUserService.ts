@@ -1,18 +1,22 @@
-import { User } from "@entities/User";
-import { CreateUser } from "@usecases/users/CreateUser";
-import { CreateUserRepository } from "@repositories/users/CreateUserRepository";
-import { CreateUserDTO } from "@dtos/users/CreateUserDTO";
+import { User } from "@/domain/entities/User";
+import { CreateUser } from "@/domain/usecases/users/CreateUser";
+import { CreateUserRepository } from "@/app/repositories/users/CreateUserRepository";
+import { FindUserByEmailRepository } from "@/app/repositories/users/FindUserByEmailRepository";
+import { CreateUserDTO } from "@/app/dtos/users/CreateUserDTO";
 
 export class CreateUserService implements CreateUser {
-	constructor(private readonly createUserRepository: CreateUserRepository) {}
+  constructor(
+    private readonly _createUserRepository: CreateUserRepository,
+    private readonly _findUserByEmailRepository: FindUserByEmailRepository,
+  ) {}
 
-	async execute(data: CreateUserDTO): Promise<void> {
-		// const userExists = await this.repository.findByEmail(data.email);
+  async execute(data: CreateUserDTO): Promise<void> {
+    const user = await this._findUserByEmailRepository.findByEmail(data.email);
 
-		// if (userExists) throw new Error("User already exists.");
+    if (user) throw new Error("User already exists.");
 
-		const user = new User(data.name, data.email, data.role);
+    const newUser = new User(data);
 
-		await this.createUserRepository.create(user);
-	}
+    await this._createUserRepository.create(newUser);
+  }
 }

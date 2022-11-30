@@ -1,9 +1,10 @@
 # FOLDERS
 .idea/
 node_modules/
-build/
+dist/
 tmp/
 temp/
+coverage/
 
 # FILES
 .env

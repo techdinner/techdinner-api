@@ -1,24 +1,24 @@
-import { HttpResponse } from "@interfaces/HttpResponse";
+import { HttpResponse } from "@/app/interfaces/HttpResponse";
 
 export class HttpResponseBuilder {
-	private httpResponse: HttpResponse;
+  private _httpResponse: HttpResponse;
 
-	constructor(statusCode: number) {
-		this.httpResponse = {
-			statusCode,
-		};
-	}
+  constructor(statusCode: number) {
+    this._httpResponse = {
+      statusCode,
+    };
+  }
 
-	public static statusCode(statusCode: number) {
-		return new HttpResponseBuilder(statusCode);
-	}
+  public static statusCode(statusCode: number): HttpResponseBuilder {
+    return new HttpResponseBuilder(statusCode);
+  }
 
-	public body(body: any) {
-		this.httpResponse.body = body;
-		return this;
-	}
+  public body(body: any): this {
+    this._httpResponse.body = body;
+    return this;
+  }
 
-	public build() {
-		return this.httpResponse;
-	}
+  public build(): HttpResponse {
+    return this._httpResponse;
+  }
 }

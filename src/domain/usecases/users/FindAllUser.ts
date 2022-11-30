@@ -1,5 +1,5 @@
-import { User } from "@entities/User";
+import { User } from "@/domain/entities/User";
 
 export interface FindAllUser {
-	execute(): Promise<User[] | undefined>;
+  execute(): Promise<User[] | undefined>;
 }

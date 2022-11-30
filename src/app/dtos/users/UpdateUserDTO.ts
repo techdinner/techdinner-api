@@ -1,7 +1,9 @@
 export interface UpdateUserDTO {
-	name?: string;
-	email?: string;
-	password?: string;
-	active?: boolean;
-	role?: number;
+  name: string;
+  email: string;
+  cpf: string;
+  phone: number;
+  companyId: number;
+  photo?: string;
+  password?: string;
 }

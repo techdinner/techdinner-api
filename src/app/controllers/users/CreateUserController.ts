@@ -1,21 +1,17 @@
-import { Controller } from "@interfaces/Controller";
-import { HttpResponseBuilder } from "@builders/HttpResponseBuilder";
-import { CreateUser } from "@usecases/users/CreateUser";
+import { Controller } from "@/app/interfaces/Controller";
+import { HttpResponseBuilder } from "@/app/builders/HttpResponseBuilder";
+import { CreateUser } from "@/domain/usecases/users/CreateUser";
+import { CreateUserDTO } from "@/app/dtos/users/CreateUserDTO";
+import { HttpResponse } from "@/app/interfaces/HttpResponse";
 
 export class CreateUserController implements Controller {
-	constructor(private readonly createUser: CreateUser) {}
+  constructor(private readonly _createUser: CreateUser) {}
 
-	async handle(request: any) {
-		const { name, email, role } = request.body;
+  async handle(request: CreateUserDTO): Promise<HttpResponse> {
+    await this._createUser.execute({ ...request });
 
-		await this.createUser.execute({
-			name,
-			email,
-			role,
-		});
-
-		return HttpResponseBuilder.statusCode(200)
-			.body({ message: "User created" })
-			.build();
-	}
+    return HttpResponseBuilder.statusCode(201)
+      .body({ message: "User created" })
+      .build();
+  }
 }

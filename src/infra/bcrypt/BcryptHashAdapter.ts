@@ -1,12 +1,8 @@
 import { hash } from "bcryptjs";
-import { Hasher } from "@interfaces/Hasher";
+import { HashRepository } from "@/app/repositories/crypt/HashRepository";
 
-export class BcryptHashAdapter implements Hasher {
-	private readonly hash = hash;
-
-	async hashString(string: string, salt: number | string): Promise<string> {
-		const result = await this.hash(string, salt);
-
-		return result;
-	}
+export class BcryptHashAdapter implements HashRepository {
+  async hash(string: string): Promise<string> {
+    return await hash(string, 12);
+  }
 }

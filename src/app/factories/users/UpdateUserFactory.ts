@@ -1,12 +1,17 @@
-import { MysqlUpdateUserRepository } from "@infra/mysql/users/MysqlUpdateUserRepository";
-import { UpdateUserService } from "@services/users/UpdateUserService";
-import { UpdateUserController } from "@controllers/users/UpdateUserController";
-import { ControllerServerErrorDecorator } from "@decorators/ControllerServerErrorDecorator";
+import { MysqlUpdateUserRepository } from "@/infra/mysql/users/MysqlUpdateUserRepository";
+import { UpdateUserService } from "@/app/services/users/UpdateUserService";
+import { BcryptHashAdapter } from "@/infra/bcrypt/BcryptHashAdapter";
+import { UpdateUserController } from "@/app/controllers/users/UpdateUserController";
+import { ControllerServerErrorDecorator } from "@/app/decorators/ControllerServerErrorDecorator";
 
-export const makeUpdateUserController = () => {
-	const updateUserRepository = new MysqlUpdateUserRepository();
-	const updateUserService = new UpdateUserService(updateUserRepository);
-	const updateUserController = new UpdateUserController(updateUserService);
+export const makeUpdateUserController = (): ControllerServerErrorDecorator => {
+  const updateUserRepository = new MysqlUpdateUserRepository();
+  const bcryptHashAdapter = new BcryptHashAdapter();
+  const updateUserService = new UpdateUserService(
+    updateUserRepository,
+    bcryptHashAdapter,
+  );
+  const updateUserController = new UpdateUserController(updateUserService);
 
-	return new ControllerServerErrorDecorator(updateUserController);
+  return new ControllerServerErrorDecorator(updateUserController);
 };

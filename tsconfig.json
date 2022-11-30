@@ -1,39 +1,24 @@
 {
 	"compilerOptions": {
-		"target": "ES6",
+    "target": "ES6",
+		"module": "commonjs",
+    "moduleResolution": "node",
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
-		"module": "commonjs",
-		"rootDir": "./src",
-		"baseUrl": ".",
-    "paths": {
-			"@builders/*": ["./src/app/builders/*"],
-			"@config/*": ["./src/app/config/*"],
-			"@controllers/*": ["./src/app/controllers/*"],
-			"@decorators/*": ["./src/app/decorators/*"],
-			"@dtos/*": ["./src/app/dtos/*"],
-			"@factories/*": ["./src/app/factories/*"],
-			"@interfaces/*": ["./src/app/interfaces/*"],
-			"@middlewares/*": ["./src/app/middlewares/*"],
-			"@repositories/*": ["./src/app/repositories/*"],
-			"@server/*": ["./src/app/server/*"],
-			"@services/*": ["./src/app/services/*"],
-			"_config/*": ["./src/config/*"],
-			"@database": ["./src/database"],
-			"@database/*": ["./src/database/*"],
-			"@entities/*": ["./src/domain/entities/*"],
-			"@usecases/*": ["./src/domain/usecases/*"],
-			"@infra/*": ["./src/infra/*"],
-			"@routes/*": ["./src/routes/*"],
-		},
-		"resolveJsonModule": true,
+    "resolveJsonModule": true,
 		"allowJs": true,
-		"outDir": "./dist",
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
+    "sourceMap": true,
 		"noImplicitAny": true,
 		"strictPropertyInitialization": false,
-		"skipLibCheck": true
-	},
+		"skipLibCheck": true,
+		"rootDirs": ["src", "tests"],
+		"outDir": "dist",
+		"baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+		}
+	}
 }

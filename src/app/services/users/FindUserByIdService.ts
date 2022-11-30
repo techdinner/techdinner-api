@@ -1,13 +1,13 @@
-import { User } from "@entities/User";
-import { FindUserById } from "@usecases/users/FindUserById";
-import { FindUserByIdRepository } from "@repositories/users/FindUserByIdRepository";
+import { User } from "@/domain/entities/User";
+import { FindUserById } from "@/domain/usecases/users/FindUserById";
+import { FindUserByIdRepository } from "@/app/repositories/users/FindUserByIdRepository";
 
 export class FindUserByIdService implements FindUserById {
-	constructor(
-		private readonly findUserByIdRepository: FindUserByIdRepository,
-	) {}
+  constructor(
+    private readonly _findUserByIdRepository: FindUserByIdRepository,
+  ) {}
 
-	async execute(id: string): Promise<User | undefined> {
-		return await this.findUserByIdRepository.findById(id);
-	}
+  async execute(id: string): Promise<User | undefined> {
+    return await this._findUserByIdRepository.findById(id);
+  }
 }
