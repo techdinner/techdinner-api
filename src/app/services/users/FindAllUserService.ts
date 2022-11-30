@@ -1,11 +1,11 @@
-import { User } from "@entities/User";
-import { FindAllUser } from "@usecases/users/FindAllUser";
-import { FindAllUserRepository } from "@repositories/users/FindAllUserRepository";
+import { User } from "@/domain/entities/User";
+import { FindAllUser } from "@/domain/usecases/users/FindAllUser";
+import { FindAllUserRepository } from "@/app/repositories/users/FindAllUserRepository";
 
 export class FindAllUserService implements FindAllUser {
-	constructor(private readonly findAllUserRepository: FindAllUserRepository) {}
+  constructor(private readonly _findAllUserRepository: FindAllUserRepository) {}
 
-	async execute(): Promise<User[] | undefined> {
-		return await this.findAllUserRepository.findAllUsers();
-	}
+  async execute(): Promise<User[] | undefined> {
+    return await this._findAllUserRepository.findAllUsers();
+  }
 }

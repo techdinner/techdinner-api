@@ -1,19 +1,24 @@
-import { User } from "@entities/User";
-import { CreateUserRepository } from "@repositories/users/CreateUserRepository";
 import { QueryOptions } from "mysql";
-import { getPool } from "@database";
+import { User } from "@/domain/entities/User";
+import { getPool } from "@/database";
+import { CreateUserRepository } from "@/app/repositories/users/CreateUserRepository";
 
 export class MysqlCreateUserRepository implements CreateUserRepository {
-	async create(user: User): Promise<void> {
-		const pool = getPool();
+  async create(user: User): Promise<void> {
+    const pool = getPool();
 
-		const options: QueryOptions = {
-			sql: "INSERT INTO users SET id = ?, name = ?, email = ?, role = ?, active = ?",
-			values: [user.id, user.name, user.email, user.role, user.active],
-		};
+    const options: QueryOptions = {
+      sql: "INSERT INTO users SET id = ?, name = ?, email = ?",
+      values: [user.id, user.name, user.email],
+    };
 
-		await pool.query(options, error => {
-			if (error != null) throw error;
-		});
-	}
+    await new Promise((resolve, reject) => {
+      pool.query(options, error => {
+        if (error != null) {
+          reject(error);
+          throw error;
+        }
+      });
+    });
+  }
 }

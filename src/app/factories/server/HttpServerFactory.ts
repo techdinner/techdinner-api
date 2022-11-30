@@ -1,9 +1,9 @@
-import { HttpServer } from "@interfaces/HttpServer";
+import { HttpServer } from "@/app/interfaces/HttpServer";
 
 export class HttpServerFactory {
-	constructor(private readonly httpServer: HttpServer) {}
+  constructor(private readonly _httpServer: HttpServer) {}
 
-	get server() {
-		return this.httpServer;
-	}
+  get server(): HttpServer {
+    return this._httpServer;
+  }
 }

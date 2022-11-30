@@ -1,11 +1,10 @@
-import { Router } from "express";
+import { AppServer } from "@/app/config/AppServer";
+import { Methods } from "@/app/enums/Methods";
 
-import { makeAuthController } from "../../app/factories/auth/AuthFactory";
+import { makeAuthController } from "@/app/factories/auth/AuthFactory";
 
-const AuthRoutes = Router();
-
-const authController = makeAuthController();
-
-AuthRoutes.post("/", async (req, res) => await authController.handle(req, res));
-
-export default AuthRoutes;
+AppServer.server.addRoute({
+  httpMethod: Methods.POST,
+  endpoint: "/",
+  controller: makeAuthController(),
+});

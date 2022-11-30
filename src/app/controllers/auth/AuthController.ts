@@ -1,17 +1,19 @@
-import { Controller } from "../../interfaces/Controller";
-import { AuthService } from "../../services/auth/AuthService";
+import { Controller } from "@/app/interfaces/Controller";
+import { HttpResponseBuilder } from "@/app/builders/HttpResponseBuilder";
+import { AuthService } from "@/app/services/auth/AuthService";
+import { HttpResponse } from "@/app/interfaces/HttpResponse";
 
 export class AuthController implements Controller {
-	constructor(private readonly authService: AuthService) {}
+  constructor(private readonly _authService: AuthService) {}
 
-	async handle(req: any) {
-		const { email, password } = req.body;
+  async handle(req: any): Promise<HttpResponse> {
+    const { email, password } = req.body;
 
-		const response = await this.authService.execute({
-			email,
-			password,
-		});
+    const response = await this._authService.execute({
+      email,
+      password,
+    });
 
-		return response;
-	}
+    return HttpResponseBuilder.statusCode(200).body(response).build();
+  }
 }

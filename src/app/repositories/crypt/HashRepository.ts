@@ -1,3 +1,3 @@
 export interface HashRepository {
-	hash(string: string): Promise<string>;
+  hash(string: string): Promise<string>;
 }

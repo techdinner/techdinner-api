@@ -1,15 +1,15 @@
-import { HttpResponseBuilder } from "@builders/HttpResponseBuilder";
-import { Controller } from "@interfaces/Controller";
-import { HttpResponse } from "@interfaces/HttpResponse";
+import { HttpResponseBuilder } from "@/app/builders/HttpResponseBuilder";
+import { Controller } from "@/app/interfaces/Controller";
+import { HttpResponse } from "@/app/interfaces/HttpResponse";
 
 export class ControllerServerErrorDecorator implements Controller {
-	constructor(private readonly controller: Controller) {}
+  constructor(private readonly _controller: Controller) {}
 
-	async handle(request: any): Promise<HttpResponse> {
-		try {
-			return await this.controller.handle(request);
-		} catch (error) {
-			return HttpResponseBuilder.statusCode(500).body(error).build();
-		}
-	}
+  async handle(request: any): Promise<HttpResponse> {
+    try {
+      return await this._controller.handle(request);
+    } catch (error) {
+      return HttpResponseBuilder.statusCode(500).body(error).build();
+    }
+  }
 }
