@@ -1,13 +1,15 @@
-FROM node:16.16.0
+FROM node:16.17.0-slim
 
-WORKDIR /app
+USER node
 
-COPY package*.json ./
-COPY yarn* ./
+RUN mkdir -p /home/node/app
 
-RUN yarn install
+WORKDIR /home/node/app
 
-COPY . .
+COPY --chown=node:node . .
+
+RUN yarn install && \
+    yarn build
 
 CMD [ "yarn", "start" ]
 
