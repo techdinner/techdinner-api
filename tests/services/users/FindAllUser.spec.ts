@@ -8,8 +8,10 @@ class FindAllUserRepositoryMock implements FindAllUserRepository {
       name: "Matheus",
       email: "teste@gmail.com",
       cpf: "084.277.445-95",
-      phone: 71983868607,
-      companyId: 1,
+      phone: "71983868607",
+      role: "ADMIN",
+      password: "88882788a",
+      companyId: "1",
       id: "1",
     },
   ];

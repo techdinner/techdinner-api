@@ -9,8 +9,10 @@ class DeleteUserRepositoryMock implements DeleteUserRepository {
       name: "Matheus",
       email: "teste@gmail.com",
       cpf: "084.277.445-95",
-      phone: 71983868607,
-      companyId: 1,
+      phone: "71983868607",
+      role: "ADMIN",
+      password: "88882788a",
+      companyId: "1",
       id: "1",
     },
   ];
@@ -27,15 +29,23 @@ class FindUserByIdRepositoryMock implements FindUserByIdRepository {
       name: "Matheus",
       email: "teste@gmail.com",
       cpf: "084.277.445-95",
-      phone: 71983868607,
-      companyId: 1,
+      phone: "71983868607",
+      role: "ADMIN",
+      password: "88882788a",
+      companyId: "1",
       id: "1",
     },
   ];
 
-  async findById(id: string): Promise<User | undefined> {
+  async findById(id: string): Promise<User | null> {
     await new Promise(() => console.log("findById"));
-    return this.user.find(user => user.id === id);
+    const user = this.user.find(user => user.id === id);
+
+    if (user) {
+      return user;
+    } else {
+      return null;
+    }
   }
 }
 

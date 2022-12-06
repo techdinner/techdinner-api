@@ -4,12 +4,15 @@ import { Controller } from "@/app/interfaces/Controller";
 import { HttpServer } from "@/app/interfaces/HttpServer";
 import { HttpServerRoute } from "@/app/interfaces/HttpServerRoute";
 
+import "../../database/data-source";
+
 export class ExpressHttpServerAdapter implements HttpServer {
   private readonly _app = express();
   private readonly _prefix = "/api/v1";
 
   private _adapterController(controller: Controller) {
     return async (req: Request, res: Response) => {
+      console.log(req);
       const request = {
         ...(req.body || {}),
         ...(req.params || {}),

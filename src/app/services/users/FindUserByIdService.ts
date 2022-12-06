@@ -7,7 +7,7 @@ export class FindUserByIdService implements FindUserById {
     private readonly _findUserByIdRepository: FindUserByIdRepository,
   ) {}
 
-  async execute(id: string): Promise<User | undefined> {
+  async execute(id: string): Promise<User | null> {
     return await this._findUserByIdRepository.findById(id);
   }
 }

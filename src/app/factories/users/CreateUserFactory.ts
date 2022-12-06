@@ -1,12 +1,11 @@
-import { MysqlCreateUserRepository } from "@/infra/mysql/users/MysqlCreateUserRepository";
-import { MysqlFindUserByEmailRepository } from "@/infra/mysql/users/MysqlFindUserByEmailRepository";
+import { TypeORMUserRepository } from "@/infra/typeorm/repositories/users/TypeORMUserRepository";
 import { CreateUserService } from "@/app/services/users/CreateUserService";
 import { CreateUserController } from "@/app/controllers/users/CreateUserController";
 import { ControllerServerErrorDecorator } from "@/app/decorators/ControllerServerErrorDecorator";
 
 export const makeCreateUserController = (): ControllerServerErrorDecorator => {
-  const createUserRepository = new MysqlCreateUserRepository();
-  const findUserByEmailRepository = new MysqlFindUserByEmailRepository();
+  const createUserRepository = new TypeORMUserRepository();
+  const findUserByEmailRepository = new TypeORMUserRepository();
   const createUserService = new CreateUserService(
     createUserRepository,
     findUserByEmailRepository,

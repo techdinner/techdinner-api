@@ -13,7 +13,7 @@ export class AuthService {
     private readonly _findUserByEmailRepository: FindUserByEmailRepository,
   ) {}
 
-  private _userIsNotProvided(user: User | undefined): boolean {
+  private _userIsNotProvided(user: User | null): boolean {
     return user == null;
   }
 
