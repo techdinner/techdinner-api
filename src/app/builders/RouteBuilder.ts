@@ -1,40 +1,36 @@
 import { HttpServerRoute } from "@/app/interfaces/HttpServerRoute";
 import { Methods } from "@/app/enums/Methods";
 import { Controller } from "@/app/interfaces/Controller";
-// import { Middleware } from "@/app/interfaces/Middleware";
+import { Middleware } from "@/app/interfaces/Middleware";
+import { AppServer } from "@/app/config/AppServer";
 
 export class RouteBuilder {
   private readonly _httpServerRoute: HttpServerRoute;
 
-  constructor(endpoint: string, httpMethod: Methods, controller: Controller) {
+  constructor(
+    httpMethod: Methods,
+    endpoint: string,
+    controller: Controller,
+    middlewares?: Middleware[],
+  ) {
     this._httpServerRoute = {
-      endpoint,
       httpMethod,
+      endpoint,
       controller,
+      middlewares,
     };
   }
 
-  // public httpMethod(httpMethod: Methods) {
-  // 	this.httpServerRoute.httpMethod = httpMethod;
-  // 	return this;
-  // }
+  public static route(
+    httpMethod: Methods,
+    endpoint: string,
+    controller: Controller,
+    middlewares?: Middleware[],
+  ): RouteBuilder {
+    return new RouteBuilder(httpMethod, endpoint, controller, middlewares);
+  }
 
-  // public endpoint(endpoint: string) {
-  // 	this.httpServerRoute.endpoint = endpoint;
-  // 	return this;
-  // }
-
-  // public controller(controller: Controller) {
-  // 	this.httpServerRoute.controller = controller;
-  // 	return this;
-  // }
-
-  // public middlewares(middlewares: Middleware[]) {
-  //   this.httpServerRoute.middlewares = middlewares;
-  //   return this;
-  // }
-
-  // public build() {
-  //   return this.httpServerRoute;
-  // }
+  public build(): void {
+    return AppServer.server.addRoute(this._httpServerRoute);
+  }
 }

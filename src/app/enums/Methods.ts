@@ -5,3 +5,5 @@ export enum Methods {
   PATCH = "patch",
   DELETE = "delete",
 }
+
+export const { GET, POST, PUT, PATCH, DELETE } = Methods;

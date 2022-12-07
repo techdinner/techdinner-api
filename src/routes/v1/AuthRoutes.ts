@@ -1,10 +1,6 @@
-import { AppServer } from "@/app/config/AppServer";
-import { Methods } from "@/app/enums/Methods";
+import { RouteBuilder } from "@/app/builders/RouteBuilder";
+import { POST } from "@/app/enums/Methods";
 
 import { makeAuthController } from "@/app/factories/auth/AuthFactory";
 
-AppServer.server.addRoute({
-  httpMethod: Methods.POST,
-  endpoint: "/",
-  controller: makeAuthController(),
-});
+RouteBuilder.route(POST, "/", makeAuthController()).build();
