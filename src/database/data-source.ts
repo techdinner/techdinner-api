@@ -15,7 +15,7 @@ const AppDataSource = new DataSource({
   synchronize: true,
   logging: false,
   entities: [
-    join(__dirname, "**", "infra", "typeorm", "entities", "*.{ts,js}"),
+    join(__dirname, "..", "infra", "typeorm", "entities", "*.{ts,js}"),
   ],
   migrations: [join(__dirname, "migrations", "*.{ts,js}")],
   subscribers: [],

@@ -6,6 +6,8 @@ export class FindAllUserService implements FindAllUser {
   constructor(private readonly _findAllUserRepository: FindAllUserRepository) {}
 
   async execute(): Promise<User[] | undefined> {
-    return await this._findAllUserRepository.findAllUsers();
+    const data = await this._findAllUserRepository.findAllUsers();
+
+    return data;
   }
 }

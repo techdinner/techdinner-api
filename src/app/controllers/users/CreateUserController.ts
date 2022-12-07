@@ -8,11 +8,10 @@ export class CreateUserController implements Controller {
   constructor(private readonly _createUser: CreateUser) {}
 
   async handle(request: CreateUserDTO): Promise<HttpResponse> {
-    console.log(request);
     await this._createUser.execute({ ...request });
 
     return HttpResponseBuilder.statusCode(201)
-      .body({ message: "User created" })
+      .body({ message: "User created!" })
       .build();
   }
 }

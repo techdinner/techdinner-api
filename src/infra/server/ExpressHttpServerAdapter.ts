@@ -4,15 +4,19 @@ import { Controller } from "@/app/interfaces/Controller";
 import { HttpServer } from "@/app/interfaces/HttpServer";
 import { HttpServerRoute } from "@/app/interfaces/HttpServerRoute";
 
-import "../../database/data-source";
+import "@/database/data-source";
 
 export class ExpressHttpServerAdapter implements HttpServer {
   private readonly _app = express();
   private readonly _prefix = "/api/v1";
 
+  constructor() {
+    this._app.use(json());
+    this._app.use(cors());
+  }
+
   private _adapterController(controller: Controller) {
     return async (req: Request, res: Response) => {
-      console.log(req);
       const request = {
         ...(req.body || {}),
         ...(req.params || {}),
@@ -31,8 +35,6 @@ export class ExpressHttpServerAdapter implements HttpServer {
   }
 
   startServer(port: number): void {
-    this._app.use(json());
-    this._app.use(cors());
     this._app.listen(port, () =>
       console.log(`✅ Server is running on port ${port}.`),
     );

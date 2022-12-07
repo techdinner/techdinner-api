@@ -26,7 +26,7 @@ AppServer.server.addRoute({
 });
 
 AppServer.server.addRoute({
-  httpMethod: Methods.PUT,
+  httpMethod: Methods.PATCH,
   endpoint: "/users/:id",
   controller: makeUpdateUserController(),
 });

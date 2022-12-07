@@ -3,14 +3,20 @@ import { HttpResponseBuilder } from "@/app/builders/HttpResponseBuilder";
 import { DeleteUser } from "@/domain/usecases/users/DeleteUser";
 import { HttpResponse } from "@/app/interfaces/HttpResponse";
 
+interface DeleteUserRequest {
+  id: string;
+}
+
 export class DeleteUserController implements Controller {
   constructor(private readonly _deleteUser: DeleteUser) {}
 
-  async handle(request: any): Promise<HttpResponse> {
-    const { id } = request.params;
+  async handle(request: DeleteUserRequest): Promise<HttpResponse> {
+    const { id } = request;
 
-    const response = await this._deleteUser.execute(id as string);
+    await this._deleteUser.execute(id);
 
-    return HttpResponseBuilder.statusCode(200).body(response).build();
+    return HttpResponseBuilder.statusCode(200)
+      .body({ message: "User deleted!" })
+      .build();
   }
 }

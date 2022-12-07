@@ -1,5 +1,6 @@
 import { CreateUserService } from "@/app/services/users/CreateUserService";
 import { CreateUserRepository } from "@/app/repositories/users/CreateUserRepository";
+import { HashRepository } from "@/app/repositories/crypt/HashRepository";
 import { FindUserByEmailRepository } from "@/app/repositories/users/FindUserByEmailRepository";
 import { User } from "@/domain/entities/User";
 
@@ -27,6 +28,12 @@ class FindUserByEmailRepositoryMock implements FindUserByEmailRepository {
   }
 }
 
+class HashRepositoryMock implements HashRepository {
+  hash(string: string): Promise<string> {
+    throw new Error("Method not implemented.");
+  }
+}
+
 interface SutTypes {
   sut: CreateUserService;
   createUserRepository: CreateUserRepositoryMock;
@@ -35,9 +42,11 @@ interface SutTypes {
 const makeSut = (): SutTypes => {
   const createUserRepository = new CreateUserRepositoryMock();
   const findUserByEmailRepository = new FindUserByEmailRepositoryMock();
+  const hashRepository = new HashRepositoryMock();
   const sut = new CreateUserService(
     createUserRepository,
     findUserByEmailRepository,
+    hashRepository,
   );
 
   return { sut, createUserRepository };

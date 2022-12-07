@@ -1,5 +1,5 @@
 import { UpdateUserDTO } from "@/app/dtos/users/UpdateUserDTO";
 
 export interface UpdateUser {
-  execute(id: string, data: UpdateUserDTO): Promise<void>;
+  execute(data: UpdateUserDTO): Promise<void>;
 }

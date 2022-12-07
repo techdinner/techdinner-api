@@ -8,6 +8,12 @@ export class FindUserByIdService implements FindUserById {
   ) {}
 
   async execute(id: string): Promise<User | null> {
-    return await this._findUserByIdRepository.findById(id);
+    const data = await this._findUserByIdRepository.findById(id);
+
+    if (!data) {
+      throw new Error("User not found.");
+    }
+
+    return data;
   }
 }

@@ -1,5 +1,5 @@
-import { UpdateUserDTO } from "@/app/dtos/users/UpdateUserDTO";
+import { User } from "@/domain/entities/User";
 
 export interface UpdateUserRepository {
-  update(id: string, user: UpdateUserDTO): Promise<void>;
+  update(id: string, user: User): Promise<void>;
 }

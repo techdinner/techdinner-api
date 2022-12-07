@@ -11,7 +11,9 @@ export class DeleteUserService implements DeleteUser {
   async execute(id: string): Promise<void> {
     const user = await this._findUserByIdRepository.findById(id);
 
-    if (!user) throw new Error("User not exists.");
+    if (!user) {
+      throw new Error("User does not exist or has already been deleted.");
+    }
 
     return await this._deleteUserRepository.delete(id);
   }
