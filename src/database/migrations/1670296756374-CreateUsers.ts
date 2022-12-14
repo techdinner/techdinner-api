@@ -47,6 +47,10 @@ export class CreateUsers1670296756374 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: "verified",
+            type: "boolean",
+          },
+          {
             name: "created_at",
             type: "timestamp",
             default: "now()",

@@ -6,9 +6,13 @@ import { User } from "@/infra/typeorm/entities/User";
 export class TypeORMCreateUserRepository implements CreateUserRepository {
   private readonly _db: Repository<User> = AppDataSource.getRepository(User);
 
-  async create(user: User): Promise<void> {
+  async create(user: User): Promise<boolean> {
     const newUser = this._db.create(user);
 
-    await this._db.save(newUser);
+    if (await this._db.save(newUser)) {
+      return true;
+    }
+
+    return false;
   }
 }

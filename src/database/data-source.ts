@@ -3,15 +3,15 @@ import { DataSource } from "typeorm";
 import { join } from "path";
 import { environments } from "@/config/dotenv";
 
-const { DBHost, DBPort, DBUser, DBPass, DBName } = environments;
+const { DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME } = environments;
 
 const AppDataSource = new DataSource({
   type: "postgres",
-  host: DBHost,
-  port: DBPort,
-  username: DBUser,
-  password: DBPass,
-  database: DBName,
+  host: DB_HOST,
+  port: DB_PORT,
+  username: DB_USER,
+  password: DB_PASS,
+  database: DB_NAME,
   synchronize: true,
   logging: false,
   entities: [

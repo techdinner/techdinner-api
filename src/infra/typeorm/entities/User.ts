@@ -32,8 +32,11 @@ export class User {
   @Column()
   role!: string;
 
-  @Column()
+  @Column({ nullable: true })
   photo?: string;
+
+  @Column()
+  verified!: boolean;
 
   @CreateDateColumn({ name: "created_at" })
   createdAt?: Date;

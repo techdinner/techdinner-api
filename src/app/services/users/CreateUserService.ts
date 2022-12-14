@@ -22,6 +22,7 @@ export class CreateUserService implements CreateUser {
     }
 
     data.password = await this._hashRepository.hash(data.password);
+    data.verified = true;
 
     const user = new User(data);
 
