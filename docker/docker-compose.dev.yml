@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+    techdinner-api:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        image: techdinner-node
+        container_name: techdinner-api
+        depends_on:
+            - techdinner-db
+        volumes:
+            - ../:/home/node/app
+        ports:
+            - ${APP_PORT}:5000
+        networks:
+            - techdinnernet
+
+    techdinner-db:
+        image: postgres
+        container_name: techdinner-db
+        restart: always
+        environment:
+            POSTGRES_DB: techdinner_db
+            POSTGRES_USER: techdinnerdb
+            POSTGRES_PASSWORD: techdinnerdb
+        ports:
+            - 5533:5432
+        networks:
+            - techdinnernet
+
+networks:
+  techdinnernet:
+      driver: bridge

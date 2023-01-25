@@ -3,3 +3,5 @@ dist/
 .vscode/
 coverage/
 /*.js
+tests/
+jest.config.ts
