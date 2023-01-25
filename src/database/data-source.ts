@@ -22,9 +22,9 @@ const AppDataSource = new DataSource({
 });
 
 AppDataSource.initialize()
-  .then(() => console.log("> Data Source has been initialized!"))
+  .then(() => console.log("✅ Data Source has been initialized!"))
   .catch(err =>
-    console.error("> Error during Data Source initialization: ", err),
+    console.error("❌ Error during Data Source initialization: ", err),
   );
 
 export { AppDataSource };

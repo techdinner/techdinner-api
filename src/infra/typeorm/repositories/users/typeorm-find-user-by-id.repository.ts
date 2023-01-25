@@ -17,6 +17,7 @@ export class TypeORMFindUserByIdRepository implements FindUserByIdRepository {
         companyId: true,
         role: true,
         photo: true,
+        verified: true,
         createdAt: true,
         updatedAt: true,
       },

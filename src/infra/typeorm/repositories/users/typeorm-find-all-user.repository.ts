@@ -17,6 +17,7 @@ export class TypeORMFindAllUserRepository implements FindAllUserRepository {
         companyId: true,
         role: true,
         photo: true,
+        verified: true,
         createdAt: true,
         updatedAt: true,
       },
