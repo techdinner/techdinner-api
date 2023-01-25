@@ -24,17 +24,16 @@ services:
     #         - techdinnernet
 
     techdinner-db:
-        image: mysql:5.7
+        image: postgres
         container_name: techdinner-db
         env_file:
             - .env
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: ${DB_NAME}
-            MYSQL_USER: ${DB_USER}
-            MYSQL_PASSWORD: ${DB_PASS}
+            POSTGRES_DB: ${DB_NAME}
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PASS}
         ports:
-            - ${DB_PORT}:3306
+            - ${DB_PORT}:5432
         networks:
             - techdinnernet
 
