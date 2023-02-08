@@ -17,7 +17,7 @@ class FindAllUserRepositoryMock implements FindAllUserRepository {
     },
   ];
 
-  async findAllUsers(): Promise<User[] | undefined> {
+  async findAllUsers(): Promise<User[] | null> {
     await new Promise(() => console.log("findAllUsers"));
     return this.user;
   }
