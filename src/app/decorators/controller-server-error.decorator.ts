@@ -8,8 +8,10 @@ export class ControllerServerErrorDecorator implements Controller {
   async handle(request: any): Promise<HttpResponse> {
     try {
       return await this._controller.handle(request);
-    } catch (error) {
-      return HttpResponseBuilder.statusCode(500).body(error).build();
+    } catch (error: any) {
+      return HttpResponseBuilder.statusCode(error.status as number)
+        .body({ message: error.message || "Internal server error." })
+        .build();
     }
   }
 }

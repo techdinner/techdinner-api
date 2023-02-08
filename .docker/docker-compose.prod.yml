@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+    techdinner-api:
+        build:
+            context: .
+            dockerfile: Dockerfile.prod
+        image: techdinner-node
+        container_name: techdinner-api
+        networks:
+            - techdinnernet
+
+    techdinner-nginx:
+        image: nginx:alpine
+        container_name: techdinner-nginx
+        working_dir: /app
+        volumes:
+            - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        env_file:
+            - .env
+        ports:
+            - ${APP_PORT}:80
+        depends_on:
+            - techdinner-api
+        networks:
+            - techdinnernet
+
+networks:
+  techdinnernet:
+      driver: bridge

@@ -8,6 +8,9 @@ WORKDIR /home/node/app
 
 COPY --chown=node:node . .
 
-RUN yarn install
+RUN yarn install && \
+    yarn build
 
-CMD [ "yarn", "dev" ]
+EXPOSE 5000
+
+CMD [ "yarn", "start" ]

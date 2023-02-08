@@ -4,6 +4,7 @@ import { CreateUserRepository } from "@/app/repositories/users/create-user.repos
 import { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
 import { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
 import { HashRepository } from "@/app/repositories/crypt/hash.repository";
+import { HttpError } from "@/app/helpers/http-error";
 
 export class CreateUserService implements CreateUser {
   constructor(
@@ -18,7 +19,10 @@ export class CreateUserService implements CreateUser {
     );
 
     if (userExists) {
-      throw new Error("The email is invalid or has already been used.");
+      throw new HttpError(
+        "The email is invalid or has already been used.",
+        400,
+      );
     }
 
     data.password = await this._hashRepository.hash(data.password);

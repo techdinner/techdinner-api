@@ -1,3 +1,5 @@
+import { DeleteUserDTO } from "@/app/dtos/users/delete-user.dto";
+
 export interface DeleteUser {
-  execute(id: string): Promise<void>;
+  execute(data: DeleteUserDTO): Promise<void>;
 }

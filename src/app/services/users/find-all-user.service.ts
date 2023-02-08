@@ -5,9 +5,9 @@ import { FindAllUserRepository } from "@/app/repositories/users/find-all-user.re
 export class FindAllUserService implements FindAllUser {
   constructor(private readonly _findAllUserRepository: FindAllUserRepository) {}
 
-  async execute(): Promise<User[] | undefined> {
-    const data = await this._findAllUserRepository.findAllUsers();
+  async execute(): Promise<User[] | null> {
+    const users = await this._findAllUserRepository.findAllUsers();
 
-    return data;
+    return users;
   }
 }
