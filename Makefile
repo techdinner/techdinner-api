@@ -10,11 +10,11 @@ else
 	- docker-compose up -d --build
 endif
 
-install-dev:
+install-prod:
 ifeq ($(wildcard $(ENVIRONMENT_FILE)),)
 	- @echo O arquivo ".env" não existe;
 else
-	- docker-compose --env-file ./.env -f docker/docker-compose.dev.yml up -d --build
+	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml up -d --build
 endif
 
 run:
@@ -26,12 +26,12 @@ else
 	- docker-compose exec techdinner-api yarn start
 endif
 
-run-dev:
+run-prod:
 ifeq ($(wildcard $(ENVIRONMENT_FILE)),)
 	- @echo O arquivo ".env" não existe;
 else
-	- docker-compose --env-file ./.env -f docker/docker-compose.dev.yml up -d --build
-	- docker-compose --env-file ./.env -f docker/docker-compose.dev.yml exec techdinner-api yarn dev
+	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml up -d --build
+	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml exec techdinner-api yarn start
 endif
 
 clean:
@@ -39,45 +39,45 @@ clean:
 	- docker-compose down
 	- docker rmi techdinner-node
 
-clean-dev:
-	- docker-compose --env-file ./.env -f docker/docker-compose.dev.yml down
+clean-prod:
+	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml down
 	- docker rmi techdinner-node
 
 start:
 	- docker-compose start
 
-start-dev:
-	- docker-compose --env-file ./.env -f docker/docker-compose.dev.yml start
+start-prod:
+	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml start
 
 stop:
 	- docker-compose stop
 
-stop-dev:
-	- docker-compose --env-file ./.env -f docker/docker-compose.dev.yml stop
+stop-prod:
+	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml stop
 
 restart:
 	- docker-compose restart
 
-restart-dev:
-	- docker-compose --env-file ./.env -f docker/docker-compose.dev.yml restart
+restart-prod:
+	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml restart
 
 status:
 	- docker-compose ps
 
-status-dev:
-	- docker-compose --env-file ./.env -f docker/docker-compose.dev.yml status
+status-prod:
+	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml status
 
 bash:
 	- docker-compose exec -it techdinner-api bash
 
-bash-dev:
-	- docker-compose --env-file ./.env -f docker/docker-compose.dev.yml exec -it techdinner-api bash
+bash-prod:
+	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml exec -it techdinner-api bash
 
 migrate:
 	- docker-compose exec techdinner-api yarn migration:run
 
-migrate-dev:
-	- docker-compose --env-file ./.env -f docker/docker-compose.dev.yml exec techdinner-api yarn migration:run
+migrate-prod:
+	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml exec techdinner-api yarn migration:run
 
 deploy:
 ifeq ($(wildcard $(ENVIRONMENT_FILE)),)
