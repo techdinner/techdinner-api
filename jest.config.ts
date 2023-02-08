@@ -1,4 +1,8 @@
 export default {
+  collectCoverageFrom: ["<rootDir>/src/**/*.ts"],
+  transform: {
+    ".+\\.ts$": "ts-jest",
+  },
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: "coverage",
@@ -8,5 +12,6 @@ export default {
   roots: ["<rootDir>/tests"],
   moduleNameMapper: {
     "@/(.*)": "<rootDir>/src/$1",
+    "@tests/(.*)": "<rootDir>/tests/$1",
   },
 };
