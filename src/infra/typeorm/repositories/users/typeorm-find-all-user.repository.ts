@@ -6,7 +6,7 @@ import { User } from "@/infra/typeorm/entities/user";
 export class TypeORMFindAllUserRepository implements FindAllUserRepository {
   private readonly _db: Repository<User> = AppDataSource.getRepository(User);
 
-  async findAllUsers(): Promise<User[] | undefined> {
+  async findAllUsers(): Promise<User[] | null> {
     const users = await this._db.find({
       select: {
         id: true,
