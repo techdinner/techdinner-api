@@ -12,7 +12,7 @@
 		"start": "node ./dist/server.js",
 		"dev": "tsnd --transpile-only --respawn --ignore-watch node_modules -r tsconfig-paths/register ./src/server.ts",
 		"clean": "rimraf dist",
-		"build": "yarn clean && tsc && tscpaths -p tsconfig.json -s ./src -o ./dist",
+		"build": "yarn clean && tsc -p tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./src -o ./dist",
 		"test": "jest",
 		"lint": "tsc --noEmit && eslint . --ext .ts --max-warnings=0",
 		"lint:fix": "yarn lint --fix",

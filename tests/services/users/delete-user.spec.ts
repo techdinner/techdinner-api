@@ -71,7 +71,7 @@ describe("Delete user service", () => {
   test("Should return error when user does not exists", async () => {
     const { sut } = makeSut();
 
-    const response = await sut.execute("2");
+    const response = await sut.execute({ id: "2" });
 
     expect(response).toThrowError("User not exists");
   });
@@ -81,7 +81,7 @@ describe("Delete user service", () => {
 
     const deleteUserRepositorySpy = jest.spyOn(deleteUserRepository, "delete");
 
-    await sut.execute("1");
+    await sut.execute({ id: "1" });
 
     expect(deleteUserRepositorySpy).toHaveBeenCalled();
   });
