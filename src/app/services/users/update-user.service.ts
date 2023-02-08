@@ -2,6 +2,7 @@ import { UpdateUserRepository } from "@/app/repositories/users/update-user.repos
 import { FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
 import { UpdateUserDTO } from "@/app/dtos/users/update-user.dto";
 import { UpdateUser } from "@/domain/usecases/users/update-user";
+import { HttpError } from "@/app/helpers/http-error";
 
 export class UpdateUserService implements UpdateUser {
   constructor(
@@ -13,7 +14,7 @@ export class UpdateUserService implements UpdateUser {
     const userExists = await this._findUserByIdRepository.findById(data.id);
 
     if (!userExists) {
-      throw new Error("User is invalid or does not exist!");
+      throw new HttpError("User is invalid or does not exist!", 400);
     }
 
     userExists.name = data.name;
