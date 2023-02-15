@@ -9,7 +9,7 @@ export class User extends BaseEntity {
   public companyId: string;
   public role: string;
   public photo?: string;
-  public verified: boolean;
+  public verified?: boolean;
   public createdAt?: Date;
   public updatedAt?: Date;
 

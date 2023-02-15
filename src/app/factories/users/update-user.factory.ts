@@ -1,7 +1,7 @@
 import { TypeORMUpdateUserRepository } from "@/infra/typeorm/repositories/users/typeorm-update-user.repository";
 import { TypeORMFindUserByIdRepository } from "@/infra/typeorm/repositories/users/typeorm-find-user-by-id.repository";
 import { UpdateUserService } from "@/app/services/users/update-user.service";
-import { UpdateUserController } from "@/app/controllers/users/update-user.controller";
+import { UpdateUserController } from "@/infra/http/controllers/users/update-user.controller";
 import { ControllerServerErrorDecorator } from "@/app/decorators/controller-server-error.decorator";
 
 export const makeUpdateUserController = (): ControllerServerErrorDecorator => {

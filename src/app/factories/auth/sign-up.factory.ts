@@ -4,7 +4,7 @@ import { TypeORMSaveUserOTPRepository } from "@/infra/typeorm/repositories/auth/
 import { BcryptHashAdapter } from "@/infra/bcrypt/bcrypt-hash.adapter";
 import { MailProviderAdapter } from "@/infra/nodemailer/mail-provider.adapter";
 import { SignUpService } from "@/app/services/auth/sign-up.service";
-import { SignUpController } from "@/app/controllers/auth/sign-up.controller";
+import { SignUpController } from "@/infra/http/controllers/auth/sign-up.controller";
 import { ControllerServerErrorDecorator } from "@/app/decorators/controller-server-error.decorator";
 
 export const makeSignController = (): ControllerServerErrorDecorator => {

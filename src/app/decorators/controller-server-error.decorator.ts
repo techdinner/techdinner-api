@@ -9,7 +9,7 @@ export class ControllerServerErrorDecorator implements Controller {
     try {
       return await this._controller.handle(request);
     } catch (error: any) {
-      return HttpResponseBuilder.statusCode(error.status as number)
+      return HttpResponseBuilder.statusCode((error.status as number) || 500)
         .body({ message: error.message || "Internal server error." })
         .build();
     }
