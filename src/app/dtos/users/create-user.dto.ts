@@ -7,5 +7,5 @@ export interface CreateUserDTO {
   companyId: string;
   role: string;
   photo?: string;
-  verified: boolean;
+  verified?: boolean;
 }
