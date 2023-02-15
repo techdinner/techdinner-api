@@ -1,6 +1,6 @@
 import { TypeORMFindAllUserRepository } from "@/infra/typeorm/repositories/users/typeorm-find-all-user.repository";
 import { FindAllUserService } from "@/app/services/users/find-all-user.service";
-import { FindAllUserController } from "@/app/controllers/users/find-all-user.controller";
+import { FindAllUserController } from "@/infra/http/controllers/users/find-all-user.controller";
 import { ControllerServerErrorDecorator } from "@/app/decorators/controller-server-error.decorator";
 
 export const makeFindAllUserController = (): ControllerServerErrorDecorator => {

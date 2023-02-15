@@ -4,7 +4,7 @@ import { BcryptCompareAdapter } from "@/infra/bcrypt/bcrypt-compare.adapter";
 import { TypeORMFindUserByIdRepository } from "@/infra/typeorm/repositories/users/typeorm-find-user-by-id.repository";
 import { TypeORMUpdateUserRepository } from "@/infra/typeorm/repositories/users/typeorm-update-user.repository";
 import { VerifyCodeService } from "@/app/services/auth/verify-code.service";
-import { VerifyCodeController } from "@/app/controllers/auth/verify-code.controller";
+import { VerifyCodeController } from "@/infra/http/controllers/auth/verify-code.controller";
 import { ControllerServerErrorDecorator } from "@/app/decorators/controller-server-error.decorator";
 
 export const makeVerifyCodeController = (): ControllerServerErrorDecorator => {

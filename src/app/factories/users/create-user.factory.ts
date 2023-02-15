@@ -2,7 +2,7 @@ import { TypeORMCreateUserRepository } from "@/infra/typeorm/repositories/users/
 import { TypeORMFindUserByEmailRepository } from "@/infra/typeorm/repositories/users/typeorm-find-user-by-email.repository";
 import { BcryptHashAdapter } from "@/infra/bcrypt/bcrypt-hash.adapter";
 import { CreateUserService } from "@/app/services/users/create-user.service";
-import { CreateUserController } from "@/app/controllers/users/create-user.controller";
+import { CreateUserController } from "@/infra/http/controllers/users/create-user.controller";
 import { ControllerServerErrorDecorator } from "@/app/decorators/controller-server-error.decorator";
 
 export const makeCreateUserController = (): ControllerServerErrorDecorator => {
