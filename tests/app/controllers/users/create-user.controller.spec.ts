@@ -1,15 +1,7 @@
+import { randomUUID } from "node:crypto";
 import { CreateUserController } from "@/app/controllers/users/create-user.controller";
-import { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
-import { CreateUser } from "@/domain/usecases/users/create-user";
-
-class CreateUserServiceMock implements CreateUser {
-  public data: CreateUserDTO;
-
-  async execute(data: CreateUserDTO): Promise<void> {
-    await new Promise(() => console.log("execute"));
-    this.data = data;
-  }
-}
+import { CreateUserServiceMock } from "@tests/mocks/services/create-user.mock";
+import { User } from "@/domain/entities/user";
 
 interface SutTypes {
   sut: CreateUserController;
@@ -33,9 +25,8 @@ describe("Create user controller", () => {
       password: "88882788a",
       cpf: "084.277.445-95",
       phone: "71983868607",
-      companyId: "1",
+      companyId: randomUUID(),
       role: "ADMIN",
-      verified: true,
     });
 
     expect(response.statusCode).toBe(201);
@@ -46,25 +37,19 @@ describe("Create user controller", () => {
 
     const userServiceSpy = jest.spyOn(createUserService, "execute");
 
-    await sut.handle({
+    const user: User = {
       name: "Matheus",
       email: "teste@gmail.com",
       password: "88882788a",
       cpf: "084.277.445-95",
       phone: "71983868607",
-      companyId: "1",
+      companyId: randomUUID(),
       role: "ADMIN",
-      verified: true,
-    });
+    };
+
+    await sut.handle(user);
 
     expect(userServiceSpy).toHaveBeenCalled();
-
-    expect(userServiceSpy).toHaveBeenCalledWith({
-      name: "Matheus",
-      email: "teste@gmail.com",
-      cpf: "084.277.445-95",
-      phone: 71983868607,
-      company_id: 1,
-    });
+    expect(userServiceSpy).toHaveBeenCalledWith(user);
   });
 });
