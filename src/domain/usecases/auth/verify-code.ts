@@ -1,5 +1,8 @@
-import { VerifyCodeDTO } from "@/app/dtos/auth/verify-code.dto";
+import {
+  VerifyCodeDTO,
+  VerifyCodeResponse,
+} from "@/app/dtos/auth/verify-code.dto";
 
 export interface VerifyCode {
-  execute(data: VerifyCodeDTO): Promise<void>;
+  execute(data: VerifyCodeDTO): Promise<VerifyCodeResponse>;
 }

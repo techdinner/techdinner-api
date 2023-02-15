@@ -3,3 +3,8 @@ export interface VerifyCodeDTO {
   otp: string;
   type: string;
 }
+
+export type VerifyCodeResponse =
+  | { message: string }
+  | { token: string }
+  | undefined;
