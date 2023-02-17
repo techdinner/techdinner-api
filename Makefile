@@ -6,7 +6,6 @@ install:
 ifeq ($(wildcard $(ENVIRONMENT_FILE)),)
 	- @echo O arquivo ".env" não existe;
 else
-	- yarn build
 	- docker-compose up -d --build
 endif
 
@@ -14,6 +13,7 @@ install-prod:
 ifeq ($(wildcard $(ENVIRONMENT_FILE)),)
 	- @echo O arquivo ".env" não existe;
 else
+	- yarn build
 	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml up -d --build
 endif
 
@@ -21,7 +21,6 @@ run:
 ifeq ($(wildcard $(ENVIRONMENT_FILE)),)
 	- @echo O arquivo ".env" não existe;
 else
-	- yarn build
 	- docker-compose up -d --build
 	- docker-compose exec techdinner-api yarn start
 endif
@@ -30,16 +29,17 @@ run-prod:
 ifeq ($(wildcard $(ENVIRONMENT_FILE)),)
 	- @echo O arquivo ".env" não existe;
 else
+	- yarn build
 	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml up -d --build
 	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml exec techdinner-api yarn start
 endif
 
 clean:
-	- rm -r ./dist
 	- docker-compose down
 	- docker rmi techdinner-node
 
 clean-prod:
+	- rm -r ./dist
 	- docker-compose --env-file ./.env -f .docker/docker-compose.prod.yml down
 	- docker rmi techdinner-node
 
