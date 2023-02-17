@@ -7,8 +7,20 @@ import { makeFindUserByIdController } from "@/app/factories/users/find-user-by-i
 import { makeUpdateUserController } from "@/app/factories/users/update-user.factory";
 import { makeDeleteUserController } from "@/app/factories/users/delete-user.factory";
 
-RouteBuilder.route(GET, "/users", makeFindAllUserController()).build();
-RouteBuilder.route(POST, "/users", makeCreateUserController()).build();
-RouteBuilder.route(GET, "/users/:id", makeFindUserByIdController()).build();
-RouteBuilder.route(PATCH, "/users/:id", makeUpdateUserController()).build();
-RouteBuilder.route(DELETE, "/users/:id", makeDeleteUserController()).build();
+import { Authorization } from "@/infra/http/middlewares/auth.middleware";
+
+RouteBuilder.route(GET, "/users", makeFindAllUserController(), [
+  new Authorization(),
+]).build();
+RouteBuilder.route(POST, "/users", makeCreateUserController(), [
+  new Authorization(),
+]).build();
+RouteBuilder.route(GET, "/users/:id", makeFindUserByIdController(), [
+  new Authorization(),
+]).build();
+RouteBuilder.route(PATCH, "/users/:id", makeUpdateUserController(), [
+  new Authorization(),
+]).build();
+RouteBuilder.route(DELETE, "/users/:id", makeDeleteUserController(), [
+  new Authorization(),
+]).build();

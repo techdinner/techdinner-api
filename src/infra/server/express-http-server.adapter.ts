@@ -1,10 +1,19 @@
-import express, { Request, Response, json } from "express";
+import express, { Request, Response, json, NextFunction } from "express";
 import cors from "cors";
 import { Controller } from "@/app/interfaces/controller.interface";
 import { HttpServer } from "@/app/interfaces/http-server.interface";
 import { HttpServerRoute } from "@/app/interfaces/http-server-route.interface";
+import { HttpResponse } from "@/app/interfaces/http-response.interface";
 
 import "@/database/data-source";
+
+type MiddlewaresParam = Array<
+  (
+    request: any,
+    response?: any,
+    next?: NextFunction | undefined,
+  ) => HttpResponse | undefined
+>;
 
 export class ExpressHttpServerAdapter implements HttpServer {
   private readonly _app = express();
@@ -22,9 +31,32 @@ export class ExpressHttpServerAdapter implements HttpServer {
         ...(req.params || {}),
       };
 
-      const httpResponse = await controller.handle(request);
+      const httpResponse: HttpResponse = await controller.handle(request);
 
       res.status(httpResponse.statusCode).json(httpResponse.body);
+    };
+  }
+
+  private _adapterMiddleware(...middleware: MiddlewaresParam) {
+    return async (req: Request, res: Response, next: NextFunction) => {
+      if (middleware.length) {
+        const request = {
+          ...(req.body || {}),
+          ...(req.params || {}),
+          ...(req.headers || {}),
+        };
+
+        const httpResponse: HttpResponse | undefined = middleware[0](
+          request,
+          res,
+          next,
+        );
+
+        !!httpResponse &&
+          res.status(httpResponse.statusCode).json(httpResponse.body);
+      } else {
+        next();
+      }
     };
   }
 
@@ -35,8 +67,11 @@ export class ExpressHttpServerAdapter implements HttpServer {
   }
 
   addRoute(route: HttpServerRoute): void {
+    const middlewaresHandles = route.middlewares.map(({ handle }) => handle);
+
     this._app[route.httpMethod](
       `${this._prefix}${route.endpoint}`,
+      this._adapterMiddleware(...middlewaresHandles),
       this._adapterController(route.controller),
     );
   }

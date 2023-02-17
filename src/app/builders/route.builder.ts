@@ -11,7 +11,7 @@ export class RouteBuilder {
     httpMethod: Methods,
     endpoint: string,
     controller: Controller,
-    middlewares?: Middleware[],
+    middlewares: Middleware[] = [],
   ) {
     this._httpServerRoute = {
       httpMethod,

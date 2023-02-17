@@ -6,5 +6,5 @@ export interface HttpServerRoute {
   endpoint: string;
   controller: Controller;
   httpMethod: Methods;
-  middlewares?: Middleware[];
+  middlewares: Middleware[];
 }
