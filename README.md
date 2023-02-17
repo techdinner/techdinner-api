@@ -37,8 +37,8 @@ Install dependencies
 yarn
 ```
 
-### [Installing in DEV environment](./docs/install/development)
-### [Installing in PROD environment](./docs/install/production)
+### [Installing in DEV environment](docs/install/development.md)
+### [Installing in PROD environment](docs/install/production.md)
 
 ## Running the app
 ### With make commands to use docker
@@ -68,4 +68,4 @@ $ yarn test
 ```
 
 ## Other docs
-[features](./docs/features)
+[features](docs/features.md)
