@@ -8,10 +8,8 @@ export class VerifyCodeController implements Controller {
   constructor(private readonly _verifyCode: VerifyCode) {}
 
   async handle(request: VerifyCodeDTO): Promise<HttpResponse> {
-    await this._verifyCode.execute({ ...request });
+    const response = await this._verifyCode.execute({ ...request });
 
-    return HttpResponseBuilder.statusCode(201)
-      .body({ message: "Registered account!" })
-      .build();
+    return HttpResponseBuilder.statusCode(200).body(response).build();
   }
 }
