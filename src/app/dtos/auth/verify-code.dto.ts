@@ -4,7 +4,4 @@ export interface VerifyCodeDTO {
   type: string;
 }
 
-export type VerifyCodeResponse =
-  | { message: string }
-  | { token: string }
-  | undefined;
+export type VerifyCodeResponse = { message: string } | { token: string };
