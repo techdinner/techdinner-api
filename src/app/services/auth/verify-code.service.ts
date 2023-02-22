@@ -12,6 +12,11 @@ import { UpdateUserRepository } from "@/app/repositories/users/update-user.repos
 import { HttpError } from "@/app/helpers/http-error";
 import { auth } from "@/config/auth";
 
+interface OtpTypes {
+  SIGN_UP: () => Promise<{ message: string }>;
+  LOGIN: () => { token: string };
+}
+
 export class VerifyCodeService implements VerifyCode {
   constructor(
     private readonly _findUserOTPRepository: FindUserOTPRepository,
@@ -55,18 +60,14 @@ export class VerifyCodeService implements VerifyCode {
       throw new HttpError("User is invalid or does not exist!", 400);
     }
 
-    let token;
-    let response;
-
-    switch (data.type) {
-      case "SIGN_UP":
+    const otpTypes: OtpTypes = {
+      SIGN_UP: async () => {
         user.verified = true;
         await this._updateUserRepository.update(data.userId, user);
-        response = { message: "Registered account!" };
-        break;
-
-      case "LOGIN":
-        token = this._signTokenRepository.sign(
+        return { message: "Registered account!" };
+      },
+      LOGIN: () => {
+        const token = this._signTokenRepository.sign(
           { id: data.userId, email: user.email },
           auth.secret,
           {
@@ -74,12 +75,12 @@ export class VerifyCodeService implements VerifyCode {
           },
         );
 
-        response = { token };
-        break;
-    }
+        return { token };
+      },
+    };
 
     await this._deleteUserOTPRepository.deleteUserOtp(data.userId, data.type);
 
-    return response;
+    return await otpTypes[data.type as keyof OtpTypes]();
   }
 }
