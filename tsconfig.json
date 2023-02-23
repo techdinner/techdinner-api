@@ -15,6 +15,7 @@
 		"strictPropertyInitialization": false,
 		"skipLibCheck": true,
 		"rootDirs": ["src", "tests"],
+    "typeRoots": ["./node_modules/@types", "@types"],
 		"outDir": "dist",
 		"baseUrl": ".",
     "paths": {
