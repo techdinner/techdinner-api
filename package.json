@@ -4,6 +4,7 @@
 	"description": "TechDinner API.",
 	"main": "./dist/server.js",
 	"private": true,
+  "license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/techdinner/techdinner-api/"
