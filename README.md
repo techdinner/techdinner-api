@@ -12,7 +12,7 @@
 
 <div align="center">
     <a>
-        <img src="https://img.shields.io/badge/status-active-success.svg">
+        <img src="https://img.shields.io/badge/node-v16.17.0-brightgreen.svg">
     </a>
     <a href="https://github.com/techdinner/techdinner-api/issues">
         <img src="https://img.shields.io/github/issues/techdinner/techdinner-api">
@@ -24,7 +24,7 @@
 
 ### Requirements
 - Node with Yarn (version in [nvmrc](.nvmrc));
-- Docker and Docker Compose
+- Docker and Docker Compose.
 
 ## Installing
 Clone this repository
