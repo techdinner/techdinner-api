@@ -11,10 +11,10 @@
 </p>
 
 <div align="center">
-  <a>
+  <a href="./LICENSE">
     <img src="https://img.shields.io/github/package-json/license/techdinner/techdinner-api">
   </a>
-  <a>
+  <a href="./.nvmrc">
     <img src="https://img.shields.io/badge/node-v16.17.0-brightgreen.svg">
   </a>
   <a href="https://github.com/techdinner/techdinner-api/issues">
