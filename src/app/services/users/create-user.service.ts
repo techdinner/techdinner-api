@@ -1,9 +1,9 @@
 import { User } from "@/domain/entities/user";
-import { CreateUser } from "@/domain/usecases/users/create-user";
-import { CreateUserRepository } from "@/app/repositories/users/create-user.repository";
-import { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
-import { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
-import { HashRepository } from "@/app/repositories/crypt/hash.repository";
+import type { CreateUser } from "@/domain/usecases/users/create-user";
+import type { CreateUserRepository } from "@/app/repositories/users/create-user.repository";
+import type { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
+import type { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
+import type { HashRepository } from "@/app/repositories/crypt/hash.repository";
 import { HttpError } from "@/app/helpers/http-error";
 
 export class CreateUserService implements CreateUser {

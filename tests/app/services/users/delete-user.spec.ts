@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
 import { DeleteUserService } from "@/app/services/users/delete-user.service";
-import { DeleteUserRepository } from "@/app/repositories/users/delete-user.repository";
-import { FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
-import { User } from "@/domain/entities/user";
+import type { DeleteUserRepository } from "@/app/repositories/users/delete-user.repository";
+import type { FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
+import type { User } from "@/domain/entities/user";
 
 class DeleteUserRepositoryMock implements DeleteUserRepository {
   public user: User[] = [
@@ -20,7 +20,9 @@ class DeleteUserRepositoryMock implements DeleteUserRepository {
   ];
 
   async delete(id: string): Promise<void> {
-    await new Promise(() => console.log("delete"));
+    await new Promise(() => {
+      console.log("delete");
+    });
     // const user = this.user.find(user => user.id === id);
   }
 }
@@ -41,7 +43,9 @@ class FindUserByIdRepositoryMock implements FindUserByIdRepository {
   ];
 
   async findById(id: string): Promise<User | null> {
-    await new Promise(() => console.log("findById"));
+    await new Promise(() => {
+      console.log("findById");
+    });
     const user = this.user.find(user => user.id === id);
 
     if (user) {

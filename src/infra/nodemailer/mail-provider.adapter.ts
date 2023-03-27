@@ -1,5 +1,6 @@
-import { createTransport, Transporter } from "nodemailer";
-import { MailProvider, Message } from "@/app/providers/mail.provider";
+import { createTransport } from "nodemailer";
+import type { Transporter } from "nodemailer";
+import type { MailProvider, Message } from "@/app/providers/mail.provider";
 import { environments } from "@/config/dotenv";
 
 const {

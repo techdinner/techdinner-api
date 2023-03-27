@@ -1,9 +1,10 @@
-import express, { Request, Response, json, NextFunction } from "express";
+import express, { json } from "express";
+import type { Request, Response, NextFunction } from "express";
 import cors from "cors";
-import { Controller } from "@/app/interfaces/controller.interface";
-import { HttpServer } from "@/app/interfaces/http-server.interface";
-import { HttpServerRoute } from "@/app/interfaces/http-server-route.interface";
-import { HttpResponse } from "@/app/interfaces/http-response.interface";
+import type { Controller } from "@/app/interfaces/controller.interface";
+import type { HttpServer } from "@/app/interfaces/http-server.interface";
+import type { HttpServerRoute } from "@/app/interfaces/http-server-route.interface";
+import type { HttpResponse } from "@/app/interfaces/http-response.interface";
 
 import "@/database/data-source";
 
@@ -61,9 +62,9 @@ export class ExpressHttpServerAdapter implements HttpServer {
   }
 
   startServer(port: number): void {
-    this._app.listen(port, () =>
-      console.log(`✅ Server is running on port ${port}.`),
-    );
+    this._app.listen(port, () => {
+      console.log(`✅ Server is running on port ${port}.`);
+    });
   }
 
   addRoute(route: HttpServerRoute): void {

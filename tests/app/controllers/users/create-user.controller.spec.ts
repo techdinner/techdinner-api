@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { CreateUserController } from "@/infra/http/controllers/users/create-user.controller";
 import { CreateUserServiceMock } from "@tests/mocks/services/create-user.mock";
-import { User } from "@/domain/entities/user";
+import type { User } from "@/domain/entities/user";
 
 interface SutTypes {
   sut: CreateUserController;

@@ -1,6 +1,6 @@
-import { Repository } from "typeorm";
+import type { Repository } from "typeorm";
 import { AppDataSource } from "@/database/data-source";
-import { CreateUserRepository } from "@/app/repositories/users/create-user.repository";
+import type { CreateUserRepository } from "@/app/repositories/users/create-user.repository";
 import { User } from "@/infra/typeorm/entities/user";
 
 export class TypeORMCreateUserRepository implements CreateUserRepository {

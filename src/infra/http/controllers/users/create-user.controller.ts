@@ -1,8 +1,8 @@
-import { Controller } from "@/app/interfaces/controller.interface";
+import type { Controller } from "@/app/interfaces/controller.interface";
 import { HttpResponseBuilder } from "@/app/builders/http-response.builder";
-import { CreateUser } from "@/domain/usecases/users/create-user";
-import { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
-import { HttpResponse } from "@/app/interfaces/http-response.interface";
+import type { CreateUser } from "@/domain/usecases/users/create-user";
+import type { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
+import type { HttpResponse } from "@/app/interfaces/http-response.interface";
 import { validate } from "../../requests/users/create-user.request";
 
 export class CreateUserController implements Controller {

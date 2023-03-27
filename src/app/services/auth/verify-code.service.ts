@@ -1,14 +1,14 @@
-import { VerifyCode } from "@/domain/usecases/auth/verify-code";
-import {
+import type { VerifyCode } from "@/domain/usecases/auth/verify-code";
+import type {
   VerifyCodeDTO,
   VerifyCodeResponse,
 } from "@/app/dtos/auth/verify-code.dto";
-import { FindUserOTPRepository } from "@/app/repositories/auth/find-user-otp.repository";
-import { DeleteUserOTPRepository } from "@/app/repositories/auth/delete-user-otp.repository";
-import { CompareRepository } from "@/app/repositories/crypt/compare.repository";
-import { SignTokenRepository } from "@/app/repositories/jwt/sign-token.repository";
-import { FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
-import { UpdateUserRepository } from "@/app/repositories/users/update-user.repository";
+import type { FindUserOTPRepository } from "@/app/repositories/auth/find-user-otp.repository";
+import type { DeleteUserOTPRepository } from "@/app/repositories/auth/delete-user-otp.repository";
+import type { CompareRepository } from "@/app/repositories/crypt/compare.repository";
+import type { SignTokenRepository } from "@/app/repositories/jwt/sign-token.repository";
+import type { FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
+import type { UpdateUserRepository } from "@/app/repositories/users/update-user.repository";
 import { HttpError } from "@/app/helpers/http-error";
 import { auth } from "@/config/auth";
 

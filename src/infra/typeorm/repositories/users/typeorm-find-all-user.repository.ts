@@ -1,6 +1,6 @@
-import { Repository } from "typeorm";
+import type { Repository } from "typeorm";
 import { AppDataSource } from "@/database/data-source";
-import { FindAllUserRepository } from "@/app/repositories/users/find-all-user.repository";
+import type { FindAllUserRepository } from "@/app/repositories/users/find-all-user.repository";
 import { User } from "@/infra/typeorm/entities/user";
 
 export class TypeORMFindAllUserRepository implements FindAllUserRepository {

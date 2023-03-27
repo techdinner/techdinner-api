@@ -1,7 +1,7 @@
-import { DeleteUser } from "@/domain/usecases/users/delete-user";
-import { DeleteUserRepository } from "@/app/repositories/users/delete-user.repository";
-import { FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
-import { DeleteUserDTO } from "@/app/dtos/users/delete-user.dto";
+import type { DeleteUser } from "@/domain/usecases/users/delete-user";
+import type { DeleteUserRepository } from "@/app/repositories/users/delete-user.repository";
+import type { FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
+import type { DeleteUserDTO } from "@/app/dtos/users/delete-user.dto";
 import { HttpError } from "@/app/helpers/http-error";
 
 export class DeleteUserService implements DeleteUser {
@@ -22,6 +22,6 @@ export class DeleteUserService implements DeleteUser {
       );
     }
 
-    return await this._deleteUserRepository.delete(id);
+    await this._deleteUserRepository.delete(id);
   }
 }

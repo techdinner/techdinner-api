@@ -1,5 +1,5 @@
 import { compare } from "bcryptjs";
-import { CompareRepository } from "@/app/repositories/crypt/compare.repository";
+import type { CompareRepository } from "@/app/repositories/crypt/compare.repository";
 
 export class BcryptCompareAdapter implements CompareRepository {
   async compare(string: string, hashedString: string): Promise<boolean> {

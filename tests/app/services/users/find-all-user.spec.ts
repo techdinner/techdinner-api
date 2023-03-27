@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { FindAllUserService } from "@/app/services/users/find-all-user.service";
-import { FindAllUserRepository } from "@/app/repositories/users/find-all-user.repository";
-import { User } from "@/domain/entities/user";
+import type { FindAllUserRepository } from "@/app/repositories/users/find-all-user.repository";
+import type { User } from "@/domain/entities/user";
 
 class FindAllUserRepositoryMock implements FindAllUserRepository {
   public user: User[] = [
@@ -19,7 +19,9 @@ class FindAllUserRepositoryMock implements FindAllUserRepository {
   ];
 
   async findAllUsers(): Promise<User[] | null> {
-    await new Promise(() => console.log("findAllUsers"));
+    await new Promise(() => {
+      console.log("findAllUsers");
+    });
     return this.user;
   }
 }

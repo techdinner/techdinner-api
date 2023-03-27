@@ -1,5 +1,5 @@
-import { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
-import { User } from "@/domain/entities/user";
+import type { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
+import type { User } from "@/domain/entities/user";
 
 export class FindUserByEmailRepositoryMock
   implements FindUserByEmailRepository

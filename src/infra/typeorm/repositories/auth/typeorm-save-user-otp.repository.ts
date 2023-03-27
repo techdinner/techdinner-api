@@ -1,6 +1,6 @@
-import { Repository } from "typeorm";
+import type { Repository } from "typeorm";
 import { AppDataSource } from "@/database/data-source";
-import { SaveUserOTPRepository } from "@/app/repositories/auth/save-user-otp.repository";
+import type { SaveUserOTPRepository } from "@/app/repositories/auth/save-user-otp.repository";
 import { UserOTP } from "@/infra/typeorm/entities/user-otp";
 
 export class TypeORMSaveUserOTPRepository implements SaveUserOTPRepository {

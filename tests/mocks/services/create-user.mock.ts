@@ -1,5 +1,5 @@
-import { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
-import { CreateUser } from "@/domain/usecases/users/create-user";
+import type { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
+import type { CreateUser } from "@/domain/usecases/users/create-user";
 
 export class CreateUserServiceMock implements CreateUser {
   public data: CreateUserDTO;

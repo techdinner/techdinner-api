@@ -1,4 +1,4 @@
-import { HttpResponse } from "./http-response.interface";
+import type { HttpResponse } from "./http-response.interface";
 
 export interface NextFunction {
   (err?: any): void;

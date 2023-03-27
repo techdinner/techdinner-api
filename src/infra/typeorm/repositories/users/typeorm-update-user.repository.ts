@@ -1,6 +1,6 @@
-import { Repository } from "typeorm";
+import type { Repository } from "typeorm";
 import { AppDataSource } from "@/database/data-source";
-import { UpdateUserRepository } from "@/app/repositories/users/update-user.repository";
+import type { UpdateUserRepository } from "@/app/repositories/users/update-user.repository";
 import { User } from "@/infra/typeorm/entities/user";
 
 export class TypeORMUpdateUserRepository implements UpdateUserRepository {

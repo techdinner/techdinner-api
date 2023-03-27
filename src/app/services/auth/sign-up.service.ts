@@ -1,12 +1,12 @@
 import { User } from "@/domain/entities/user";
-import { SignUp } from "@/domain/usecases/auth/sign-up";
-import { CreateUserRepository } from "@/app/repositories/users/create-user.repository";
-import { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
-import { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
-import { HashRepository } from "@/app/repositories/crypt/hash.repository";
-import { MailProvider } from "@/app/providers/mail.provider";
+import type { SignUp } from "@/domain/usecases/auth/sign-up";
+import type { CreateUserRepository } from "@/app/repositories/users/create-user.repository";
+import type { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
+import type { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
+import type { HashRepository } from "@/app/repositories/crypt/hash.repository";
+import type { MailProvider } from "@/app/providers/mail.provider";
 import { UserOTP } from "@/domain/entities/user-otp";
-import { SaveUserOTPRepository } from "@/app/repositories/auth/save-user-otp.repository";
+import type { SaveUserOTPRepository } from "@/app/repositories/auth/save-user-otp.repository";
 import { HttpError } from "@/app/helpers/http-error";
 
 export class SignUpService implements SignUp {

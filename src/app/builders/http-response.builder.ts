@@ -1,7 +1,7 @@
-import { HttpResponse } from "@/app/interfaces/http-response.interface";
+import type { HttpResponse } from "@/app/interfaces/http-response.interface";
 
 export class HttpResponseBuilder {
-  private _httpResponse: HttpResponse;
+  private readonly _httpResponse: HttpResponse;
 
   constructor(statusCode: number) {
     this._httpResponse = {

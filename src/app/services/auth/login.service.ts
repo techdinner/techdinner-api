@@ -1,13 +1,13 @@
-import { User } from "@/domain/entities/user";
-import { Login } from "@/domain/usecases/auth/login";
-import { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
-import { CompareRepository } from "@/app/repositories/crypt/compare.repository";
-import { HashRepository } from "@/app/repositories/crypt/hash.repository";
-import { MailProvider } from "@/app/providers/mail.provider";
+import type { User } from "@/domain/entities/user";
+import type { Login } from "@/domain/usecases/auth/login";
+import type { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
+import type { CompareRepository } from "@/app/repositories/crypt/compare.repository";
+import type { HashRepository } from "@/app/repositories/crypt/hash.repository";
+import type { MailProvider } from "@/app/providers/mail.provider";
 import { UserOTP } from "@/domain/entities/user-otp";
-import { SaveUserOTPRepository } from "@/app/repositories/auth/save-user-otp.repository";
+import type { SaveUserOTPRepository } from "@/app/repositories/auth/save-user-otp.repository";
 import { HttpError } from "@/app/helpers/http-error";
-import { LoginDTO } from "@/app/dtos/auth/login.dto";
+import type { LoginDTO } from "@/app/dtos/auth/login.dto";
 
 export class LoginService implements Login {
   constructor(

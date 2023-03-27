@@ -1,5 +1,5 @@
 import { sign } from "jsonwebtoken";
-import {
+import type {
   SignTokenRepository,
   Secret,
   SignOptions,
