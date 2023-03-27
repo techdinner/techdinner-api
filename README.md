@@ -15,7 +15,7 @@
     <img src="https://img.shields.io/github/package-json/license/techdinner/techdinner-api">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/node-v16.17.0-brightgreen.svg">
+    <img src="https://img.shields.io/badge/node-v18.15.0-brightgreen.svg">
   </a>
   <a href="https://github.com/techdinner/techdinner-api/issues">
     <img src="https://img.shields.io/github/issues/techdinner/techdinner-api">
