@@ -1,19 +1,44 @@
-import { BaseEntity } from "./base-entity";
+import type { Replace } from "@/app/helpers/replace";
+import { BaseEntity } from "./core/base-entity";
+import type { UniqueEntityID } from "./core/unique-entity-id";
+
+export interface UserOTPProps {
+  id?: UniqueEntityID;
+  userId: UniqueEntityID;
+  otp: string;
+  type: string;
+  createdAt: Date;
+  expiresAt?: Date;
+}
 
 export class UserOTP extends BaseEntity {
-  public userId: string;
-  public otp: string;
-  public type: string;
-  public createdAt?: Date;
-  public expiresAt?: Date;
+  private readonly _props: UserOTPProps;
 
-  constructor(props: UserOTP) {
-    super();
-    Object.assign(this, props);
+  constructor(props: Replace<UserOTPProps, { createdAt?: Date }>) {
+    super(props.id);
+    this._props = {
+      ...props,
+      createdAt: props.createdAt ?? new Date(),
+    };
+  }
 
-    const data = new Date();
-    data.setHours(data.getHours() + 1);
+  set otp(otp: string) {
+    this._props.otp = otp;
+  }
 
-    this.expiresAt = data;
+  get otp(): string {
+    return this._props.otp;
+  }
+
+  public expires(): void {
+    const expiresDate = new Date();
+
+    expiresDate.setHours(expiresDate.getHours() + 1);
+
+    this._props.expiresAt = expiresDate;
+  }
+
+  get expiresAt(): Date | undefined {
+    return this._props.expiresAt;
   }
 }

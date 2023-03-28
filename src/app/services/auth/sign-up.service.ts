@@ -8,6 +8,12 @@ import type { MailProvider } from "@/app/providers/mail.provider";
 import { UserOTP } from "@/domain/entities/user-otp";
 import type { SaveUserOTPRepository } from "@/app/repositories/auth/save-user-otp.repository";
 import { HttpError } from "@/app/helpers/http-error";
+import { UniqueEntityID } from "@/domain/entities/core/unique-entity-id";
+import { UserEmail } from "@/domain/entities/value-objects/user-email";
+import { UserPhone } from "@/domain/entities/value-objects/user-phone";
+import { UserRole } from "@/domain/entities/value-objects/user-role";
+import { UserPassword } from "@/domain/entities/value-objects/user-password";
+import { UserCPF } from "@/domain/entities/value-objects/user-cpf";
 
 export class SignUpService implements SignUp {
   constructor(
@@ -28,10 +34,12 @@ export class SignUpService implements SignUp {
     const hashedOtp = await this._hashRepository.hash(otp);
 
     const userOtp = new UserOTP({
-      userId,
+      userId: new UniqueEntityID(userId),
       otp: hashedOtp,
       type: "SIGN_UP",
     });
+
+    userOtp.expires();
 
     await this._saveUserOTPRepository.save(userOtp);
 
@@ -45,7 +53,7 @@ export class SignUpService implements SignUp {
     });
   }
 
-  async execute(data: CreateUserDTO): Promise<string> {
+  async execute(data: CreateUserDTO): Promise<{ userId: string }> {
     const userExists = await this._findUserByEmailRepository.findByEmail(
       data.email,
     );
@@ -57,15 +65,22 @@ export class SignUpService implements SignUp {
       );
     }
 
-    data.password = await this._hashRepository.hash(data.password);
-    data.verified = false;
-
-    const user = new User(data);
+    const user = new User({
+      name: data.name,
+      email: new UserEmail(data.email),
+      password: new UserPassword(data.password, false, this._hashRepository),
+      cpf: new UserCPF(data.cpf),
+      phone: new UserPhone(data.phone),
+      companyId: new UniqueEntityID(data.companyId),
+      role: new UserRole(data.role),
+      photo: data.photo,
+      verified: false,
+    });
 
     if (await this._createUserRepository.create(user)) {
-      this._sendMailSignUp(user.id as string, data.name, data.email);
+      this._sendMailSignUp(user.id.value, data.name, data.email);
     }
 
-    return user.id as string;
+    return { userId: user.id.value };
   }
 }

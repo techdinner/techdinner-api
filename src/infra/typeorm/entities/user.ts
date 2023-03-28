@@ -36,7 +36,7 @@ export class User {
   photo?: string;
 
   @Column()
-  verified?: boolean;
+  verified: boolean;
 
   @CreateDateColumn({ name: "created_at" })
   createdAt?: Date;

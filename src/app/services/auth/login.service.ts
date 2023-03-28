@@ -8,6 +8,7 @@ import { UserOTP } from "@/domain/entities/user-otp";
 import type { SaveUserOTPRepository } from "@/app/repositories/auth/save-user-otp.repository";
 import { HttpError } from "@/app/helpers/http-error";
 import type { LoginDTO } from "@/app/dtos/auth/login.dto";
+import { UniqueEntityID } from "@/domain/entities/core/unique-entity-id";
 
 export class LoginService implements Login {
   constructor(
@@ -26,7 +27,7 @@ export class LoginService implements Login {
 
     if (
       !user ||
-      !(await this._compareRepository.compare(password, user.password))
+      !(await this._compareRepository.compare(password, user.password.value))
     ) {
       throw new HttpError("Invalid credentials!", 400);
     }
@@ -48,10 +49,12 @@ export class LoginService implements Login {
     const hashedOtp = await this._hashRepository.hash(otp);
 
     const userOtp = new UserOTP({
-      userId,
+      userId: new UniqueEntityID(userId),
       otp: hashedOtp,
       type: "LOGIN",
     });
+
+    userOtp.expires();
 
     await this._saveUserOTPRepository.save(userOtp);
 
@@ -65,11 +68,11 @@ export class LoginService implements Login {
     });
   }
 
-  async execute(data: LoginDTO): Promise<string> {
+  async execute(data: LoginDTO): Promise<{ userId: string }> {
     const user = await this._verifyCredentials(data.email, data.password);
 
-    this._sendMailLogin(user.id as string, user.name, data.email);
+    this._sendMailLogin(user.id.value, user.name, data.email);
 
-    return user.id as string;
+    return { userId: user.id.value };
   }
 }

@@ -3,6 +3,8 @@ import type { FindUserByIdRepository } from "@/app/repositories/users/find-user-
 import type { UpdateUserDTO } from "@/app/dtos/users/update-user.dto";
 import type { UpdateUser } from "@/domain/usecases/users/update-user";
 import { HttpError } from "@/app/helpers/http-error";
+import { UserCPF } from "@/domain/entities/value-objects/user-cpf";
+import { UserPhone } from "@/domain/entities/value-objects/user-phone";
 
 export class UpdateUserService implements UpdateUser {
   constructor(
@@ -18,9 +20,11 @@ export class UpdateUserService implements UpdateUser {
     }
 
     userExists.name = data.name;
-    userExists.cpf = data.cpf;
-    userExists.phone = data.phone;
+    userExists.cpf = new UserCPF(data.cpf);
+    userExists.phone = new UserPhone(data.phone);
     userExists.photo = data.photo;
+
+    userExists.update();
 
     await this._updateUserRepository.update(data.id, userExists);
   }
