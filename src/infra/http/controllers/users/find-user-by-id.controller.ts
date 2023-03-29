@@ -12,7 +12,10 @@ export class FindUserByIdController implements Controller {
     const response = await this._findUserById.execute({ ...request });
 
     return HttpResponseBuilder.statusCode(200)
-      .body(UsersViewModel.toHTTP(response))
+      .body({
+        message: "Data received success!",
+        data: UsersViewModel.toHTTP(response),
+      })
       .build();
   }
 }

@@ -14,6 +14,9 @@ import { UserPhone } from "@/domain/entities/value-objects/user-phone";
 import { UserRole } from "@/domain/entities/value-objects/user-role";
 import { UserPassword } from "@/domain/entities/value-objects/user-password";
 import { UserCPF } from "@/domain/entities/value-objects/user-cpf";
+import { UserOTPType } from "@/domain/entities/value-objects/user-otp-type";
+import { OTPTypes } from "@/app/enums/otp-types.enum";
+import { UserOTPNumber } from "@/domain/entities/value-objects/user-otp";
 
 export class SignUpService implements SignUp {
   constructor(
@@ -31,12 +34,10 @@ export class SignUpService implements SignUp {
   ): Promise<void> {
     const otp = `${Math.floor(1000 + Math.random() * 9000)}`;
 
-    const hashedOtp = await this._hashRepository.hash(otp);
-
     const userOtp = new UserOTP({
       userId: new UniqueEntityID(userId),
-      otp: hashedOtp,
-      type: "SIGN_UP",
+      otp: new UserOTPNumber(otp, false, this._hashRepository),
+      type: new UserOTPType(OTPTypes.SIGN_UP),
     });
 
     userOtp.expires();
@@ -81,6 +82,6 @@ export class SignUpService implements SignUp {
       this._sendMailSignUp(user.id.value, data.name, data.email);
     }
 
-    return { userId: user.id.value };
+    return { userId: user?.id.value };
   }
 }

@@ -14,7 +14,7 @@ export class LoginController implements Controller {
     const response = await this._login.execute({ ...request });
 
     return HttpResponseBuilder.statusCode(200)
-      .body({ message: "Code sended!", userId: response })
+      .body({ message: "Code sended!", data: response })
       .build();
   }
 }

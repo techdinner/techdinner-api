@@ -11,7 +11,10 @@ export class FindAllUserController implements Controller {
     const response = await this._findAllUser.execute();
 
     return HttpResponseBuilder.statusCode(200)
-      .body(response?.map(UsersViewModel.toHTTP))
+      .body({
+        message: "Data received success!",
+        data: response?.map(UsersViewModel.toHTTP),
+      })
       .build();
   }
 }

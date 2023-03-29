@@ -7,6 +7,10 @@ export abstract class BaseEntity {
     this._id = id ?? new UniqueEntityID();
   }
 
+  get id(): UniqueEntityID {
+    return this._id;
+  }
+
   public equals(object: BaseEntity): boolean {
     if (!(object instanceof BaseEntity)) {
       return false;

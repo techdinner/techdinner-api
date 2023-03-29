@@ -9,6 +9,9 @@ import type { SaveUserOTPRepository } from "@/app/repositories/auth/save-user-ot
 import { HttpError } from "@/app/helpers/http-error";
 import type { LoginDTO } from "@/app/dtos/auth/login.dto";
 import { UniqueEntityID } from "@/domain/entities/core/unique-entity-id";
+import { UserOTPType } from "@/domain/entities/value-objects/user-otp-type";
+import { OTPTypes } from "@/app/enums/otp-types.enum";
+import { UserOTPNumber } from "@/domain/entities/value-objects/user-otp";
 
 export class LoginService implements Login {
   constructor(
@@ -46,12 +49,10 @@ export class LoginService implements Login {
   ): Promise<void> {
     const otp = `${Math.floor(1000 + Math.random() * 9000)}`;
 
-    const hashedOtp = await this._hashRepository.hash(otp);
-
     const userOtp = new UserOTP({
       userId: new UniqueEntityID(userId),
-      otp: hashedOtp,
-      type: "LOGIN",
+      otp: new UserOTPNumber(otp, false, this._hashRepository),
+      type: new UserOTPType(OTPTypes.LOGIN),
     });
 
     userOtp.expires();

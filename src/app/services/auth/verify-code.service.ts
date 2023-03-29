@@ -13,8 +13,8 @@ import { HttpError } from "@/app/helpers/http-error";
 import { auth } from "@/config/auth";
 
 interface OtpTypes {
-  SIGN_UP: () => Promise<{ message: string }>;
-  LOGIN: () => { token: string };
+  SIGN_UP: () => Promise<{ message: string; data: null }>;
+  LOGIN: () => { message: string; data: string };
 }
 
 export class VerifyCodeService implements VerifyCode {
@@ -48,7 +48,10 @@ export class VerifyCodeService implements VerifyCode {
       throw new HttpError("Code has expired. Please request again", 400);
     }
 
-    const validOtp = await this._compareRepository.compare(data.otp, hashedOtp);
+    const validOtp = await this._compareRepository.compare(
+      data.otp,
+      await hashedOtp.getHashedValue(),
+    );
 
     if (!validOtp) {
       throw new HttpError("Invalid code passed. Check your inbox.", 400);
@@ -64,7 +67,7 @@ export class VerifyCodeService implements VerifyCode {
       SIGN_UP: async () => {
         user.verified = true;
         await this._updateUserRepository.update(data.userId, user);
-        return { message: "Registered account!" };
+        return { message: "Registered account!", data: null };
       },
       LOGIN: () => {
         const token = this._signTokenRepository.sign(
@@ -75,7 +78,7 @@ export class VerifyCodeService implements VerifyCode {
           },
         );
 
-        return { token };
+        return { message: "User Logged!", data: token };
       },
     };
 

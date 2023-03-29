@@ -14,7 +14,7 @@ export class CreateUserController implements Controller {
     await this._createUser.execute({ ...request });
 
     return HttpResponseBuilder.statusCode(201)
-      .body({ message: "User created!" })
+      .body({ message: "User created!", data: null })
       .build();
   }
 }

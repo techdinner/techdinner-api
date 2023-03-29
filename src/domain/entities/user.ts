@@ -34,10 +34,6 @@ export class User extends BaseEntity {
     };
   }
 
-  get id(): UniqueEntityID {
-    return this.id;
-  }
-
   set name(name: string) {
     this._props.name = name;
   }

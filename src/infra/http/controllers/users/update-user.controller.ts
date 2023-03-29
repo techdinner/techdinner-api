@@ -14,7 +14,7 @@ export class UpdateUserController implements Controller {
     await this._updateUser.execute({ ...request });
 
     return HttpResponseBuilder.statusCode(200)
-      .body({ message: "User updated!" })
+      .body({ message: "User updated!", data: null })
       .build();
   }
 }

@@ -11,7 +11,7 @@ export class DeleteUserController implements Controller {
     await this._deleteUser.execute({ ...request });
 
     return HttpResponseBuilder.statusCode(200)
-      .body({ message: "User deleted!" })
+      .body({ message: "User deleted!", data: null })
       .build();
   }
 }

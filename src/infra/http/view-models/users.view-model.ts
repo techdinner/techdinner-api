@@ -3,7 +3,7 @@ import type { User } from "@/domain/entities/user";
 export class UsersViewModel {
   static toHTTP(user: User | null): any {
     return {
-      // id: user?.id.value,
+      id: user?.id.value,
       name: user?.name,
       email: user?.email.value,
       cpf: user?.cpf.value,

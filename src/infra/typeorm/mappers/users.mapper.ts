@@ -12,6 +12,7 @@ import type { User as RawUser } from "../entities/user";
 export class UsersMapper {
   static async toPersistence(user: User): Promise<DeepPartial<RawUser>> {
     return {
+      id: user.id.value,
       name: user.name,
       email: user.email.value,
       password: await user?.password?.getHashedValue(),
