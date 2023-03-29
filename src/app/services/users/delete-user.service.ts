@@ -1,4 +1,4 @@
-import type { DeleteUser } from "@/domain/usecases/users/delete-user";
+import type { DeleteUser } from "@/domain/use-cases/users/delete-user";
 import type { DeleteUserRepository } from "@/app/repositories/users/delete-user.repository";
 import type { FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
 import type { DeleteUserDTO } from "@/app/dtos/users/delete-user.dto";

@@ -1,6 +1,6 @@
 import type { Controller } from "@/app/interfaces/controller.interface";
 import { HttpResponseBuilder } from "@/app/builders/http-response.builder";
-import type { FindAllUser } from "@/domain/usecases/users/find-all-user";
+import type { FindAllUser } from "@/domain/use-cases/users/find-all-user";
 import type { HttpResponse } from "@/app/interfaces/http-response.interface";
 import { UsersViewModel } from "../../view-models/users.view-model";
 

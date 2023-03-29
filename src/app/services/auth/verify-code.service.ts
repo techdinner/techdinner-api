@@ -1,4 +1,4 @@
-import type { VerifyCode } from "@/domain/usecases/auth/verify-code";
+import type { VerifyCode } from "@/domain/use-cases/auth/verify-code";
 import type {
   VerifyCodeDTO,
   VerifyCodeResponse,

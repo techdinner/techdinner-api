@@ -1,6 +1,6 @@
 import type { Controller } from "@/app/interfaces/controller.interface";
 import { HttpResponseBuilder } from "@/app/builders/http-response.builder";
-import type { VerifyCode } from "@/domain/usecases/auth/verify-code";
+import type { VerifyCode } from "@/domain/use-cases/auth/verify-code";
 import type { VerifyCodeDTO } from "@/app/dtos/auth/verify-code.dto";
 import type { HttpResponse } from "@/app/interfaces/http-response.interface";
 import { validate } from "../../requests/auth/verify-code.request";

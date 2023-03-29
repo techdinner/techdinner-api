@@ -1,5 +1,5 @@
 import type { User } from "@/domain/entities/user";
-import type { Login } from "@/domain/usecases/auth/login";
+import type { Login } from "@/domain/use-cases/auth/login";
 import type { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
 import type { CompareRepository } from "@/app/repositories/crypt/compare.repository";
 import type { HashRepository } from "@/app/repositories/crypt/hash.repository";

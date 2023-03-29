@@ -1,5 +1,5 @@
 import { User } from "@/domain/entities/user";
-import type { CreateUser } from "@/domain/usecases/users/create-user";
+import type { CreateUser } from "@/domain/use-cases/users/create-user";
 import type { CreateUserRepository } from "@/app/repositories/users/create-user.repository";
 import type { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
 import type { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
