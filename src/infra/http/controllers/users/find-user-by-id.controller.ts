@@ -1,21 +1,18 @@
 import { type Controller } from "@/app/interfaces/controller.interface";
-import { HttpResponseBuilder } from "@/app/builders/http-response.builder";
 import { type FindUserById } from "@/domain/use-cases/users/find-user-by-id";
 import { type HttpResponse } from "@/app/interfaces/http-response.interface";
 import { type FindUserByIdDTO } from "@/app/dtos/users/find-user-by-id.dto";
+import { JsonResponse } from "@/app/helpers/json-response";
 import { UsersViewModel } from "../../view-models/users.view-model";
 
-export class FindUserByIdController implements Controller {
-  constructor(private readonly _findUserById: FindUserById) {}
+export class FindUserByIdController extends JsonResponse implements Controller {
+  constructor(private readonly _findUserById: FindUserById) {
+    super();
+  }
 
   async handle(request: FindUserByIdDTO): Promise<HttpResponse> {
     const response = await this._findUserById.execute({ ...request });
 
-    return HttpResponseBuilder.statusCode(200)
-      .body({
-        message: "Data received success!",
-        data: UsersViewModel.toHTTP(response),
-      })
-      .build();
+    return this.ok("Data received success!", UsersViewModel.toHTTP(response));
   }
 }

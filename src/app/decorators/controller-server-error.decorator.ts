@@ -1,17 +1,21 @@
-import { HttpResponseBuilder } from "@/app/builders/http-response.builder";
 import { type Controller } from "@/app/interfaces/controller.interface";
 import { type HttpResponse } from "@/app/interfaces/http-response.interface";
+import { JsonResponse } from "../helpers/json-response";
+import { type HttpError } from "../helpers/http-error";
 
-export class ControllerServerErrorDecorator implements Controller {
-  constructor(private readonly _controller: Controller) {}
+export class ControllerServerErrorDecorator
+  extends JsonResponse
+  implements Controller
+{
+  constructor(private readonly _controller: Controller) {
+    super();
+  }
 
   async handle(request: any): Promise<HttpResponse> {
     try {
       return await this._controller.handle(request);
-    } catch (error: any) {
-      return HttpResponseBuilder.statusCode((error.status as number) || 500)
-        .body({ message: error.message || "Internal server error." })
-        .build();
+    } catch (error: unknown) {
+      return this.fail(error as HttpError);
     }
   }
 }

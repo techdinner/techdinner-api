@@ -1,17 +1,17 @@
 import { type Controller } from "@/app/interfaces/controller.interface";
-import { HttpResponseBuilder } from "@/app/builders/http-response.builder";
 import { type DeleteUser } from "@/domain/use-cases/users/delete-user";
 import { type HttpResponse } from "@/app/interfaces/http-response.interface";
 import { type DeleteUserDTO } from "@/app/dtos/users/delete-user.dto";
+import { JsonResponse } from "@/app/helpers/json-response";
 
-export class DeleteUserController implements Controller {
-  constructor(private readonly _deleteUser: DeleteUser) {}
+export class DeleteUserController extends JsonResponse implements Controller {
+  constructor(private readonly _deleteUser: DeleteUser) {
+    super();
+  }
 
   async handle(request: DeleteUserDTO): Promise<HttpResponse> {
     await this._deleteUser.execute({ ...request });
 
-    return HttpResponseBuilder.statusCode(200)
-      .body({ message: "User deleted!", data: null })
-      .build();
+    return this.ok("User deleted!");
   }
 }
