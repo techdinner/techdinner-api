@@ -1,7 +1,7 @@
-import type { DeleteUser } from "@/domain/use-cases/users/delete-user";
-import type { DeleteUserRepository } from "@/app/repositories/users/delete-user.repository";
-import type { FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
-import type { DeleteUserDTO } from "@/app/dtos/users/delete-user.dto";
+import { type DeleteUser } from "@/domain/use-cases/users/delete-user";
+import { type DeleteUserRepository } from "@/app/repositories/users/delete-user.repository";
+import { type FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
+import { type DeleteUserDTO } from "@/app/dtos/users/delete-user.dto";
 import { HttpError } from "@/app/helpers/http-error";
 
 export class DeleteUserService implements DeleteUser {

@@ -4,7 +4,7 @@ import { CreateUserRepositoryMock } from "@tests/mocks/repositories/users/create
 import { FindUserByEmailRepositoryMock } from "@tests/mocks/repositories/users/find-user-by-email.repository.mock";
 import { HashRepositoryMock } from "@tests/mocks/repositories/crypt/hash.repository.mock";
 import { HttpError } from "@/app/helpers/http-error";
-import type { User } from "@/domain/entities/user";
+import { type User } from "@/domain/entities/user";
 
 interface SutTypes {
   sut: CreateUserService;

@@ -1,8 +1,8 @@
-import type { Replace } from "@/app/helpers/replace";
+import { type Replace } from "@/app/helpers/replace";
 import { BaseEntity } from "./core/base-entity";
-import type { UniqueEntityID } from "./core/unique-entity-id";
-import type { UserOTPNumber } from "./value-objects/user-otp";
-import type { UserOTPType } from "./value-objects/user-otp-type";
+import { type UniqueEntityID } from "./core/unique-entity-id";
+import { type UserOTPNumber } from "./value-objects/user-otp";
+import { type UserOTPType } from "./value-objects/user-otp-type";
 
 export interface UserOTPProps {
   id?: UniqueEntityID;

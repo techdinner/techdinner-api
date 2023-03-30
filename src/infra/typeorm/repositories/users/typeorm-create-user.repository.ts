@@ -1,8 +1,8 @@
-import type { Repository } from "typeorm";
+import { type Repository } from "typeorm";
 import { AppDataSource } from "@/database/data-source";
-import type { CreateUserRepository } from "@/app/repositories/users/create-user.repository";
+import { type CreateUserRepository } from "@/app/repositories/users/create-user.repository";
 import { User as RawUser } from "@/infra/typeorm/entities/user";
-import type { User } from "@/domain/entities/user";
+import { type User } from "@/domain/entities/user";
 import { UsersMapper } from "../../mappers/users.mapper";
 
 export class TypeORMCreateUserRepository implements CreateUserRepository {

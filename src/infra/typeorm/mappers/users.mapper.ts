@@ -7,7 +7,7 @@ import { UserCPF } from "@/domain/entities/value-objects/user-cpf";
 import { UserPhone } from "@/domain/entities/value-objects/user-phone";
 import { UserRole } from "@/domain/entities/value-objects/user-role";
 import { BcryptHashAdapter } from "@/infra/bcrypt/bcrypt-hash.adapter";
-import type { User as RawUser } from "../entities/user";
+import { type User as RawUser } from "../entities/user";
 
 export class UsersMapper {
   static async toPersistence(user: User): Promise<DeepPartial<RawUser>> {

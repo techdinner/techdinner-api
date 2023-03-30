@@ -1,5 +1,5 @@
 import { HttpError } from "@/app/helpers/http-error";
-import type { HashRepository } from "@/app/repositories/crypt/hash.repository";
+import { type HashRepository } from "@/app/repositories/crypt/hash.repository";
 
 export class UserOTPNumber {
   private readonly _otp: string;

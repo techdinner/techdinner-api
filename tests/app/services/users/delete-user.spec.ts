@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
 import { DeleteUserService } from "@/app/services/users/delete-user.service";
-import type { DeleteUserRepository } from "@/app/repositories/users/delete-user.repository";
-import type { FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
-import type { User } from "@/domain/entities/user";
+import { type DeleteUserRepository } from "@/app/repositories/users/delete-user.repository";
+import { type FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
+import { type User } from "@/domain/entities/user";
 
 class DeleteUserRepositoryMock implements DeleteUserRepository {
   user: User[] = [

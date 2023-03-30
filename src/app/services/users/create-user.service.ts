@@ -1,9 +1,9 @@
 import { User } from "@/domain/entities/user";
-import type { CreateUser } from "@/domain/use-cases/users/create-user";
-import type { CreateUserRepository } from "@/app/repositories/users/create-user.repository";
-import type { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
-import type { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
-import type { HashRepository } from "@/app/repositories/crypt/hash.repository";
+import { type CreateUser } from "@/domain/use-cases/users/create-user";
+import { type CreateUserRepository } from "@/app/repositories/users/create-user.repository";
+import { type FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
+import { type CreateUserDTO } from "@/app/dtos/users/create-user.dto";
+import { type HashRepository } from "@/app/repositories/crypt/hash.repository";
 import { HttpError } from "@/app/helpers/http-error";
 import { UserEmail } from "@/domain/entities/value-objects/user-email";
 import { UserPassword } from "@/domain/entities/value-objects/user-password";

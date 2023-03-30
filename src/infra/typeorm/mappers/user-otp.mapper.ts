@@ -1,4 +1,4 @@
-import type { DeepPartial } from "typeorm";
+import { type DeepPartial } from "typeorm";
 import { UniqueEntityID } from "@/domain/entities/core/unique-entity-id";
 import { UserOTP } from "@/domain/entities/user-otp";
 import { UserOTPNumber } from "@/domain/entities/value-objects/user-otp";

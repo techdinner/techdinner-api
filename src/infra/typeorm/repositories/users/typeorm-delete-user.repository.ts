@@ -1,6 +1,6 @@
-import type { Repository } from "typeorm";
+import { type Repository } from "typeorm";
 import { AppDataSource } from "@/database/data-source";
-import type { DeleteUserRepository } from "@/app/repositories/users/delete-user.repository";
+import { type DeleteUserRepository } from "@/app/repositories/users/delete-user.repository";
 import { User } from "@/infra/typeorm/entities/user";
 
 export class TypeORMDeleteUserRepository implements DeleteUserRepository {

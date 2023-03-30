@@ -1,10 +1,14 @@
-import express, { json } from "express";
-import type { Request, Response, NextFunction } from "express";
+import express, {
+  json,
+  type Request,
+  type Response,
+  type NextFunction,
+} from "express";
 import cors from "cors";
-import type { Controller } from "@/app/interfaces/controller.interface";
-import type { HttpServer } from "@/app/interfaces/http-server.interface";
-import type { HttpServerRoute } from "@/app/interfaces/http-server-route.interface";
-import type { HttpResponse } from "@/app/interfaces/http-response.interface";
+import { type Controller } from "@/app/interfaces/controller.interface";
+import { type HttpServer } from "@/app/interfaces/http-server.interface";
+import { type HttpServerRoute } from "@/app/interfaces/http-server-route.interface";
+import { type HttpResponse } from "@/app/interfaces/http-response.interface";
 
 import "@/database/data-source";
 

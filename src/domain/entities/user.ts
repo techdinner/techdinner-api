@@ -1,12 +1,12 @@
-import type { Replace } from "@/app/helpers/replace";
+import { type Replace } from "@/app/helpers/replace";
 import { environments } from "@/config/dotenv";
 import { BaseEntity } from "./core/base-entity";
-import type { UniqueEntityID } from "./core/unique-entity-id";
-import type { UserEmail } from "./value-objects/user-email";
-import type { UserPassword } from "./value-objects/user-password";
-import type { UserPhone } from "./value-objects/user-phone";
-import type { UserRole } from "./value-objects/user-role";
-import type { UserCPF } from "./value-objects/user-cpf";
+import { type UniqueEntityID } from "./core/unique-entity-id";
+import { type UserEmail } from "./value-objects/user-email";
+import { type UserPassword } from "./value-objects/user-password";
+import { type UserPhone } from "./value-objects/user-phone";
+import { type UserRole } from "./value-objects/user-role";
+import { type UserCPF } from "./value-objects/user-cpf";
 
 export interface UserProps {
   id?: UniqueEntityID;

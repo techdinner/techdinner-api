@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import type { HashRepository } from "@/app/repositories/crypt/hash.repository";
+import { type HashRepository } from "@/app/repositories/crypt/hash.repository";
 
 export class HashRepositoryMock implements HashRepository {
   plaintext: string;

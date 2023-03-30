@@ -1,6 +1,6 @@
-import type { Repository } from "typeorm";
+import { type Repository } from "typeorm";
 import { AppDataSource } from "@/database/data-source";
-import type { FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
+import { type FindUserByEmailRepository } from "@/app/repositories/users/find-user-by-email.repository";
 import { User as RawUser } from "@/infra/typeorm/entities/user";
 import { type User } from "@/domain/entities/user";
 import { UsersMapper } from "../../mappers/users.mapper";
