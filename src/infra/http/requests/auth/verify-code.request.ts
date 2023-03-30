@@ -5,7 +5,7 @@ import { type VerifyCodeDTO } from "@/app/dtos/auth/verify-code.dto";
 export const validate = (data: VerifyCodeDTO): void => {
   const rules = {
     userId: ["required"],
-    otp: ["required", "max:4"],
+    otp: ["required", "min:4", "max:4"],
     type: ["required"],
   };
 

@@ -11,15 +11,15 @@ import { ControllerServerErrorDecorator } from "@/app/decorators/controller-serv
 export const makeVerifyCodeController = (): ControllerServerErrorDecorator => {
   const findUserOTPRepository = new TypeORMFindUserOTPRepository();
   const deleteUserOTPRepository = new TypeORMDeleteUserOTPRepository();
-  const bcryptCompareAdapter = new BcryptCompareAdapter();
-  const jsonWebTokenSignTokenAdapter = new JsonWebTokenSignTokenAdapter();
+  const compareRepository = new BcryptCompareAdapter();
+  const signTokenRepository = new JsonWebTokenSignTokenAdapter();
   const findUserByIdRepository = new TypeORMFindUserByIdRepository();
   const updateUserRepository = new TypeORMUpdateUserRepository();
   const verifyCodeService = new VerifyCodeService(
     findUserOTPRepository,
     deleteUserOTPRepository,
-    bcryptCompareAdapter,
-    jsonWebTokenSignTokenAdapter,
+    compareRepository,
+    signTokenRepository,
     findUserByIdRepository,
     updateUserRepository,
   );

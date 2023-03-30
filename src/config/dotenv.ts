@@ -1,8 +1,8 @@
 import { config } from "dotenv";
-import path from "path";
+import { join } from "path";
 
 config({
-  path: path.join(__dirname, "..", "..", ".env"),
+  path: join(__dirname, "..", "..", ".env"),
 });
 
 export const environments = {

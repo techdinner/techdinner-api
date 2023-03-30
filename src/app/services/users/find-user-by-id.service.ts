@@ -15,7 +15,7 @@ export class FindUserByIdService implements FindUserById {
     const user = await this._findUserByIdRepository.findById(id);
 
     if (!user) {
-      throw new HttpError("User not found.", 400);
+      throw new HttpError("User not found.", 404);
     }
 
     return user;

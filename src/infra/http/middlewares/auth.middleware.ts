@@ -5,7 +5,7 @@ import {
   type NextFunction,
 } from "@/app/interfaces/middleware.interface";
 import { type HttpResponse } from "@/app/interfaces/http-response.interface";
-import { HttpResponseBuilder } from "@/app/builders/http-response.builder";
+import { JsonResponse } from "@/app/helpers/json-response";
 
 interface AuthRequest {
   authorization: string;
@@ -19,7 +19,7 @@ interface AuthResponse extends HttpResponse {
   };
 }
 
-export class Authorization implements Middleware {
+export class Authorization extends JsonResponse implements Middleware {
   handle(
     request: AuthRequest,
     response: AuthResponse,
@@ -28,9 +28,7 @@ export class Authorization implements Middleware {
     const { authorization } = request;
 
     if (!authorization) {
-      return HttpResponseBuilder.statusCode(401)
-        .body({ message: "Unauthorized!" })
-        .build();
+      return this.unauthorized();
     }
 
     const [, token] = authorization.split(" ");
@@ -42,9 +40,7 @@ export class Authorization implements Middleware {
 
       next();
     } catch (error) {
-      return HttpResponseBuilder.statusCode(401)
-        .body({ message: "Unauthorized!" })
-        .build();
+      return this.unauthorized();
     }
   }
 }

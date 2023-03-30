@@ -11,6 +11,7 @@ export class UserOTPMapper {
     userOtp: UserOTP,
   ): Promise<DeepPartial<RawUserOTP>> {
     return {
+      id: userOtp.id.value,
       userId: userOtp.userId.value,
       otp: await userOtp.otp.getHashedValue(),
       type: userOtp.type.value,
@@ -21,6 +22,7 @@ export class UserOTPMapper {
 
   static toDomain(raw: RawUserOTP): UserOTP {
     return new UserOTP({
+      id: new UniqueEntityID(raw.id),
       userId: new UniqueEntityID(raw.userId),
       otp: new UserOTPNumber(raw.otp, true, new BcryptHashAdapter()),
       type: new UserOTPType(raw.type),

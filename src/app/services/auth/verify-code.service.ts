@@ -78,7 +78,7 @@ export class VerifyCodeService implements VerifyCode {
           },
         );
 
-        return { message: "User Logged!", data: token };
+        return { message: "User logged!", data: token };
       },
     };
 

@@ -11,6 +11,12 @@ export class JsonResponse {
     return HttpResponseBuilder.statusCode(201).body({ message, data }).build();
   }
 
+  unauthorized(): HttpResponse {
+    return HttpResponseBuilder.statusCode(401)
+      .body({ message: "Unauthorized!" })
+      .build();
+  }
+
   fail(error: HttpError): HttpResponse {
     let message = "Internal server error.";
     let code = 500;

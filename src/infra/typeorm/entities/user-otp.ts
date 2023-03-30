@@ -20,7 +20,7 @@ export class UserOTP {
   type!: string;
 
   @CreateDateColumn({ name: "created_at" })
-  createdAt?: Date;
+  createdAt!: Date;
 
   @Column({ name: "expires_at" })
   expiresAt?: Date;
