@@ -4,6 +4,8 @@ import type { HashRepository } from "@/app/repositories/crypt/hash.repository";
 export class UserOTPNumber {
   private readonly _otp: string;
 
+  private readonly _otpLength = 4;
+
   private readonly _hashRepository: HashRepository;
 
   public readonly isHashed: boolean;
@@ -13,8 +15,7 @@ export class UserOTPNumber {
   }
 
   private _isValidLength(otp: string): boolean {
-    const otpLengthRegExp = /\b\d{4}\b/g;
-    return otpLengthRegExp.test(otp);
+    return otp.length === this._otpLength;
   }
 
   public async getHashedValue(): Promise<string> {

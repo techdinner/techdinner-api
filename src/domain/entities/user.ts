@@ -17,7 +17,7 @@ export interface UserProps {
   phone: UserPhone;
   companyId: UniqueEntityID;
   role: UserRole;
-  photo?: string;
+  photo?: string | null;
   verified: boolean;
   createdAt: Date;
   updatedAt?: Date;
@@ -90,14 +90,14 @@ export class User extends BaseEntity {
     return this._props.role;
   }
 
-  set photo(photo: string | undefined) {
+  set photo(photo: string | null | undefined) {
     this._props.photo = photo;
   }
 
-  get photo(): string {
+  get photo(): string | null {
     return this._props.photo
       ? `${environments.APP_HOST}:${environments.APP_PORT}/${this._props.photo}`
-      : "";
+      : null;
   }
 
   set verified(verified: boolean) {
