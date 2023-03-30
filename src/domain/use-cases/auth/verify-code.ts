@@ -1,6 +1,6 @@
-import type {
-  VerifyCodeDTO,
-  VerifyCodeResponse,
+import {
+  type VerifyCodeDTO,
+  type VerifyCodeResponse,
 } from "@/app/dtos/auth/verify-code.dto";
 
 export interface VerifyCode {

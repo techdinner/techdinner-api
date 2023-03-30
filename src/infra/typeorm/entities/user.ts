@@ -32,14 +32,14 @@ export class User {
   @Column()
   role!: string;
 
-  @Column({ nullable: true })
-  photo?: string;
+  @Column({ type: "varchar", nullable: true })
+  photo?: string | null;
 
   @Column()
-  verified?: boolean;
+  verified!: boolean;
 
   @CreateDateColumn({ name: "created_at" })
-  createdAt?: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: "updated_at" })
   updatedAt?: Date;

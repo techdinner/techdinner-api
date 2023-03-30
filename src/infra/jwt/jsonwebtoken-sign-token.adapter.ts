@@ -1,8 +1,8 @@
 import { sign } from "jsonwebtoken";
-import type {
-  SignTokenRepository,
-  Secret,
-  SignOptions,
+import {
+  type SignTokenRepository,
+  type Secret,
+  type SignOptions,
 } from "@/app/repositories/jwt/sign-token.repository";
 
 export class JsonWebTokenSignTokenAdapter implements SignTokenRepository {

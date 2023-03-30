@@ -1,10 +1,10 @@
 import { verify } from "jsonwebtoken";
 import { auth } from "@/config/auth";
-import type {
-  Middleware,
-  NextFunction,
+import {
+  type Middleware,
+  type NextFunction,
 } from "@/app/interfaces/middleware.interface";
-import type { HttpResponse } from "@/app/interfaces/http-response.interface";
+import { type HttpResponse } from "@/app/interfaces/http-response.interface";
 import { HttpResponseBuilder } from "@/app/builders/http-response.builder";
 
 interface AuthRequest {

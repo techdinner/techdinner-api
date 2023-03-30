@@ -1,6 +1,6 @@
 import { make } from "simple-body-validator";
 import { HttpError } from "@/app/helpers/http-error";
-import type { UpdateUserDTO } from "@/app/dtos/users/update-user.dto";
+import { type UpdateUserDTO } from "@/app/dtos/users/update-user.dto";
 
 export const validate = (data: UpdateUserDTO): void => {
   const rules = {

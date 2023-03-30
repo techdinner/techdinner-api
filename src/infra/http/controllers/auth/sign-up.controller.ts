@@ -1,20 +1,20 @@
-import type { Controller } from "@/app/interfaces/controller.interface";
-import { HttpResponseBuilder } from "@/app/builders/http-response.builder";
-import type { SignUp } from "@/domain/usecases/auth/sign-up";
-import type { CreateUserDTO } from "@/app/dtos/users/create-user.dto";
-import type { HttpResponse } from "@/app/interfaces/http-response.interface";
+import { type Controller } from "@/app/interfaces/controller.interface";
+import { type SignUp } from "@/domain/use-cases/auth/sign-up";
+import { type CreateUserDTO } from "@/app/dtos/users/create-user.dto";
+import { type HttpResponse } from "@/app/interfaces/http-response.interface";
+import { JsonResponse } from "@/app/helpers/json-response";
 import { validate } from "../../requests/users/create-user.request";
 
-export class SignUpController implements Controller {
-  constructor(private readonly _signUp: SignUp) {}
+export class SignUpController extends JsonResponse implements Controller {
+  constructor(private readonly _signUp: SignUp) {
+    super();
+  }
 
   async handle(request: CreateUserDTO): Promise<HttpResponse> {
     validate(request);
 
     const response = await this._signUp.execute({ ...request });
 
-    return HttpResponseBuilder.statusCode(200)
-      .body({ message: "Code sended!", userId: response })
-      .build();
+    return this.ok("Code sended!", response);
   }
 }

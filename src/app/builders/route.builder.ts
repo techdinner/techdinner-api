@@ -1,7 +1,7 @@
-import type { HttpServerRoute } from "@/app/interfaces/http-server-route.interface";
-import type { Methods } from "@/app/enums/methods.enum";
-import type { Controller } from "@/app/interfaces/controller.interface";
-import type { Middleware } from "@/app/interfaces/middleware.interface";
+import { type HttpServerRoute } from "@/app/interfaces/http-server-route.interface";
+import { type Methods } from "@/app/enums/methods.enum";
+import { type Controller } from "@/app/interfaces/controller.interface";
+import { type Middleware } from "@/app/interfaces/middleware.interface";
 import { AppServer } from "@/app/config/app-server";
 
 export class RouteBuilder {
@@ -21,7 +21,7 @@ export class RouteBuilder {
     };
   }
 
-  public static route(
+  static route(
     httpMethod: Methods,
     endpoint: string,
     controller: Controller,
@@ -30,7 +30,7 @@ export class RouteBuilder {
     return new RouteBuilder(httpMethod, endpoint, controller, middlewares);
   }
 
-  public build(): void {
+  build(): void {
     AppServer.server.addRoute(this._httpServerRoute);
   }
 }

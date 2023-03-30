@@ -1,7 +1,7 @@
-import type { User } from "@/domain/entities/user";
-import type { FindUserById } from "@/domain/usecases/users/find-user-by-id";
-import type { FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
-import type { FindUserByIdDTO } from "@/app/dtos/users/find-user-by-id.dto";
+import { type User } from "@/domain/entities/user";
+import { type FindUserById } from "@/domain/use-cases/users/find-user-by-id";
+import { type FindUserByIdRepository } from "@/app/repositories/users/find-user-by-id.repository";
+import { type FindUserByIdDTO } from "@/app/dtos/users/find-user-by-id.dto";
 import { HttpError } from "@/app/helpers/http-error";
 
 export class FindUserByIdService implements FindUserById {

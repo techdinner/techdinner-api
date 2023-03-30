@@ -1,5 +1,5 @@
-import type { CreateUserRepository } from "@/app/repositories/users/create-user.repository";
-import type { User } from "@/domain/entities/user";
+import { type CreateUserRepository } from "@/app/repositories/users/create-user.repository";
+import { type User } from "@/domain/entities/user";
 import { FindUserByEmailRepositoryMock } from "./find-user-by-email.repository.mock";
 
 export class CreateUserRepositoryMock implements CreateUserRepository {

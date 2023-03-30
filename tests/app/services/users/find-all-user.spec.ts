@@ -1,10 +1,10 @@
 import { randomUUID } from "node:crypto";
 import { FindAllUserService } from "@/app/services/users/find-all-user.service";
-import type { FindAllUserRepository } from "@/app/repositories/users/find-all-user.repository";
-import type { User } from "@/domain/entities/user";
+import { type FindAllUserRepository } from "@/app/repositories/users/find-all-user.repository";
+import { type User } from "@/domain/entities/user";
 
 class FindAllUserRepositoryMock implements FindAllUserRepository {
-  public user: User[] = [
+  user: User[] = [
     {
       id: "1",
       name: "Matheus",

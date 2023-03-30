@@ -4,4 +4,7 @@ export interface VerifyCodeDTO {
   type: string;
 }
 
-export type VerifyCodeResponse = { message: string } | { token: string };
+export interface VerifyCodeResponse {
+  message: string;
+  data: string | null;
+}
