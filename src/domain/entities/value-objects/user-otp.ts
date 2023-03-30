@@ -8,7 +8,7 @@ export class UserOTPNumber {
 
   private readonly _hashRepository: HashRepository;
 
-  public readonly isHashed: boolean;
+  readonly isHashed: boolean;
 
   get value(): string {
     return this._otp;
@@ -18,7 +18,7 @@ export class UserOTPNumber {
     return otp.length === this._otpLength;
   }
 
-  public async getHashedValue(): Promise<string> {
+  async getHashedValue(): Promise<string> {
     if (this.isHashed) {
       return this._otp;
     } else {

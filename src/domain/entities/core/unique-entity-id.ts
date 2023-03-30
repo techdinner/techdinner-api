@@ -11,7 +11,7 @@ export class UniqueEntityID {
     return this._id;
   }
 
-  public equals(id: UniqueEntityID): boolean {
+  equals(id: UniqueEntityID): boolean {
     return id.value === this._id;
   }
 }

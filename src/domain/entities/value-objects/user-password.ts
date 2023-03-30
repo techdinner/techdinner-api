@@ -8,7 +8,7 @@ export class UserPassword {
 
   private readonly _hashRepository: HashRepository;
 
-  public readonly isHashed: boolean;
+  readonly isHashed: boolean;
 
   get value(): string {
     return this._password;
@@ -18,7 +18,7 @@ export class UserPassword {
     return password.length >= this._minLength;
   }
 
-  public async getHashedValue(): Promise<string> {
+  async getHashedValue(): Promise<string> {
     if (this.isHashed) {
       return this._password;
     } else {

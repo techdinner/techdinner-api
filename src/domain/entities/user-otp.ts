@@ -52,7 +52,7 @@ export class UserOTP extends BaseEntity {
     return this._props.createdAt;
   }
 
-  public expires(): void {
+  expires(): void {
     const expiresDate = new Date();
 
     expiresDate.setHours(expiresDate.getHours() + 1);

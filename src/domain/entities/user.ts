@@ -112,7 +112,7 @@ export class User extends BaseEntity {
     return this._props.createdAt;
   }
 
-  public update(): void {
+  update(): void {
     this._props.updatedAt = new Date();
   }
 

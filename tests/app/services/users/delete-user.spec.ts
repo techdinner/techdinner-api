@@ -5,7 +5,7 @@ import type { FindUserByIdRepository } from "@/app/repositories/users/find-user-
 import type { User } from "@/domain/entities/user";
 
 class DeleteUserRepositoryMock implements DeleteUserRepository {
-  public user: User[] = [
+  user: User[] = [
     {
       id: "1",
       name: "Matheus",
@@ -28,7 +28,7 @@ class DeleteUserRepositoryMock implements DeleteUserRepository {
 }
 
 class FindUserByIdRepositoryMock implements FindUserByIdRepository {
-  public user: User[] = [
+  user: User[] = [
     {
       id: "1",
       name: "Matheus",

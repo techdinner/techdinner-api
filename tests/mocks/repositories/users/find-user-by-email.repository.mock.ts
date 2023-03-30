@@ -4,7 +4,7 @@ import type { User } from "@/domain/entities/user";
 export class FindUserByEmailRepositoryMock
   implements FindUserByEmailRepository
 {
-  public users: User[] = [];
+  users: User[] = [];
 
   async findByEmail(email: string): Promise<User | null> {
     const user = this.users.find(user => user.email === email);

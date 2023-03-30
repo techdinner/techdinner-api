@@ -4,7 +4,7 @@ import type { FindAllUserRepository } from "@/app/repositories/users/find-all-us
 import type { User } from "@/domain/entities/user";
 
 class FindAllUserRepositoryMock implements FindAllUserRepository {
-  public user: User[] = [
+  user: User[] = [
     {
       id: "1",
       name: "Matheus",

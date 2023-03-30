@@ -21,7 +21,7 @@ export class RouteBuilder {
     };
   }
 
-  public static route(
+  static route(
     httpMethod: Methods,
     endpoint: string,
     controller: Controller,
@@ -30,7 +30,7 @@ export class RouteBuilder {
     return new RouteBuilder(httpMethod, endpoint, controller, middlewares);
   }
 
-  public build(): void {
+  build(): void {
     AppServer.server.addRoute(this._httpServerRoute);
   }
 }

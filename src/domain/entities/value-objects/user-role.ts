@@ -14,7 +14,7 @@ export class UserRole {
     return this._validRoles.includes(role);
   }
 
-  public isAdmin(): boolean {
+  isAdmin(): boolean {
     return this._role === Roles.ADMIN;
   }
 

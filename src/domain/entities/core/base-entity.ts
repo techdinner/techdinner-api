@@ -11,7 +11,7 @@ export abstract class BaseEntity {
     return this._id;
   }
 
-  public equals(object: BaseEntity): boolean {
+  equals(object: BaseEntity): boolean {
     if (!(object instanceof BaseEntity)) {
       return false;
     }
