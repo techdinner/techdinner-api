@@ -1,7 +1,7 @@
-import { Controller } from "@/app/interfaces/controller.interface";
+import { type Controller } from "@/app/interfaces/controller.interface";
 import { HttpResponseBuilder } from "@/app/builders/http-response.builder";
-import { FindAllUser } from "@/domain/use-cases/users/find-all-user";
-import { HttpResponse } from "@/app/interfaces/http-response.interface";
+import { type FindAllUser } from "@/domain/use-cases/users/find-all-user";
+import { type HttpResponse } from "@/app/interfaces/http-response.interface";
 import { UsersViewModel } from "../../view-models/users.view-model";
 
 export class FindAllUserController implements Controller {
