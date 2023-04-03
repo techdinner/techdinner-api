@@ -6,6 +6,7 @@ import { MailProviderAdapter } from "@/infra/nodemailer/mail-provider.adapter";
 import { SignUpService } from "@/app/services/auth/sign-up.service";
 import { SignUpController } from "@/infra/http/controllers/auth/sign-up.controller";
 import { ControllerServerErrorDecorator } from "@/app/decorators/controller-server-error.decorator";
+import { SendMailService } from "@/app/services/mail/send-mail.service";
 
 export const makeSignController = (): ControllerServerErrorDecorator => {
   const findUserByEmailRepository = new TypeORMFindUserByEmailRepository();
@@ -13,12 +14,16 @@ export const makeSignController = (): ControllerServerErrorDecorator => {
   const saveUserOTPRepository = new TypeORMSaveUserOTPRepository();
   const hashRepository = new BcryptHashAdapter();
   const mailProvider = new MailProviderAdapter();
+  const sendMailService = new SendMailService(
+    hashRepository,
+    mailProvider,
+    saveUserOTPRepository,
+  );
   const signUpService = new SignUpService(
     createUserRepository,
     findUserByEmailRepository,
     hashRepository,
-    mailProvider,
-    saveUserOTPRepository,
+    sendMailService,
   );
   const signUpController = new SignUpController(signUpService);
 
